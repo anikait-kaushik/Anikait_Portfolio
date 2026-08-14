@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Anikait Kaushik — Mechatronics &amp; Robotics Engineer</title>
-<meta name="description" content="Anikait Kaushik — mechatronics and robotics engineer. Designs, builds, tests and researches robotic systems: planetary-rover soil-sampling subsystems, lower-limb exoskeleton gait analysis, competition rovers and drones. IRC 2026 champion." />
+<meta name="description" content="Anikait Kaushik — mechatronics and robotics engineer. Designs, builds, tests and researches robotic systems: planetary-rover soil-sampling subsystems, exoskeleton-enabled rehabilitation, competition rovers and drones. IRC 2026 champion." />
 <meta name="author" content="Anikait Kaushik" />
 <meta property="og:title" content="Anikait Kaushik — Mechatronics &amp; Robotics Engineer" />
-<meta property="og:description" content="Robotics systems engineer &amp; researcher. Planetary sampling mechanisms, gait biomechanics, competition rovers. IRC 2026 champion, ISDC 2026 runner-up." />
+<meta property="og:description" content="Robotics systems engineer &amp; researcher. Planetary sampling mechanisms, exoskeleton rehabilitation, competition rovers. IRC 2026 champion, ISDC 2026 runner-up." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assests/img/hero_rover.jpg" />
 <meta name="theme-color" content="#15171C" />
@@ -50,7 +50,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
 .brand{font-family:"Space Grotesk";font-weight:700;letter-spacing:-.02em;font-size:18px}
 .brand span{color:var(--oxide)}
-.navlinks{display:flex;gap:26px;align-items:center}
+.navlinks{display:flex;gap:22px;align-items:center}
 .navlinks a{font-size:14px;color:#3b414b;position:relative}
 .navlinks a:hover{color:var(--ink)}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--oxide);transition:width .25s ease}
@@ -75,7 +75,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .hero .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .hero .btn{border-color:#454b57;color:#EDEFF2}
 .hero .btn:hover{background:#EDEFF2;color:var(--ink)}
-.social{display:flex;gap:20px;margin-top:26px;font-family:"IBM Plex Mono";font-size:13px;color:var(--muted-d)}
+.social{display:flex;flex-wrap:wrap;gap:20px;margin-top:26px;font-family:"IBM Plex Mono";font-size:13px;color:var(--muted-d)}
 .social a:hover{color:var(--oxide-hi)}
 /* spec strip */
 .specstrip{position:relative;border-top:1px solid #2c313b;background:rgba(12,14,18,.55)}
@@ -103,6 +103,11 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .facts .fitem:last-child{border-bottom:0}
 .facts .fk{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .facts .fv{margin-top:3px;font-weight:500}
+.edu-mini{margin-top:22px;display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
+.edu-mini .em{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font-size:14px}
+.edu-mini .em:first-child{border-top:0}
+.edu-mini .em .ek{color:#31353d}
+.edu-mini .em .ev{font-family:"IBM Plex Mono";color:var(--muted);white-space:nowrap}
 
 /* ---------- research ---------- */
 .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:44px;align-items:center}
@@ -112,6 +117,29 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .tag{display:inline-block;font-family:"IBM Plex Mono";font-size:12px;color:var(--steel);border:1px solid var(--line);border-radius:2px;padding:4px 9px;margin:6px 6px 0 0}
 .status{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#8a5a12;background:#f6ead0;border:1px solid #e6cf9e;border-radius:2px;padding:5px 10px}
 .status.pub{color:#2f5d43;background:#e2efe6;border-color:#bcd8c6}
+.status.prep{color:#3a4a8a;background:#e4e8f6;border-color:#c3cbe8}
+
+/* ---------- media placeholder slots (2 per project) ---------- */
+.mediarow{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.mediaslot{aspect-ratio:16/10;border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#f2f3f5,#f2f3f5 10px,#eaecef 10px,#eaecef 20px);position:relative}
+.mediaslot:first-child{border-left:0}
+.mediaslot span{font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed #b9c0c9;border-radius:3px;padding:8px 14px;background:rgba(255,255,255,.7)}
+.mediarow.compact .mediaslot{aspect-ratio:16/11}
+
+/* ---------- experience ---------- */
+.exp-list{margin-top:44px;display:flex;flex-direction:column;gap:24px}
+.exp{border:1px solid var(--line);border-radius:4px;background:var(--card);overflow:hidden}
+.exp .ehead{padding:26px 30px 6px}
+.exp .eorg{font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--oxide)}
+.exp h3{font-size:22px;margin-top:8px}
+.exp .erow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:6px}
+.exp .erole{font-family:"IBM Plex Mono";font-size:13px;color:var(--muted)}
+.exp .ewhen{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted-d)}
+.exp .ebody{padding:8px 30px 26px}
+.exp .ebody p{color:#31353d;font-size:15px;margin:0 0 8px}
+.exp .ebody ul{margin:10px 0 0;padding-left:20px;color:#31353d;font-size:15px}
+.exp .ebody li{margin:6px 0}
+.exp .mentors{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);margin-top:10px}
 
 /* ---------- work / projects ---------- */
 .flag{margin-top:48px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
@@ -143,10 +171,14 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .card p{color:#31353d;font-size:15px;margin:12px 0 0}
 .card .tags{margin-top:auto;padding-top:14px}
 .mini{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
-.mini .m{border:1px solid var(--line);border-radius:4px;background:var(--card);padding:20px 22px}
+.mini .m{border:1px solid var(--line);border-radius:4px;background:var(--card);overflow:hidden;display:flex;flex-direction:column}
+.mini .m .mbody{padding:20px 22px}
 .mini .m h3{font-size:17px}
 .mini .m .oneline{font-family:"IBM Plex Mono";font-size:11.5px;color:var(--muted);margin-top:6px}
 .mini .m p{font-size:14px;color:#31353d;margin-top:10px}
+.mini .mediarow{margin-top:auto}
+.mini .mediaslot{aspect-ratio:16/12}
+.mini .mediaslot span{font-size:10.5px;padding:6px 10px}
 
 /* ---------- publications ---------- */
 .records{margin-top:40px;display:flex;flex-direction:column;gap:22px}
@@ -232,9 +264,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .wrap{padding:0 20px}
   .section{padding:66px 0}
   .specstrip .wrap,.awards,.record .meta,.mini,.skills-grid,.statgrid{grid-template-columns:1fr}
-  .subfig{grid-template-columns:1fr}
-  .subfig figure{border-left:0;border-top:1px solid var(--line)}
-  .subfig figure:first-child{border-top:0}
+  .subfig,.mediarow{grid-template-columns:1fr}
+  .subfig figure,.mediaslot{border-left:0;border-top:1px solid var(--line)}
+  .subfig figure:first-child,.mediaslot:first-child{border-top:0}
   .spec{border-left:0;border-top:1px solid #2c313b}
   .record .meta .mi{border-left:0;border-top:1px solid var(--line)}
   .record .meta .mi:first-child{border-top:0}
@@ -253,6 +285,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <a href="#top" class="brand">Anikait<span>.</span>Kaushik</a>
     <nav class="navlinks" id="navlinks">
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#research">Research</a>
       <a href="#work">Work</a>
       <a href="#publications">Publications &amp; IP</a>
@@ -273,7 +306,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="eyebrow">Mechatronics · Robotics · Research</div>
     <h1>Anikait&nbsp;Kaushik</h1>
     <div class="role">Robotics Systems Engineer <b>/</b> Researcher</div>
-    <p class="thesis">I design, build, test and research robotic and mechatronic systems — from planetary-rover sampling mechanisms and lower-limb gait analysis to competition rovers and drones. Hardware first, validated with data.</p>
+    <p class="thesis">I design, build, test and research robotic and mechatronic systems — from planetary-rover sampling mechanisms and exoskeleton-enabled rehabilitation to competition rovers, drones and robotic manipulators. Hardware first, validated with data.</p>
     <div class="cta">
       <a class="btn" href="#work">View selected work</a>
       <a class="btn" href="#research">Research &amp; publications</a>
@@ -282,6 +315,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="social">
       <a href="mailto:akaushik_be23@thapar.edu">Email</a>
       <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://anikait-portfolio-ivory.vercel.app" target="_blank" rel="noopener">Portfolio</a>
       <a href="#publications">Patent · Papers</a>
     </div>
   </div>
@@ -302,17 +337,94 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <h2>A hands-on engineer working across mechanical design, embedded control and experimental research.</h2>
     <div class="about-grid reveal">
       <div>
-        <p>I am a final-year B.E. student in Mechatronics, Automation &amp; Robotics Engineering at the Thapar Institute of Engineering &amp; Technology (TIET), Patiala. My work sits at the intersection of mechanical design, robotic mechanisms, embedded control and experimental validation.</p>
-        <p>On the build side, I develop physical robotic systems: a multi-axis soil-sampling and analysis subsystem for a planetary-analogue rover, competition rovers and drones, and reconfigurable robots — designed in SolidWorks, analysed in ANSYS, and fabricated through 3D printing, CNC and conventional machining.</p>
-        <p>On the research side, I work within Prof. Ashish Singla's group on lower-limb exoskeletons and human gait analysis — motion-capture and force-plate experiments, Euler–Lagrange dynamics, and data-driven validation. I also lead Team MARS, TIET's robotics team, as General Secretary and Team Captain.</p>
+        <p>I am a final-year B.E. student in Mechatronics, Automation &amp; Robotics Engineering at the Thapar Institute of Engineering &amp; Technology (TIET), Patiala, with a CGPA of 9.29/10 through my 6th semester. My work sits at the intersection of mechanical design, robot kinematics &amp; motion control, biomechanics and human-motion data analysis, and manufacturing &amp; fabrication.</p>
+        <p>On the build side, I develop physical robotic systems end-to-end — from CAD and simulation through fabrication and field testing: a multi-axis soil-sampling and analysis subsystem for planetary-analogue rovers, competition rovers and drones, a stair-climbing load carrier, and robotic-manipulator kinematic validation — designed in SolidWorks, analysed in ANSYS, and fabricated through 3D printing, CNC and conventional machining.</p>
+        <p>On the research side, I contribute to the TIET–UQ Centre of Excellence's R3 programme on exoskeleton-enabled rehabilitation and human gait analysis — motion-capture, force-plate and EMG experiments, Euler–Lagrange dynamics, and data-driven validation. I also lead Team MARS, TIET's robotics team, as General Secretary and Team Captain.</p>
       </div>
-      <div class="facts">
-        <div class="fitem"><div class="fk">Degree</div><div class="fv">B.E. Mechatronics, Automation &amp; Robotics — TIET (Expected May 2027)</div></div>
-        <div class="fitem"><div class="fk">Academics</div><div class="fv">CGPA 9.29 / 10 · Prev. semester 10.0 / 10</div></div>
-        <div class="fitem"><div class="fk">Focus</div><div class="fv">Robotic mechanisms · Mechanical design &amp; FEA · Gait biomechanics · Embedded control</div></div>
-        <div class="fitem"><div class="fk">Role</div><div class="fv">General Secretary &amp; Team Captain — Team MARS / MARS Society</div></div>
-        <div class="fitem"><div class="fk">Based in</div><div class="fv">Patiala, Punjab, India</div></div>
+      <div>
+        <div class="facts">
+          <div class="fitem"><div class="fk">Degree</div><div class="fv">B.E. Mechatronics, Automation &amp; Robotics — TIET (Aug 2023 – May 2027)</div></div>
+          <div class="fitem"><div class="fk">Academics</div><div class="fv">CGPA 9.29 / 10 through 6th semester · Department Topper, 10.0 CGPA (one semester)</div></div>
+          <div class="fitem"><div class="fk">Focus</div><div class="fv">Robotic mechanisms · Kinematics &amp; motion control · Gait biomechanics · Manufacturing</div></div>
+          <div class="fitem"><div class="fk">Role</div><div class="fv">General Secretary &amp; Team Captain — Team MARS / MARS Society</div></div>
+          <div class="fitem"><div class="fk">Based in</div><div class="fv">Patiala, Punjab, India</div></div>
+        </div>
+        <div class="edu-mini">
+          <div class="em"><span class="ek">Class XII — GMSSS MHC, Sector 13, Chandigarh</span><span class="ev">85.4%</span></div>
+          <div class="em"><span class="ek">Class X — Jainendra Public School, Panchkula</span><span class="ev">96.4%</span></div>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="eyebrow"><span class="idx">02</span> Experience</div>
+    <h2>Applied roles across research, industry and internal development.</h2>
+
+    <div class="exp-list reveal">
+
+      <article class="exp">
+        <div class="ehead">
+          <div class="eorg">The University of Queensland (UQ) — TIET–UQ Centre of Excellence</div>
+          <h3>Research Intern — R3: Exoskeleton-Enabled Rehabilitation</h3>
+          <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2025 – Present</span></div>
+        </div>
+        <div class="ebody">
+          <p>Contributing to R3 (Realize, Revive &amp; Recover) — AI-enabled, data-driven solutions for lower-limb rehabilitation through human–exoskeleton interaction and gait analysis.</p>
+          <ul>
+            <li>Developed an experimental workflow spanning exoskeleton CAD and mechanical development, human-motion capture, force measurement and muscle-activity sensing, using SolidWorks, FEA, Qualisys, AMTI force plates and Noraxon EMG.</li>
+            <li>Analysed experimental gait data to evaluate lower-limb kinematics, gait cycles, Centre of Pressure (COP) and Ground Reaction Forces (GRF), supporting iterative evaluation of the exoskeleton system.</li>
+          </ul>
+          <div class="mentors">Mentors: Dr. Ashish Singla, Dr. Sachin Kansal, Alejandro Melendez-Calderon (UQ)</div>
+        </div>
+        <div class="mediarow">
+          <div class="mediaslot"><span>+ Add photo</span></div>
+          <div class="mediaslot"><span>+ Add video</span></div>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="ehead">
+          <div class="eorg">Orangewood Labs</div>
+          <h3>Robotics &amp; Vision Systems Intern</h3>
+          <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2026</span></div>
+        </div>
+        <div class="ebody">
+          <p>Completed the Robotics &amp; Vision Systems Training &amp; Internship Program run jointly by TIET and Orangewood Labs.</p>
+          <ul>
+            <li>Programmed an Orangewood robotic arm for pick-and-place operations using the OWL GUI, executing and testing a series of robot programs.</li>
+            <li>Worked with RoboGPT for software-assisted robot programming and interaction; received a Certificate of Achievement for contribution and dedication.</li>
+          </ul>
+        </div>
+        <div class="mediarow">
+          <div class="mediaslot"><span>+ Add photo</span></div>
+          <div class="mediaslot"><span>+ Add video</span></div>
+        </div>
+      </article>
+
+      <article class="exp">
+        <div class="ehead">
+          <div class="eorg">Experiential Learning Centre (ELC), TIET</div>
+          <h3>Summer Intern — MARVIN Autonomous Cleaning Robot</h3>
+          <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2024 – Jul 2024</span></div>
+        </div>
+        <div class="ebody">
+          <p>Identified the need for an autonomous indoor cleaning system capable of reducing manual cleaning effort while navigating around obstacles.</p>
+          <ul>
+            <li>Followed a complete development workflow from problem identification and concept development to mechanical CAD, electronics integration, fabrication, assembly and prototype testing.</li>
+            <li>Developed MARVIN, integrating a vacuum-based cleaning mechanism, obstacle avoidance, Arduino-based control and a fabricated mechanical structure using SolidWorks, 3D printing and sheet-metal fabrication; recognised among the Top 10 ELC Summer Internship Projects.</li>
+          </ul>
+          <div class="mentors">Mentors: Dr. Ashish Singla, Dr. R.K. Dwivedi</div>
+        </div>
+        <div class="mediarow">
+          <div class="mediaslot"><span>+ Add photo</span></div>
+          <div class="mediaslot"><span>+ Add video</span></div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -320,24 +432,24 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= RESEARCH ================= -->
 <section class="section" id="research">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">02</span> Research — Wearable robotics &amp; gait biomechanics</div>
+    <div class="eyebrow"><span class="idx">03</span> Research — Exoskeleton rehabilitation &amp; gait biomechanics</div>
     <h2>Modelling how the human leg moves — and validating it against the lab.</h2>
-    <p class="lede">Within Prof. Ashish Singla's research group at TIET, I work on lower-limb exoskeletons and human gait analysis: mechanical design and CAD of the exoskeleton, and the experimental gait-analysis pipeline behind an analytical dynamics framework.</p>
+    <p class="lede">Within the TIET–UQ Centre of Excellence's R3 programme, under Prof. Ashish Singla, I work on exoskeleton-enabled rehabilitation and human gait analysis: mechanical design and CAD of the exoskeleton, and the experimental gait-analysis pipeline behind an analytical dynamics framework.</p>
 
     <div class="research-grid reveal">
       <div class="figure">
-        <img src="assests/img/gait_lab.png" alt="Experimental gait pipeline: infrared motion capture, AMTI force plates, Qualisys Track Manager synchronisation, 3D reconstruction and MATLAB analysis" loading="lazy" />
-        <div class="cap">Fig · Synchronised gait acquisition — Qualisys motion capture + AMTI force plates → QTM → Visual3D → MATLAB.</div>
+        <img src="assests/img/gait_lab.png" alt="Experimental gait pipeline: infrared motion capture, AMTI force plates, Noraxon EMG, Qualisys Track Manager synchronisation, 3D reconstruction and MATLAB analysis" loading="lazy" />
+        <div class="cap">Fig · Synchronised gait acquisition — Qualisys motion capture + AMTI force plates + Noraxon EMG → QTM → Visual3D → MATLAB.</div>
       </div>
       <div>
-        <span class="status">Manuscript · Under review</span>
+        <span class="status">Manuscript · Submitted</span>
         <h3 style="font-size:22px;margin:16px 0 0">Experimental Validation of a Unified Euler–Lagrange Framework Using a Three-Link Leg Model for Human Gait Analysis</h3>
         <p style="color:#31353d;margin-top:14px">A moving-base Euler–Lagrange inverse-dynamics formulation for a planar three-link lower-limb model (thigh–shank–foot), integrating Denavit–Hartenberg kinematics with experimentally measured hip translation, ground-reaction forces and centre-of-pressure. Validated against Visual3D across five subjects and 0/8/16&nbsp;kg loading using RMSE and Bland–Altman analysis.</p>
         <div>
           <span class="tag">Moving-base dynamics</span><span class="tag">D–H kinematics</span><span class="tag">GRF / CoP</span>
-          <span class="tag">Motion capture · Qualisys</span><span class="tag">RMSE · Bland–Altman</span><span class="tag">MATLAB</span>
+          <span class="tag">Motion capture · Qualisys</span><span class="tag">Noraxon EMG</span><span class="tag">RMSE · Bland–Altman</span><span class="tag">MATLAB</span>
         </div>
-        <p class="mono" style="font-size:12.5px;color:var(--muted);margin-top:18px">Status: under review at IEEE Transactions on Robotics. Author list to be displayed on confirmation.</p>
+        <p class="mono" style="font-size:12.5px;color:var(--muted);margin-top:18px">Status: submitted to IEEE Transactions on Robotics. Author list to be displayed on confirmation.</p>
       </div>
     </div>
 
@@ -347,30 +459,35 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="drow"><span class="dk">Reference</span><span class="dv">Visual3D inverse dynamics</span></div>
       <div class="drow"><span class="dk">Representative RMSE (Nm/kg)</span><span class="dv">hip <em>0.261</em> · knee <em>0.150</em> · ankle <em>0.152</em></span></div>
     </div>
+
+    <div class="mediarow reveal" style="border:1px solid var(--line);border-top:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:34px;max-width:760px">
+      <div class="mediaslot"><span>+ Add photo</span></div>
+      <div class="mediaslot"><span>+ Add video</span></div>
+    </div>
   </div>
 </section>
 
 <!-- ================= WORK ================= -->
 <section class="section" id="work">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">03</span> Selected work</div>
+    <div class="eyebrow"><span class="idx">04</span> Selected work</div>
     <h2>Robotic systems, designed and taken to field.</h2>
 
-    <!-- FLAGSHIP: ABEx -->
+    <!-- FLAGSHIP: ABEx / Mars Rover Ganga -->
     <article class="flag reveal">
       <div class="top">
         <div class="media"><img src="assests/img/hero_rover.jpg" alt="Rover with the ABEx multi-axis soil-sampling subsystem deployed during the IRC 2026 astrobiology task" loading="lazy" /></div>
         <div class="body">
           <div class="eyebrow" style="margin-bottom:0"><span class="idx">Flagship</span> Planetary sampling</div>
-          <h3>ABEx — Multi-Axis Robotic Soil-Sampling &amp; Analysis Subsystem</h3>
-          <div class="oneline">Excavation → transfer → sensing → qualitative chemical analysis, in one compact mechanism.</div>
-          <p>A rover subsystem that integrates a vertical hollow-shaft NEMA-23 auger drive (with an independent IG32 rotary auger in hybrid metal + PLA-CF), a centrally-actuated rail-guided analytical tray, and a closed-loop ST3215 rotary index across six stations — funnels, reagent-delivery chemical tests, and an auger-cleaning brush. A seven-parameter soil probe and four atmospheric sensors log the sampling site.</p>
-          <p>The centre-driven tray replaced an earlier dual-lead-screw design, removing two-motor synchronisation and tray skew. Deployed as Team MARS TIET's astrobiology platform at IRC 2026.</p>
+          <h3>Mars Rover “Ganga” &amp; ABEx — Multi-Axis Robotic Soil-Sampling Subsystem</h3>
+          <div class="oneline">International Rover Challenge 2026 · Champion · Excavation → transfer → sensing → chemical analysis, in one compact mechanism.</div>
+          <p>Led mechanical and astrobiology-expedition development of the IRC 2026 champion rover, designing the ABEx multi-axis soil-sampling subsystem: a vertical hollow-shaft NEMA-23 auger drive (with an independent IG32 rotary auger in hybrid metal + PLA-CF), a centrally-actuated rail-guided analytical tray, and a closed-loop ST3215 rotary index across six stations — funnels, reagent-delivery chemical tests, and an auger-cleaning brush.</p>
+          <p>Redesigned the horizontal sample-handling mechanism around a single lead-screw/hollow-shaft NEMA-23 stepper, eliminating dual-actuator synchronisation and tray skew; achieved 150&nbsp;mm soil penetration and 12&nbsp;g sample recovery across development trials.</p>
         </div>
       </div>
       <div class="role-split">
         <div class="rs"><div class="rk">Team contribution</div><p>Full subsystem design, integration and field deployment by Team MARS TIET across the excavation-to-analysis workflow.</p></div>
-        <div class="rs"><div class="rk">My contribution</div><p>First author of the resulting research paper; work spans the soil-sampling mechanism lineage across Mars Rover III &amp; IV. <span class="mono" style="font-size:12px;color:var(--muted)">— exact per-module split to be confirmed.</span></p></div>
+        <div class="rs"><div class="rk">My contribution</div><p>Led mechanical &amp; astrobiology-expedition development; first author of the resulting research paper. Work spans the soil-sampling mechanism lineage across Mars Rover III &amp; IV.</p></div>
       </div>
       <div class="subfig">
         <figure><img src="assests/img/abex_vertical_cad.png" alt="CAD of the vertical auger mechanism: lead screw, NEMA-23, guide rails, IG32 motor, three-stage auger cover" loading="lazy" /><figcaption>Vertical auger mechanism — CAD.</figcaption></figure>
@@ -381,33 +498,46 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <figure style="display:flex;align-items:stretch">
           <div class="datasheet" style="width:100%;border:0;border-radius:0">
             <div class="drow" style="border-top:0"><span class="dk">Penetration</span><span class="dv"><em>150 mm</em></span></div>
-            <div class="drow"><span class="dk">Tray travel</span><span class="dv">270 mm in 28 s</span></div>
             <div class="drow"><span class="dk">Sample mass</span><span class="dv">12 g representative</span></div>
             <div class="drow"><span class="dk">Dev. cycles</span><span class="dv">21 / 30 (70%)</span></div>
             <div class="drow"><span class="dk">Astrobiology task</span><span class="dv">2nd-highest task score</span></div>
           </div>
         </figure>
       </div>
+      <div class="mediarow">
+        <div class="mediaslot"><span>+ Add photo</span></div>
+        <div class="mediaslot"><span>+ Add video</span></div>
+      </div>
     </article>
 
     <!-- CARD GRID -->
     <div class="cards reveal">
       <article class="card">
-        <div class="cimg" style="background-image:url('assests/img/hero_rover.jpg')"></div>
-        <div class="cbody">
-          <h3>Mars Rover IV — “Ganga”</h3>
-          <div class="oneline">International Rover Challenge 2026 · Champion</div>
-          <p>Led the mechanical and astrobiology-expedition departments: rover weight optimisation, adoption of Wheeleez PU wheels, and a redesigned, more rigid onboard soil-testing laboratory.</p>
-          <div class="tags"><span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">Team lead</span></div>
-        </div>
-      </article>
-      <article class="card">
         <div class="cimg" style="background-image:url('assests/img/climbcart_cad.jpg')"></div>
         <div class="cbody">
           <h3>CLIMB CART — Stair-Climbing Load Carrier</h3>
-          <div class="oneline">Capstone · Smart stair-climbing load carrier</div>
-          <p>Team capstone: a soft TPU-chain track drive on an angled 27° profile with a self-levelling (IMU) platform, targeting 18&nbsp;cm risers and a ~60% cost reduction vs imported units. Belt/sprocket/tray sized and FEA-verified (PLA, TPU-90, 6&nbsp;mm acrylic).</p>
-          <div class="tags"><span class="tag">Track drive</span><span class="tag">FEA</span><span class="tag">IMU levelling</span></div>
+          <div class="oneline">Engineering major project · 2026 – Present</div>
+          <p>Identified a market gap through product and user-environment surveys: existing stair-climbing carriers are costly and poorly adapted to narrow Indian staircases, terrain variation and maintenance needs.</p>
+          <p>Followed a structured product-development workflow — market/site survey, requirement definition, concept generation, CAD, iterative mechanism development, FEA/material selection, prototyping and testing — around a soft TPU-chain track drive on a 27° profile with a self-levelling (IMU) platform, targeting 18&nbsp;cm risers and a ~60% cost reduction vs imported units.</p>
+          <div class="tags"><span class="tag">Track drive</span><span class="tag">FEA</span><span class="tag">IMU levelling</span><span class="tag">SolidWorks</span></div>
+        </div>
+        <div class="mediarow">
+          <div class="mediaslot"><span>+ Add photo</span></div>
+          <div class="mediaslot"><span>+ Add video</span></div>
+        </div>
+      </article>
+      <article class="card">
+        <div class="cimg" style="background-image:url('assests/img/hero_rover.jpg')"></div>
+        <div class="cbody">
+          <h3>Robotic Kinematic Validation — LoCoBot–WidowX 200</h3>
+          <div class="oneline">2026 – Present · with MathWorks</div>
+          <p>Developed and validated the LoCoBot–WidowX 200 robotic manipulator in MATLAB, importing the robot model and validating forward and inverse kinematics against the physical robot configuration.</p>
+          <p>Developing a digital twin in collaboration with MathWorks to integrate the MATLAB model with the physical robot for real-world motion and validation; gained hands-on exposure through the Unitree Go2 Pro, Addverb Synchro 5, Alice Service Robot, KUKA KR10 R1420 and Dobot Magician platforms.</p>
+          <div class="tags"><span class="tag">MATLAB</span><span class="tag">Robotics System Toolbox</span><span class="tag">Fwd/Inv Kinematics</span></div>
+        </div>
+        <div class="mediarow">
+          <div class="mediaslot"><span>+ Add photo</span></div>
+          <div class="mediaslot"><span>+ Add video</span></div>
         </div>
       </article>
     </div>
@@ -415,19 +545,28 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <!-- MINI -->
     <div class="mini reveal">
       <div class="m">
-        <h3>ISDC 2026 — Quadcopter Drone</h3>
-        <div class="oneline">Intl. Space Drone Challenge · 1st Runner-Up</div>
-        <p>Carbon-fibre chassis + additive manufacturing; BLDC motor &amp; propeller selection with thrust calculations. (SolidWorks, ANSYS.)</p>
+        <div class="mbody">
+          <h3>ISDC 2026 — Quadcopter Drone</h3>
+          <div class="oneline">Intl. Space Drone Challenge · 1st Runner-Up</div>
+          <p>Carbon-fibre chassis + additive manufacturing; BLDC motor &amp; propeller selection with thrust calculations. (SolidWorks, ANSYS.)</p>
+        </div>
+        <div class="mediarow"><div class="mediaslot"><span>+ Photo</span></div><div class="mediaslot"><span>+ Video</span></div></div>
       </div>
       <div class="m">
-        <h3>Mars Rover III — “Alaknanda”</h3>
-        <div class="oneline">IRC 2025 · 2nd internationally</div>
-        <p>Designed and fabricated the soil subsystem — extraction mechanism through onboard chemical testing and sensor-integrated result evaluation.</p>
+        <div class="mbody">
+          <h3>Mars Rover III — “Alaknanda”</h3>
+          <div class="oneline">IRC 2025 · 1st Runner-Up internationally</div>
+          <p>Designed and fabricated the complete soil-collection and testing subsystem — extraction, sample handling, onboard chemical testing and sensor integration; validated with SolidWorks and FEA, fabricated via 3D printing and CNC.</p>
+        </div>
+        <div class="mediarow"><div class="mediaslot"><span>+ Photo</span></div><div class="mediaslot"><span>+ Video</span></div></div>
       </div>
       <div class="m">
-        <h3>Modular Reconfigurable Robot</h3>
-        <div class="oneline">Interchangeable-module platform</div>
-        <p>Reconfigurable modules that adapt the robot to different tasks and environments. (SolidWorks, Arduino.)</p>
+        <div class="mbody">
+          <h3>Modular Reconfigurable Robot</h3>
+          <div class="oneline">Interchangeable-module platform · Gen 1</div>
+          <p>Reconfigurable modules that adapt the robot to different tasks and environments. (SolidWorks, Arduino.)</p>
+        </div>
+        <div class="mediarow"><div class="mediaslot"><span>+ Photo</span></div><div class="mediaslot"><span>+ Video</span></div></div>
       </div>
     </div>
   </div>
@@ -436,7 +575,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= PUBLICATIONS & IP ================= -->
 <section class="section" id="publications">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">04</span> Publications &amp; intellectual property</div>
+    <div class="eyebrow"><span class="idx">05</span> Publications &amp; intellectual property</div>
     <h2>Work that stands up to review.</h2>
 
     <div class="records reveal">
@@ -461,7 +600,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <div class="record">
         <div class="rhead">
           <h3>Design and Development of a Multi-Axis Robotic Subsystem for In Situ Soil Sampling and Analysis</h3>
-          <span class="status pub">Conference paper</span>
+          <span class="status">Conference paper · Submitted</span>
         </div>
         <div class="authorline"><u>A. Kaushik</u> (first author), K. Chhabra, M. Jain, R. Kapur, Y. Bhatia, A. P. Kandpal, A. Bhatia, S. Kansal, A. Singla</div>
         <div class="meta">
@@ -470,22 +609,37 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="mi"><div class="mk">Field trials</div><div class="mv">21/30 cycles · 150 mm</div></div>
           <div class="mi"><div class="mk">Deployment</div><div class="mv">IRC 2026 astrobiology</div></div>
         </div>
-        <div class="rnote">The full engineering account of the ABEx subsystem — mechanism architecture, redesign from the patented dual-drive tray, sensing/chemical-screening workflow and terrestrial functional-test results. <span class="mono" style="font-size:12px;color:var(--muted)">Venue acronym corrected from “IPPrOMM” — AMM India / IFToMM conference series.</span></div>
+        <div class="rnote">The full engineering account of the ABEx subsystem — mechanism architecture, redesign from the patented dual-drive tray, sensing/chemical-screening workflow and terrestrial functional-test results. Submitted to the IPRoMM 2026 conference series.</div>
       </div>
 
       <!-- T-RO -->
       <div class="record">
         <div class="rhead">
           <h3>Experimental Validation of a Unified Euler–Lagrange Framework Using a Three-Link Leg Model for Human Gait Analysis</h3>
-          <span class="status">Manuscript · Under review</span>
+          <span class="status">Manuscript · Submitted</span>
         </div>
         <div class="meta">
           <div class="mi"><div class="mk">Target</div><div class="mv">IEEE Trans. on Robotics</div></div>
           <div class="mi"><div class="mk">Method</div><div class="mv">Moving-base Euler–Lagrange</div></div>
           <div class="mi"><div class="mk">Validation</div><div class="mv">Visual3D · 5 subjects</div></div>
-          <div class="mi"><div class="mk">Status</div><div class="mv">Under review</div></div>
+          <div class="mi"><div class="mk">Status</div><div class="mv">Submitted</div></div>
         </div>
-        <div class="rnote">Research from Prof. Singla's gait-analysis group. <b>Presented as under review only</b> — never as accepted or published. Author byline to be displayed on your confirmation.</div>
+        <div class="rnote">Research from the TIET–UQ Centre of Excellence's R3 gait-analysis programme. <b>Presented as submitted only</b> — never as accepted or published. Author byline to be displayed on your confirmation.</div>
+      </div>
+
+      <!-- Journal of Biomechanics -->
+      <div class="record">
+        <div class="rhead">
+          <h3>Load-Dependent Changes in Lower-Limb Joint Kinetics and Hip–Knee Coordination During Walking</h3>
+          <span class="status prep">Manuscript · In final preparation</span>
+        </div>
+        <div class="meta">
+          <div class="mi"><div class="mk">Target</div><div class="mv">Journal of Biomechanics</div></div>
+          <div class="mi"><div class="mk">Topic</div><div class="mv">Joint kinetics · loading</div></div>
+          <div class="mi"><div class="mk">Focus</div><div class="mv">Hip–knee coordination</div></div>
+          <div class="mi"><div class="mk">Status</div><div class="mv">In final preparation</div></div>
+        </div>
+        <div class="rnote">A companion analysis from the same gait-analysis dataset, examining how added load changes lower-limb joint kinetics and inter-joint (hip–knee) coordination during walking. <b>Not yet submitted.</b></div>
       </div>
 
     </div>
@@ -495,20 +649,21 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= LEADERSHIP ================= -->
 <section class="section" id="leadership">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">05</span> Leadership &amp; outreach</div>
+    <div class="eyebrow"><span class="idx">06</span> Leadership &amp; outreach</div>
     <h2>Running the team that builds the robots.</h2>
     <div class="lead-grid reveal">
       <div>
-        <p style="color:#31353d">As General Secretary of the MARS Society and Team Captain of Team MARS, I direct TIET's robotics team across engineering, operations and competition logistics — administration, technology, finance, documentation, design and outreach — including a working budget of ₹8,00,000 allocated across projects, competitions and workshops.</p>
+        <p style="color:#31353d">As General Secretary of the MARS Society and Team Captain of Team MARS, I lead and mentor 100+ students across robotics, mechatronics, mechanical design and research projects, directing multidisciplinary teams for the International Rover Challenge, International Space Drone Challenge and DD Robocon — technical development, manufacturing, documentation, logistics and competition operations — while managing an approximately ₹8,00,000 annual budget.</p>
         <div class="statgrid" style="margin-top:26px">
-          <div class="st"><div class="sv"><em>130+</em></div><div class="sk">Community members</div></div>
-          <div class="st"><div class="sv">40</div><div class="sk">Core members</div></div>
-          <div class="st"><div class="sv">8</div><div class="sk">Executive board</div></div>
+          <div class="st"><div class="sv"><em>100+</em></div><div class="sk">Students led &amp; mentored</div></div>
+          <div class="st"><div class="sv">3</div><div class="sk">Competitions directed</div></div>
+          <div class="st"><div class="sv">3</div><div class="sk">Gen-1/2 projects led</div></div>
           <div class="st"><div class="sv">₹8L</div><div class="sk">Budget directed</div></div>
         </div>
       </div>
       <div class="outreach">
-        <div class="oi"><div class="oh"><h3>General Secretary &amp; Team Captain — Team MARS</h3><span class="when">Aug 2025 – present</span></div><p>Leading 50+ students across IRC 2026, ISDC 2026 and DD Robocon 2026, plus hands-on mini-projects (self-balancing robot, gimbal stand, 4-DOF manipulator, reconfigurable &amp; cleaning robots).</p></div>
+        <div class="oi"><div class="oh"><h3>General Secretary &amp; Team Captain — Team MARS</h3><span class="when">Aug 2025 – Aug 2026</span></div><p>Direct multidisciplinary teams for the International Rover Challenge, International Space Drone Challenge and DD Robocon, coordinating technical development, manufacturing, documentation, logistics and competition operations.</p></div>
+        <div class="oi"><div class="oh"><h3>Team Lead — MARVIN Gen 2, Reconfigurable Robot Gen 1 &amp; Dobot Validation Gen 1</h3><span class="when">Aug 2025 – Aug 2026</span></div><p>Oversaw project workflows, development-pipeline planning, timelines, finances, documentation and cross-functional execution across three internal team projects.</p></div>
         <div class="oi"><div class="oh"><h3>Team Lead — ELC Internship 2025</h3><span class="when">Jun – Jul 2025</span></div><p>Led a 10-student team designing and controlling an autonomous cleaning robot (V2) and a modular reconfigurable robot.</p></div>
         <div class="oi"><div class="oh"><h3>Robotics workshop — IIT Ropar</h3><span class="when">Mar 2025</span></div><p>Participated in a robotics workshop at IIT Ropar and presented the mechanical subsystem of Mars Rover “Alaknanda.”</p></div>
       </div>
@@ -522,15 +677,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="eyebrow">Achievements</div>
     <h2>Verified results.</h2>
     <div class="awards">
-      <div class="aw"><div class="rank">1st · International</div><h3>International Rover Challenge 2026</h3><p>Champion · SPROS, Manipal.</p></div>
-      <div class="aw"><div class="rank">2nd · International</div><h3>International Space Drone Challenge 2026</h3><p>1st Runner-Up · SPROS, Manipal.</p></div>
-      <div class="aw"><div class="rank">2nd · International</div><h3>International Rover Challenge 2025</h3><p>Runner-Up · SPROS, Goa.</p></div>
+      <div class="aw"><div class="rank">1st · International</div><h3>International Rover Challenge 2026</h3><p>Champion · SPROS, MIT Manipal.</p></div>
+      <div class="aw"><div class="rank">2nd · International</div><h3>International Space Drone Challenge 2026</h3><p>1st Runner-Up · SPROS, MIT Manipal.</p></div>
+      <div class="aw"><div class="rank">2nd · International</div><h3>International Rover Challenge 2025</h3><p>1st Runner-Up · SPROS, Goa.</p></div>
     </div>
     <div class="scholar">
+      <span>Department Topper — <b>10.0 CGPA</b></span>
+      <span>Orangewood Labs — <b>Certificate of Achievement</b></span>
       <span>ELC Internship 2024 — <b>Top 10 projects</b></span>
       <span>Merit Scholarship Y1 — <b>₹75,450</b></span>
       <span>Merit Scholarship Y2 — <b>₹1,41,000</b></span>
       <span>Merit Scholarship Y3 — <b>₹1,79,400</b></span>
+      <span>Merit Scholarship Y4 — <b>₹1,53,300</b></span>
     </div>
   </div>
 </section>
@@ -538,55 +696,86 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= SKILLS ================= -->
 <section class="section" id="skills">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">06</span> Technical skills</div>
+    <div class="eyebrow"><span class="idx">07</span> Technical skills</div>
     <h2>Tools I actually build with.</h2>
     <div class="skills-grid reveal">
       <div class="skcol">
-        <h3>Mechanical &amp; CAD</h3>
+        <h3>Mechanical Design &amp; CAD</h3>
         <ul>
           <li>SolidWorks <span class="lvl">CAD / assemblies</span></li>
-          <li>ANSYS <span class="lvl">FEA (basics)</span></li>
+          <li>PTC Creo Parametric</li>
           <li>AutoCAD</li>
-          <li>Creo Parametric</li>
-          <li>Mechanism &amp; structural design</li>
+          <li>Mechanical design</li>
+          <li>Product development &amp; prototyping</li>
         </ul>
       </div>
       <div class="skcol">
-        <h3>Programming &amp; analysis</h3>
+        <h3>Robotics, Kinematics &amp; Motion Control</h3>
         <ul>
-          <li>C++ <span class="lvl">Advanced</span></li>
-          <li>Python <span class="lvl">Intermediate</span></li>
-          <li>C <span class="lvl">Intermediate</span></li>
-          <li>MATLAB</li>
+          <li>MATLAB &amp; Simulink</li>
+          <li>Robotics System Toolbox</li>
+          <li>Forward / inverse kinematics</li>
+          <li>Robot dynamics &amp; trajectory planning</li>
+          <li>CubeMars actuators</li>
+          <li>ROS 2 <span class="lvl">Fundamentals</span></li>
+        </ul>
+      </div>
+      <div class="skcol">
+        <h3>Biomechanics &amp; Experimental Systems</h3>
+        <ul>
           <li>Qualisys Track Manager (QTM)</li>
+          <li>AMTI force plates</li>
+          <li>Noraxon EMG</li>
+          <li>Gait &amp; human-motion analysis</li>
+          <li>COP / GRF</li>
         </ul>
       </div>
       <div class="skcol">
-        <h3>Embedded &amp; hardware</h3>
+        <h3>Manufacturing &amp; Fabrication</h3>
         <ul>
-          <li>Arduino / embedded control</li>
-          <li>Altium Designer <span class="lvl">PCB (basics)</span></li>
-          <li>Sensors &amp; actuators</li>
-          <li>Soldering</li>
-          <li>VS Code</li>
-        </ul>
-      </div>
-      <div class="skcol">
-        <h3>Manufacturing</h3>
-        <ul>
-          <li>3D printing / additive mfg.</li>
+          <li>Additive manufacturing / 3D printing</li>
           <li>CNC machining</li>
-          <li>Welding</li>
-          <li>Ultimaker Cura · Creality · Flashprint</li>
+          <li>Sheet-metal fabrication</li>
+          <li>PCB fabrication</li>
+          <li>Ultimaker Cura · Creality · Bambu Studio</li>
         </ul>
       </div>
       <div class="skcol">
-        <h3>Simulation &amp; validation</h3>
+        <h3>Industrial Automation <span style="font-size:11px;color:var(--muted-d)">(coursework)</span></h3>
         <ul>
-          <li>Finite element analysis</li>
-          <li>Simulation analysis</li>
-          <li>Motion capture + force plates</li>
-          <li>RMSE / Bland–Altman methods</li>
+          <li>Pneumatics &amp; electropneumatics</li>
+          <li>PLC fundamentals</li>
+          <li>RSLogix 500</li>
+          <li>Digital electronics</li>
+          <li>Festo FluidSIM</li>
+        </ul>
+      </div>
+      <div class="skcol">
+        <h3>Simulation &amp; Analysis</h3>
+        <ul>
+          <li>ANSYS / FEA</li>
+          <li>Simscape</li>
+          <li>Kinematic analysis</li>
+          <li>Human motion dynamics <span class="lvl">Project-level</span></li>
+        </ul>
+      </div>
+      <div class="skcol">
+        <h3>Programming &amp; Software Tools</h3>
+        <ul>
+          <li>Arduino IDE</li>
+          <li>EAGLE <span class="lvl">PCB</span></li>
+          <li>GitHub · VS Code</li>
+          <li>RoboGPT</li>
+          <li>Python · C · C++ <span class="lvl">Working knowledge</span></li>
+        </ul>
+      </div>
+      <div class="skcol">
+        <h3>Productivity</h3>
+        <ul>
+          <li>Microsoft Excel</li>
+          <li>Microsoft PowerPoint</li>
+          <li>Overleaf (LaTeX)</li>
+          <li>Canva</li>
         </ul>
       </div>
       <div class="skcol">
@@ -605,15 +794,17 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= CONTACT ================= -->
 <section class="section contact" id="contact">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">07</span> Contact</div>
+    <div class="eyebrow"><span class="idx">08</span> Contact</div>
     <div class="contact-grid">
       <div>
         <h2>Open to robotics &amp; research roles, collaborations and graduate study.</h2>
-        <p class="lede">If you're hiring for robotics/mechatronics, exploring a research collaboration, or reviewing for graduate admissions — I'd be glad to talk.</p>
+        <p class="lede">If you're hiring for robotics/mechatronics R&amp;D, exploring a research collaboration, or reviewing for graduate admissions — I'd be glad to talk.</p>
       </div>
       <div class="clist">
         <a href="mailto:akaushik_be23@thapar.edu"><span class="ck">Email</span><span class="cv">akaushik_be23@thapar.edu</span></a>
         <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener"><span class="ck">LinkedIn</span><span class="cv">/in/anikait-kaushik →</span></a>
+        <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener"><span class="ck">GitHub</span><span class="cv">/anikait-kaushik →</span></a>
+        <a href="https://anikait-portfolio-ivory.vercel.app" target="_blank" rel="noopener"><span class="ck">Portfolio</span><span class="cv">anikait-portfolio-ivory.vercel.app →</span></a>
         <a href="tel:+919729792834"><span class="ck">Phone</span><span class="cv">+91 97297 92834</span></a>
         <a href="assests/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="ck">Résumé</span><span class="cv">Download PDF ↓</span></a>
       </div>

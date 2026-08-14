@@ -99,8 +99,19 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .about-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;margin-top:40px;align-items:start}
 .about-grid p{color:#31353d}
 .about-grid p+p{margin-top:16px}
-.headshot-frame{aspect-ratio:1/1;max-width:220px}
-.headshot-frame .mediaslot{height:100%}
+.headshot-frame{
+  aspect-ratio:1/1;
+  width:320px;
+  max-width:100%;
+  overflow:hidden;
+}
+
+.headshot-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 .view-tag{margin-top:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .facts{border-left:2px solid var(--oxide);margin-top:22px}
 .facts .fitem{padding:14px 0 14px 20px;border-bottom:1px solid var(--line)}
@@ -357,7 +368,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <img src="assests/img/anikait_headshot.jpg" 
        alt="Anikait Kaushik — Mechatronics and Robotics Engineer">
 </div>
-        <div class="view-tag">Portrait · 1:1 · replace before sending to recruiters</div>
+       
         <div class="facts">
           <div class="fitem"><div class="fk">Degree</div><div class="fv">B.E. Mechatronics, Automation &amp; Robotics — TIET (Aug 2023 – May 2027)</div></div>
           <div class="fitem"><div class="fk">Academics</div><div class="fv">CGPA 9.29 / 10 through 6th semester · Department Topper, 10.0 CGPA (one semester)</div></div>

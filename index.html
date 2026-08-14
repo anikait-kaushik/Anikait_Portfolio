@@ -101,10 +101,9 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .about-grid p+p{margin-top:16px}
 .headshot-frame{
   aspect-ratio:1/1;
-  width:440px;
+  width:320px;
   max-width:100%;
   overflow:hidden;
-  margin:0 auto;
 }
 
 .headshot-frame img{
@@ -113,6 +112,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
   object-fit:cover;
   display:block;
 }
+.view-tag{margin-top:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .facts{border-left:2px solid var(--oxide);margin-top:22px}
 .facts .fitem{padding:14px 0 14px 20px;border-bottom:1px solid var(--line)}
 .facts .fitem:last-child{border-bottom:0}
@@ -273,7 +273,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
-  .headshot-frame{width:min(440px,100%);}
   .navlinks{display:none}
   .navtoggle{display:block}
   .about-grid,.research-grid,.lead-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
@@ -341,14 +340,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener">GitHub</a>
       <a href="#publications">Patent · Papers</a>
-    </div>
-  </div>
-  <div class="specstrip">
-    <div class="wrap">
-      <div class="spec"><div class="k">Intl. Rover Challenge 2026</div><div class="v"><em>Champion</em></div></div>
-      <div class="spec"><div class="k">Intl. Space Drone Challenge 2026</div><div class="v">1st Runner-Up</div></div>
-      <div class="spec"><div class="k">Intellectual property</div><div class="v">Patent <span style="font-size:.7em">(published appln.)</span></div></div>
-      <div class="spec"><div class="k">CGPA · TIET</div><div class="v">9.29<span style="font-size:.6em;color:var(--muted-d)">/10</span></div></div>
     </div>
   </div>
 </section>

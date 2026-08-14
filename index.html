@@ -9,7 +9,7 @@
 <meta property="og:title" content="Anikait Kaushik — Mechatronics &amp; Robotics Engineer" />
 <meta property="og:description" content="Robotics systems engineer &amp; researcher. Planetary sampling mechanisms, exoskeleton rehabilitation, competition rovers. IRC 2026 champion, ISDC 2026 runner-up." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="assests/img/hero_rover.jpg" />
+<meta property="og:image" content="assets/img/hero_rover.jpg" />
 <meta name="theme-color" content="#EEF0F3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -64,7 +64,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--ink);color:#EDEFF2;overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:url("assests/img/hero_rover.jpg") 58% 84%/cover no-repeat;opacity:.94}
+.hero .bg{position:absolute;inset:0;background:url("assets/img/hero_rover.jpg") 58% 84%/cover no-repeat;opacity:.94}
 .hero .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,22,.97) 0%,rgba(15,17,22,.86) 38%,rgba(15,17,22,.30) 72%,rgba(15,17,22,.10) 100%)}
 .hero .wrap{position:relative;padding-top:96px;padding-bottom:44px;min-height:clamp(560px,84vh,740px);display:flex;flex-direction:column;justify-content:center}
 .hero .eyebrow{color:var(--muted-d)}
@@ -96,105 +96,151 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .drow .dv em{color:var(--oxide);font-style:normal}
 
 /* ---------- about / profile ---------- */
+
 .about-grid{
   display:grid;
   grid-template-columns:1.25fr .9fr;
   gap:52px;
   margin-top:40px;
-  align-items:start
+  align-items:start;
 }
-.about-grid p{color:#31353d}
-.about-grid p+p{margin-top:16px}
+
+.about-grid > div{
+  min-width:0;
+}
+
+.about-grid p{
+  color:#31353d;
+}
+
+.about-grid p+p{
+  margin-top:16px;
+}
 
 .profile-lead{
   font-size:18px;
   line-height:1.65;
-  max-width:760px
+  max-width:760px;
+  margin:0;
 }
-.profile-lead strong{color:var(--ink)}
+
+.profile-lead strong{
+  color:var(--ink);
+}
 
 .profile-focus{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
-  margin-top:28px
+  margin-top:28px;
 }
+
 .profile-focus .pf-card{
   border:1px solid var(--line);
   background:var(--card);
   padding:18px 18px 20px;
   border-radius:4px;
-  min-height:150px
+  min-height:150px;
 }
+
 .profile-focus .pf-label{
   font-family:"IBM Plex Mono";
   font-size:11px;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:var(--oxide)
-}
-.profile-focus h3{margin:8px 0 7px;font-size:17px}
-.profile-focus p{margin:0;font-size:14px;line-height:1.55}
-
-.profile-scope{
-  margin-top:28px;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  padding:14px 0;
-  font-size:13px;
-  line-height:1.7;
-  color:#31353d
-}
-.profile-scope .scope-label{
-  font-family:"IBM Plex Mono";
-  font-size:10.5px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
   color:var(--oxide);
-  margin-right:12px
+}
+
+.profile-focus h3{
+  margin:8px 0 7px;
+  font-size:17px;
+}
+
+.profile-focus p{
+  margin:0;
+  font-size:14px;
+  line-height:1.55;
 }
 
 .profile-right{
   display:flex;
   flex-direction:column;
   gap:20px;
-  padding-top:calc(18px + 1.65em + 28px)
+  padding-top:0;
 }
+
 .headshot-frame{
   aspect-ratio:1/1;
-  width:340px;
+  width:380px;
   max-width:100%;
   overflow:hidden;
-  margin:0 auto
+  margin:0 0 0 auto;
 }
-.headshot-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+.headshot-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
 
 .profile-facts{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(4,minmax(0,1fr));
   border:1px solid var(--line);
   background:var(--card);
   border-radius:4px;
-  overflow:hidden
+  overflow:hidden;
+  margin-top:20px;
 }
+
 .profile-facts .pfact{
-  padding:15px 16px;
-  border-top:1px solid var(--line);
+  padding:14px 17px;
+  min-height:96px;
   border-left:1px solid var(--line);
-  min-height:92px
 }
-.profile-facts .pfact:nth-child(-n+2){border-top:0}
-.profile-facts .pfact:nth-child(odd){border-left:0}
+
+.profile-facts .pfact:first-child{
+  border-left:0;
+}
+
 .profile-facts .fk{
   font-family:"IBM Plex Mono";
   font-size:10.5px;
   letter-spacing:.11em;
   text-transform:uppercase;
-  color:var(--muted)
+  color:var(--muted);
 }
-.profile-facts .fv{margin-top:5px;font-size:13.5px;line-height:1.4;font-weight:500}
-.profile-facts .fv strong{font-size:16px}
 
+.profile-facts .fv{
+  margin-top:6px;
+  font-size:13.25px;
+  line-height:1.42;
+  font-weight:500;
+}
+
+.profile-facts .fv strong{
+  font-size:16px;
+}
+
+.profile-scope{
+  margin-top:12px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:12px 0;
+  font-size:13px;
+  line-height:1.7;
+  color:#31353d;
+}
+
+.profile-scope .scope-label{
+  font-family:"IBM Plex Mono";
+  font-size:10.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--oxide);
+  margin-right:12px;
+}
 /* ---------- research ---------- */
 .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:44px;align-items:center}
 .figure{border:1px solid var(--line);border-radius:3px;background:var(--card);overflow:hidden}
@@ -205,25 +251,12 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .status.pub{color:#2f5d43;background:#e2efe6;border-color:#bcd8c6}
 .status.prep{color:#3a4a8a;background:#e4e8f6;border-color:#c3cbe8}
 
-/* ---------- media placeholder slots — "detail view" frame is the site's signature ---------- */
+/* ---------- media frames ---------- */
 .mediarow{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
-.mediaslot{
-  aspect-ratio:16/10;border-left:1px solid var(--line);
-  display:flex;align-items:center;justify-content:center;position:relative;
-  background:
-    linear-gradient(var(--oxide),var(--oxide)) top left/18px 2px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) top left/2px 18px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) top right/18px 2px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) top right/2px 18px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) bottom left/18px 2px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) bottom left/2px 18px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) bottom right/18px 2px no-repeat,
-    linear-gradient(var(--oxide),var(--oxide)) bottom right/2px 18px no-repeat,
-    repeating-linear-gradient(135deg,#f2f3f5,#f2f3f5 10px,#eaecef 10px,#eaecef 20px);
-  opacity:.85;
-}
+.mediaslot{aspect-ratio:16/10;border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--card)}
 .mediaslot:first-child{border-left:0}
-.mediaslot span{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:7px 13px;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:2px}
+.mediaslot img{width:100%;height:100%;object-fit:cover;display:block}
+.mediaslot.contain img{object-fit:contain;background:#f7f7f7}
 .mediarow.compact .mediaslot{aspect-ratio:16/11}
 
 /* ---------- experience ---------- */
@@ -235,11 +268,32 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .exp .erow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:6px}
 .exp .erole{font-family:"IBM Plex Mono";font-size:13px;color:var(--muted)}
 .exp .ewhen{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted-d)}
-.exp .ebody{padding:8px 30px 26px}
-.exp .ebody p{color:#31353d;font-size:15px;margin:0 0 8px}
-.exp .ebody ul{margin:10px 0 0;padding-left:20px;color:#31353d;font-size:15px}
+.exp .ebody{padding:10px 30px 28px}
+.exp .ebody p{color:#31353d;font-size:15px;line-height:1.72;margin:0 0 10px}
+.exp .ebody ul{margin:10px 0 0;padding-left:20px;color:#31353d;font-size:15px;line-height:1.7}
 .exp .ebody li{margin:6px 0}
-.exp .mentors{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);margin-top:10px}
+.exp .mentors{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);margin-top:14px}
+.story-label{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--oxide);margin:18px 0 5px}
+.story-result{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;font-size:14px;color:#31353d}
+.story-result strong{color:#15181e}
+.exp-media{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);background:#f5f6f7;align-items:stretch}
+.exp-media .media-main,.exp-media .media-proof{min-width:0;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff}
+.exp-media .media-main{border-right:1px solid var(--line)}
+.exp-media img{width:100%;height:100%;display:block;object-fit:contain;background:#fff}
+.exp-media .media-proof img{width:100%;height:100%;object-fit:contain;background:#fff}
+
+/* Orangewood: full portrait photo first, certificate beneath it. */
+.exp-media.orangewood-media{display:flex;flex-direction:column;gap:0;background:#f5f6f7}
+.exp-media.orangewood-media .media-main{width:100%;min-height:0;border-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+.exp-media.orangewood-media .media-main img{width:auto;max-width:72%;height:auto;max-height:520px;object-fit:contain}
+.exp-media.orangewood-media .media-proof{width:100%;padding:22px 0}
+.exp-media.orangewood-media .media-proof img{width:auto;max-width:72%;height:auto;max-height:420px;object-fit:contain}
+
+/* MARVIN: equal-width side-by-side media. */
+.exp-media.marvin-media{grid-template-columns:1fr 1fr}
+.exp-media.marvin-media .media-main,.exp-media.marvin-media .media-proof{min-height:430px}
+.exp-media.marvin-media .media-main img,.exp-media.marvin-media .media-proof img{width:100%;height:430px;object-fit:contain}
+.exp-media.marvin-media .media-main{border-right:1px solid var(--line)}
 
 /* ---------- work / projects ---------- */
 .flag{margin-top:48px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
@@ -345,10 +399,25 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 /* ---------- responsive ---------- */
 @media(max-width:900px){
   .profile-right{padding-top:0;}
-  .profile-focus,.profile-facts{grid-template-columns:1fr;}
-  .profile-facts .pfact{border-left:0;}
-  .profile-facts .pfact:nth-child(2){border-top:1px solid var(--line);}
-  .profile-focus{grid-template-columns:1fr;}
+  .headshot-frame{
+    width:100%;
+    max-width:380px;
+    margin:0 auto;
+  }
+  .profile-focus,
+  .profile-facts{
+    grid-template-columns:1fr;
+  }
+  .profile-facts .pfact{
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+  .profile-facts .pfact:first-child{
+    border-top:0;
+  }
+  .profile-focus{
+    grid-template-columns:1fr;
+  }
   .navlinks{display:none}
   .navtoggle{display:block}
   .about-grid,.research-grid,.lead-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
@@ -358,6 +427,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .mini,.skills-grid,.awards,.specstrip .wrap{grid-template-columns:1fr 1fr}
   .role-split{grid-template-columns:1fr}
   .role-split .rs{border-left:0;border-top:1px solid var(--line)}
+  .exp-media{grid-template-columns:1fr}
+  .exp-media .media-main{border-right:0;border-bottom:1px solid var(--line)}
+  .exp-media.marvin-media{grid-template-columns:1fr}
+  .exp-media.marvin-media .media-main,.exp-media.marvin-media .media-proof{min-height:0}
+  .exp-media.marvin-media .media-main img,.exp-media.marvin-media .media-proof img{height:auto;max-height:none}
+  .exp-media.orangewood-media .media-main img,.exp-media.orangewood-media .media-proof img{max-width:88%;max-height:none}
   .role-split .rs:first-child{border-top:0}
 }
 @media(max-width:560px){
@@ -391,7 +466,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="#leadership">Leadership</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <a class="btn btn-oxide" href="assests/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+      <a class="btn btn-oxide" href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
     </nav>
     <button class="navtoggle" id="navtoggle" aria-label="Menu">≡</button>
   </div>
@@ -409,7 +484,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <div class="cta">
       <a class="btn" href="#work">View selected work</a>
       <a class="btn" href="#research">Research &amp; publications</a>
-      <a class="btn btn-oxide" href="assests/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Download résumé ↓</a>
+      <a class="btn btn-oxide" href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Download résumé ↓</a>
     </div>
     <div class="social">
       <a href="mailto:akaushik_be23@thapar.edu">Email</a>
@@ -423,16 +498,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <!-- ================= ABOUT ================= -->
 <section class="section" id="about">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">01</span> Profile</div>
-    <h2>I build physical robotic systems from mechanism design to field validation.</h2>
+    <div class="kicker"><span class="kicker-line"></span><span>01</span> Profile</div>
+    <h2>I build physical robotic<br>systems from mechanism<br>design to field validation.</h2>
 
-    <div class="about-grid reveal">
-      <div>
+    <div class="about-grid">
+      <div class="profile-left">
         <p class="profile-lead">
-          I am a B.E. student in <strong>Mechatronics, Automation &amp; Robotics Engineering</strong>
-          at the Thapar Institute of Engineering &amp; Technology (TIET). My work combines
-          <strong>mechanical design, robotics, kinematics and motion control, biomechanics,
-          and hands-on prototyping</strong>.
+          I am a B.E. student in <strong>Mechatronics, Automation &amp; Robotics Engineering</strong> at
+          the Thapar Institute of Engineering &amp; Technology (TIET). My work combines
+          <strong>mechanical design, robotics, kinematics and motion control, biomechanics, and hands-on prototyping.</strong>
         </p>
 
         <div class="profile-focus">
@@ -441,46 +515,43 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
             <h3>Physical robotic systems</h3>
             <p>Robotic mechanisms, autonomous platforms, manipulators and product prototypes — from CAD and FEA through fabrication, integration and testing.</p>
           </div>
-
           <div class="pf-card">
             <div class="pf-label">02 · Research</div>
             <h3>Human motion &amp; robotics</h3>
             <p>Exoskeleton rehabilitation, gait biomechanics, motion capture, force measurement, EMG, robot kinematics and experimental validation.</p>
           </div>
         </div>
-
-        <div class="profile-scope">
-          <span class="scope-label">Engineering scope</span>
-          Mechanical Design · Robotics · Kinematics &amp; Control · Biomechanics ·
-          CAD/CAE · Prototyping · Manufacturing · System Integration
-        </div>
       </div>
 
       <div class="profile-right">
         <div class="headshot-frame">
-          <img src="assests/img/anikait_headshot.jpg"
-               alt="Anikait Kaushik — Mechatronics and Robotics Engineer">
-        </div>
-
-        <div class="profile-facts">
-          <div class="pfact">
-            <div class="fk">Education</div>
-            <div class="fv">B.E. Mechatronics, Automation &amp; Robotics<br>TIET · 2023–2027</div>
-          </div>
-          <div class="pfact">
-            <div class="fk">Academics</div>
-            <div class="fv"><strong>9.29 / 10</strong><br>CGPA through 6th semester</div>
-          </div>
-          <div class="pfact">
-            <div class="fk">Research</div>
-            <div class="fv">TIET–UQ Centre of Excellence<br>R3 · Exoskeleton Rehabilitation</div>
-          </div>
-          <div class="pfact">
-            <div class="fk">Leadership</div>
-            <div class="fv">MARS<br>Former General Secretary &amp; Team Captain</div>
-          </div>
+          <img src="assets/img/anikait_headshot.jpg" alt="Anikait Kaushik">
         </div>
       </div>
+    </div>
+
+    <div class="profile-facts">
+      <div class="pfact">
+        <div class="fk">Education</div>
+        <div class="fv">B.E. Mechatronics,<br>Automation &amp; Robotics<br>TIET · 2023–2027</div>
+      </div>
+      <div class="pfact">
+        <div class="fk">Academics</div>
+        <div class="fv"><strong>9.29 / 10</strong><br>CGPA through 6th semester</div>
+      </div>
+      <div class="pfact">
+        <div class="fk">Research</div>
+        <div class="fv">TIET–UQ Centre of Excellence<br>R3 · Exoskeleton Rehabilitation</div>
+      </div>
+      <div class="pfact">
+        <div class="fk">Leadership</div>
+        <div class="fv">MARS<br>Former General Secretary &amp; Team Captain</div>
+      </div>
+    </div>
+
+    <div class="profile-scope">
+      <span class="scope-label">Engineering Scope</span>
+      Mechanical Design · Robotics · Kinematics &amp; Control · Biomechanics · CAD/CAE · Prototyping · Manufacturing · System Integration
     </div>
   </div>
 </section>
@@ -489,7 +560,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <section class="section" id="experience">
   <div class="wrap">
     <div class="eyebrow"><span class="idx">02</span> Experience</div>
-    <h2>Applied roles across research, industry and internal development.</h2>
+    <h2>From research problems to working robots.</h2>
 
     <div class="exp-list reveal">
 
@@ -500,16 +571,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2025 – Present</span></div>
         </div>
         <div class="ebody">
-          <p>Contributing to R3 (Realize, Revive &amp; Recover) — AI-enabled, data-driven solutions for lower-limb rehabilitation through human–exoskeleton interaction and gait analysis.</p>
+          <div class="story-label">The problem</div>
+          <p>How do you evaluate an exoskeleton using real human movement data rather than relying only on the robot's behaviour?</p>
+
+          <div class="story-label">My role</div>
+          <p>I work across the mechanical and experimental sides of R3, connecting exoskeleton development with human gait measurements.</p>
+
+          <div class="story-label">What I worked on</div>
           <ul>
-            <li>Developed an experimental workflow spanning exoskeleton CAD and mechanical development, human-motion capture, force measurement and muscle-activity sensing, using SolidWorks, FEA, Qualisys, AMTI force plates and Noraxon EMG.</li>
+            <li>Developed an experimental workflow spanning exoskeleton CAD and mechanical development, human-motion capture, force measurement and muscle-activity sensing using SolidWorks, FEA, Qualisys, AMTI force plates and Noraxon EMG.</li>
             <li>Analysed experimental gait data to evaluate lower-limb kinematics, gait cycles, Centre of Pressure (COP) and Ground Reaction Forces (GRF), supporting iterative evaluation of the exoskeleton system.</li>
           </ul>
           <div class="mentors">Mentors: Dr. Ashish Singla, Dr. Sachin Kansal, Alejandro Melendez-Calderon (UQ)</div>
-        </div>
-        <div class="mediarow">
-          <div class="mediaslot"><span>+ Add photo</span></div>
-          <div class="mediaslot"><span>+ Add video</span></div>
         </div>
       </article>
 
@@ -520,15 +593,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2026</span></div>
         </div>
         <div class="ebody">
-          <p>Completed the Robotics &amp; Vision Systems Training &amp; Internship Program run jointly by TIET and Orangewood Labs.</p>
+          <div class="story-label">From commands to physical motion</div>
+          <p>During the TIET × Orangewood Labs Robotics &amp; Vision Systems programme, I worked directly with an Orangewood robotic arm, translating programmed sequences into physical pick-and-place operations and testing the resulting robot behaviour.</p>
+
+          <div class="story-label">Hands-on work</div>
           <ul>
-            <li>Programmed an Orangewood robotic arm for pick-and-place operations using the OWL GUI, executing and testing a series of robot programs.</li>
-            <li>Worked with RoboGPT for software-assisted robot programming and interaction; received a Certificate of Achievement for contribution and dedication.</li>
+            <li>Programmed and tested pick-and-place sequences through the OWL GUI, working with the robot as a physical system rather than only in simulation.</li>
+            <li>Explored RoboGPT for software-assisted robot programming and interaction, gaining practical exposure to emerging robot-programming workflows.</li>
           </ul>
+          <div class="story-result"><strong>Outcome:</strong> Completed the training and internship programme and received a Certificate of Achievement for contribution and dedication.</div>
         </div>
-        <div class="mediarow">
-          <div class="mediaslot"><span>+ Add photo</span></div>
-          <div class="mediaslot"><span>+ Add video</span></div>
+        <div class="exp-media orangewood-media">
+          <div class="media-main"><img src="assets/img/Orangewood_Arm.jpeg" data-image-base="Orangewood_Arm" alt="Anikait working beside an Orangewood robotic arm"></div>
+          <div class="media-proof"><img src="assets/img/Orangewood_COA.jpeg" data-image-base="Orangewood_COA" alt="Orangewood Labs Certificate of Achievement"></div>
         </div>
       </article>
 
@@ -539,16 +616,21 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="erow"><span class="erole">Patiala, Punjab</span><span class="ewhen">Jun 2024 – Jul 2024</span></div>
         </div>
         <div class="ebody">
-          <p>Identified the need for an autonomous indoor cleaning system capable of reducing manual cleaning effort while navigating around obstacles.</p>
+          <div class="story-label">The problem</div>
+          <p>Manual indoor cleaning is repetitive; the engineering challenge was to turn that task into a mobile system that could carry its cleaning mechanism and navigate around obstacles.</p>
+
+          <div class="story-label">Building the system</div>
           <ul>
-            <li>Followed a complete development workflow from problem identification and concept development to mechanical CAD, electronics integration, fabrication, assembly and prototype testing.</li>
-            <li>Developed MARVIN, integrating a vacuum-based cleaning mechanism, obstacle avoidance, Arduino-based control and a fabricated mechanical structure using SolidWorks, 3D printing and sheet-metal fabrication; recognised among the Top 10 ELC Summer Internship Projects.</li>
+            <li>Worked through the complete development cycle from problem identification and concept development to mechanical CAD, electronics integration, fabrication, assembly and prototype testing.</li>
+            <li>Developed MARVIN around a vacuum-based cleaning mechanism, obstacle avoidance and Arduino-based control, with the mechanical structure produced using SolidWorks, 3D printing and sheet-metal fabrication.</li>
           </ul>
-          <div class="mentors">Mentors: Dr. Ashish Singla, Dr. R.K. Dwivedi</div>
+
+          <div class="story-result"><strong>Outcome:</strong> MARVIN was recognised among the Top 10 ELC Summer Internship Projects by the peers and organising team.</div>
+          <div class="mentors">Mentors: Dr. Ashish Singla, Dr. R.K. Duvedi</div>
         </div>
-        <div class="mediarow">
-          <div class="mediaslot"><span>+ Add photo</span></div>
-          <div class="mediaslot"><span>+ Add video</span></div>
+        <div class="exp-media marvin-media">
+          <div class="media-main"><img src="assets/img/Marvin_team.png" data-image-base="Marvin_team" alt="MARVIN autonomous cleaning robot project team"></div>
+          <div class="media-proof"><img src="assets/img/MARVIN_COA.png" data-image-base="MARVIN_COA" alt="ELC Certificate of Merit for MARVIN project"></div>
         </div>
       </article>
 
@@ -565,7 +647,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
     <div class="research-grid reveal">
       <div class="figure">
-        <img src="assests/img/gait_lab.png" alt="Experimental gait pipeline: infrared motion capture, AMTI force plates, Noraxon EMG, Qualisys Track Manager synchronisation, 3D reconstruction and MATLAB analysis" loading="lazy" />
+        <img src="assets/img/gait_lab.png" alt="Experimental gait pipeline: infrared motion capture, AMTI force plates, Noraxon EMG, Qualisys Track Manager synchronisation, 3D reconstruction and MATLAB analysis" loading="lazy" />
         <div class="cap">Fig · Synchronised gait acquisition — Qualisys motion capture + AMTI force plates + Noraxon EMG → QTM → Visual3D → MATLAB.</div>
       </div>
       <div>
@@ -603,7 +685,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <!-- FLAGSHIP: ABEx / Mars Rover Ganga -->
     <article class="flag reveal">
       <div class="top">
-        <div class="media"><img src="assests/img/hero_rover.jpg" alt="Rover with the ABEx multi-axis soil-sampling subsystem deployed during the IRC 2026 astrobiology task" loading="lazy" /></div>
+        <div class="media"><img src="assets/img/hero_rover.jpg" alt="Rover with the ABEx multi-axis soil-sampling subsystem deployed during the IRC 2026 astrobiology task" loading="lazy" /></div>
         <div class="body">
           <div class="eyebrow" style="margin-bottom:0"><span class="idx">Flagship</span> Planetary sampling</div>
           <h3>Mars Rover “Ganga” &amp; ABEx — Multi-Axis Robotic Soil-Sampling Subsystem</h3>
@@ -617,11 +699,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="rs"><div class="rk">My contribution</div><p>Led mechanical &amp; astrobiology-expedition development; first author of the resulting research paper. Work spans the soil-sampling mechanism lineage across Mars Rover III &amp; IV.</p></div>
       </div>
       <div class="subfig">
-        <figure><img src="assests/img/abex_vertical_cad.png" alt="CAD of the vertical auger mechanism: lead screw, NEMA-23, guide rails, IG32 motor, three-stage auger cover" loading="lazy" /><figcaption>Vertical auger mechanism — CAD.</figcaption></figure>
-        <figure><img src="assests/img/abex_sensor_pcb.png" alt="Sensor-interface PCB and onboard peristaltic reagent-delivery assembly" loading="lazy" /><figcaption>Sensor interface + reagent delivery.</figcaption></figure>
+        <figure><img src="assets/img/abex_vertical_cad.png" alt="CAD of the vertical auger mechanism: lead screw, NEMA-23, guide rails, IG32 motor, three-stage auger cover" loading="lazy" /><figcaption>Vertical auger mechanism — CAD.</figcaption></figure>
+        <figure><img src="assets/img/abex_sensor_pcb.png" alt="Sensor-interface PCB and onboard peristaltic reagent-delivery assembly" loading="lazy" /><figcaption>Sensor interface + reagent delivery.</figcaption></figure>
       </div>
       <div class="subfig">
-        <figure><img src="assests/img/abex_results.png" alt="Field chemistry: iron screening beaker colour change, soil temperature and pH across sampling sites" loading="lazy" /><figcaption>IRC 2026 field results — iron screening, soil temp &amp; pH.</figcaption></figure>
+        <figure><img src="assets/img/abex_results.png" alt="Field chemistry: iron screening beaker colour change, soil temperature and pH across sampling sites" loading="lazy" /><figcaption>IRC 2026 field results — iron screening, soil temp &amp; pH.</figcaption></figure>
         <figure style="display:flex;align-items:stretch">
           <div class="datasheet" style="width:100%;border:0;border-radius:0">
             <div class="drow" style="border-top:0"><span class="dk">Penetration</span><span class="dv"><em>150 mm</em></span></div>
@@ -640,7 +722,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
     <!-- CARD GRID -->
     <div class="cards reveal">
       <article class="card">
-        <div class="cimg" style="background-image:url('assests/img/climbcart_cad.jpg')"></div>
+        <div class="cimg" style="background-image:url('assets/img/climbcart_cad.jpg')"></div>
         <div class="cbody">
           <h3>CLIMB CART — Stair-Climbing Load Carrier</h3>
           <div class="oneline">Engineering major project · 2026 – Present</div>
@@ -654,7 +736,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         </div>
       </article>
       <article class="card">
-        <div class="cimg" style="background-image:url('assests/img/hero_rover.jpg')"></div>
+        <div class="cimg" style="background-image:url('assets/img/hero_rover.jpg')"></div>
         <div class="cbody">
           <h3>Robotic Kinematic Validation — LoCoBot–WidowX 200</h3>
           <div class="oneline">2026 – Present · with MathWorks</div>
@@ -907,7 +989,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener"><span class="ck">LinkedIn</span><span class="cv">/in/anikait-kaushik →</span></a>
         <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener"><span class="ck">GitHub</span><span class="cv">/anikait-kaushik →</span></a>
         <a href="tel:+919729792834"><span class="ck">Phone</span><span class="cv">+91 97297 92834</span></a>
-        <a href="assests/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="ck">Résumé</span><span class="cv">Download PDF ↓</span></a>
+        <a href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="ck">Résumé</span><span class="cv">Download PDF ↓</span></a>
       </div>
     </div>
   </div>
@@ -934,5 +1016,22 @@ nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 </script>
+
+<script>
+(function () {
+  const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
+  document.querySelectorAll('img[data-image-base]').forEach(function (img) {
+    const base = img.dataset.imageBase;
+    let index = 0;
+    function tryNext() {
+      if (index >= extensions.length) return;
+      img.src = 'assets/img/' + base + extensions[index++];
+    }
+    img.addEventListener('error', tryNext);
+    tryNext();
+  });
+})();
+</script>
+
 </body>
 </html>

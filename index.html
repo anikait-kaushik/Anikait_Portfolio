@@ -4,13 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Anikait Kaushik — Mechatronics &amp; Robotics Engineer</title>
-<meta name="description" content="Anikait Kaushik — mechatronics and robotics engineer. Designs, builds, tests and researches robotic systems: planetary-rover soil-sampling subsystems, exoskeleton-enabled rehabilitation, competition rovers and drones. IRC 2026 champion." />
+<meta name="description" content="Anikait Kaushik — mechatronics and robotics engineer. Planetary-rover soil-sampling subsystems, exoskeleton-enabled rehabilitation research, competition rovers and drones. IRC 2026 champion." />
 <meta name="author" content="Anikait Kaushik" />
 <meta property="og:title" content="Anikait Kaushik — Mechatronics &amp; Robotics Engineer" />
 <meta property="og:description" content="Robotics systems engineer &amp; researcher. Planetary sampling mechanisms, exoskeleton rehabilitation, competition rovers. IRC 2026 champion, ISDC 2026 runner-up." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assests/img/hero_rover.jpg" />
-<meta name="theme-color" content="#15171C" />
+<meta name="theme-color" content="#EEF0F3" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -36,13 +36,14 @@ img{max-width:100%;display:block}
 h1,h2,h3{font-family:"Space Grotesk",sans-serif;font-weight:600;line-height:1.08;letter-spacing:-.01em;margin:0}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
 .mono{font-family:"IBM Plex Mono",monospace}
+:focus-visible{outline:2px solid var(--oxide);outline-offset:3px}
 
 /* ---------- eyebrow / section headers ---------- */
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:12px}
 .eyebrow::before{content:"";width:26px;height:2px;background:var(--oxide);display:inline-block}
 .eyebrow .idx{color:var(--oxide);font-weight:500}
 .section{padding:96px 0;border-top:1px solid var(--line)}
-.section h2{font-size:clamp(28px,4vw,42px);margin:18px 0 0;max-width:20ch}
+.section h2{font-size:clamp(28px,4vw,42px);margin:18px 0 0;max-width:22ch}
 .lede{font-size:clamp(18px,2.2vw,21px);color:#31353d;max-width:60ch;margin-top:22px}
 
 /* ---------- nav ---------- */
@@ -55,7 +56,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .navlinks a:hover{color:var(--ink)}
 .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--oxide);transition:width .25s ease}
 .navlinks a:hover::after{width:100%}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono";font-size:13px;letter-spacing:.02em;padding:9px 16px;border:1px solid var(--ink);border-radius:2px;transition:.2s}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono";font-size:13px;letter-spacing:.02em;padding:9px 16px;border:1px solid var(--ink);border-radius:2px;transition:.2s;cursor:pointer;background:none}
 .btn:hover{background:var(--ink);color:var(--paper)}
 .btn-oxide{border-color:var(--oxide);color:#fff;background:var(--oxide)}
 .btn-oxide:hover{background:var(--oxide-hi);border-color:var(--oxide-hi);color:#fff}
@@ -98,7 +99,10 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .about-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;margin-top:40px;align-items:start}
 .about-grid p{color:#31353d}
 .about-grid p+p{margin-top:16px}
-.facts{border-left:2px solid var(--oxide)}
+.headshot-frame{aspect-ratio:1/1;max-width:220px}
+.headshot-frame .mediaslot{height:100%}
+.view-tag{margin-top:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts{border-left:2px solid var(--oxide);margin-top:22px}
 .facts .fitem{padding:14px 0 14px 20px;border-bottom:1px solid var(--line)}
 .facts .fitem:last-child{border-bottom:0}
 .facts .fk{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -119,11 +123,25 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .status.pub{color:#2f5d43;background:#e2efe6;border-color:#bcd8c6}
 .status.prep{color:#3a4a8a;background:#e4e8f6;border-color:#c3cbe8}
 
-/* ---------- media placeholder slots (2 per project) ---------- */
+/* ---------- media placeholder slots — "detail view" frame is the site's signature ---------- */
 .mediarow{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
-.mediaslot{aspect-ratio:16/10;border-left:1px solid var(--line);display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,#f2f3f5,#f2f3f5 10px,#eaecef 10px,#eaecef 20px);position:relative}
+.mediaslot{
+  aspect-ratio:16/10;border-left:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;position:relative;
+  background:
+    linear-gradient(var(--oxide),var(--oxide)) top left/18px 2px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) top left/2px 18px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) top right/18px 2px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) top right/2px 18px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) bottom left/18px 2px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) bottom left/2px 18px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) bottom right/18px 2px no-repeat,
+    linear-gradient(var(--oxide),var(--oxide)) bottom right/2px 18px no-repeat,
+    repeating-linear-gradient(135deg,#f2f3f5,#f2f3f5 10px,#eaecef 10px,#eaecef 20px);
+  opacity:.85;
+}
 .mediaslot:first-child{border-left:0}
-.mediaslot span{font-family:"IBM Plex Mono";font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px dashed #b9c0c9;border-radius:3px;padding:8px 14px;background:rgba(255,255,255,.7)}
+.mediaslot span{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:7px 13px;background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:2px}
 .mediarow.compact .mediaslot{aspect-ratio:16/11}
 
 /* ---------- experience ---------- */
@@ -178,22 +196,17 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .mini .m p{font-size:14px;color:#31353d;margin-top:10px}
 .mini .mediarow{margin-top:auto}
 .mini .mediaslot{aspect-ratio:16/12}
-.mini .mediaslot span{font-size:10.5px;padding:6px 10px}
+.mini .mediaslot span{font-size:10px;padding:5px 9px}
 
-/* ---------- publications ---------- */
-.records{margin-top:40px;display:flex;flex-direction:column;gap:22px}
-.record{border:1px solid var(--line);border-radius:4px;background:var(--card);padding:0;overflow:hidden}
-.record .rhead{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;justify-content:space-between;padding:24px 28px 18px}
-.record h3{font-size:21px;max-width:44ch}
-.record .meta{border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr)}
-.record .meta .mi{padding:16px 20px;border-left:1px solid var(--line)}
-.record .meta .mi:first-child{border-left:0}
-.record .meta .mk{font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.record .meta .mv{font-family:"IBM Plex Mono";font-size:13px;margin-top:6px;color:var(--ink);word-break:break-word}
-.record .rnote{padding:16px 28px;border-top:1px solid var(--line);color:#31353d;font-size:15px}
-.record .rnote b{color:var(--ink)}
-.authorline{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--muted);padding:0 28px 6px}
-.authorline u{color:var(--oxide);text-decoration:none;font-weight:500}
+/* ---------- publications — kept intentionally lean ---------- */
+.pub-list{margin-top:40px;border:1px solid var(--line);border-radius:4px;background:var(--card);overflow:hidden}
+.pub-item{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px;padding:22px 26px;border-top:1px solid var(--line)}
+.pub-item:first-child{border-top:0}
+.pub-main{max-width:56ch}
+.pub-main h3{font-size:17px;font-weight:600}
+.pub-main .pv{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--muted);margin-top:6px}
+.pub-item .status{white-space:nowrap}
+.pub-note{width:100%;font-size:14px;color:var(--muted);margin-top:2px}
 
 /* ---------- leadership ---------- */
 .lead-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:44px;align-items:start}
@@ -255,7 +268,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   .flag .top{grid-template-columns:1fr}
   .flag .media img{min-height:260px}
   .cards{grid-template-columns:1fr}
-  .mini,.skills-grid,.awards,.record .meta,.specstrip .wrap{grid-template-columns:1fr 1fr}
+  .mini,.skills-grid,.awards,.specstrip .wrap{grid-template-columns:1fr 1fr}
   .role-split{grid-template-columns:1fr}
   .role-split .rs{border-left:0;border-top:1px solid var(--line)}
   .role-split .rs:first-child{border-top:0}
@@ -263,13 +276,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 @media(max-width:560px){
   .wrap{padding:0 20px}
   .section{padding:66px 0}
-  .specstrip .wrap,.awards,.record .meta,.mini,.skills-grid,.statgrid{grid-template-columns:1fr}
+  .specstrip .wrap,.awards,.mini,.skills-grid,.statgrid{grid-template-columns:1fr}
   .subfig,.mediarow{grid-template-columns:1fr}
   .subfig figure,.mediaslot{border-left:0;border-top:1px solid var(--line)}
   .subfig figure:first-child,.mediaslot:first-child{border-top:0}
   .spec{border-left:0;border-top:1px solid #2c313b}
-  .record .meta .mi{border-left:0;border-top:1px solid var(--line)}
-  .record .meta .mi:first-child{border-top:0}
+  .pub-item{flex-direction:column}
 }
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
@@ -288,7 +300,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="#experience">Experience</a>
       <a href="#research">Research</a>
       <a href="#work">Work</a>
-      <a href="#publications">Publications &amp; IP</a>
+      <a href="#publications">Publications</a>
       <a href="#leadership">Leadership</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
@@ -316,7 +328,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="mailto:akaushik_be23@thapar.edu">Email</a>
       <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://anikait-portfolio-ivory.vercel.app" target="_blank" rel="noopener">Portfolio</a>
       <a href="#publications">Patent · Papers</a>
     </div>
   </div>
@@ -342,6 +353,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <p>On the research side, I contribute to the TIET–UQ Centre of Excellence's R3 programme on exoskeleton-enabled rehabilitation and human gait analysis — motion-capture, force-plate and EMG experiments, Euler–Lagrange dynamics, and data-driven validation. I also lead Team MARS, TIET's robotics team, as General Secretary and Team Captain.</p>
       </div>
       <div>
+        <div class="headshot-frame">
+          <div class="mediaslot"><span>+ Add headshot</span></div>
+        </div>
+        <div class="view-tag">Portrait · 1:1 · replace before sending to recruiters</div>
         <div class="facts">
           <div class="fitem"><div class="fk">Degree</div><div class="fv">B.E. Mechatronics, Automation &amp; Robotics — TIET (Aug 2023 – May 2027)</div></div>
           <div class="fitem"><div class="fk">Academics</div><div class="fv">CGPA 9.29 / 10 through 6th semester · Department Topper, 10.0 CGPA (one semester)</div></div>
@@ -572,74 +587,49 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   </div>
 </section>
 
-<!-- ================= PUBLICATIONS & IP ================= -->
+<!-- ================= PUBLICATIONS & IP (kept lean, on purpose) ================= -->
 <section class="section" id="publications">
   <div class="wrap">
-    <div class="eyebrow"><span class="idx">05</span> Publications &amp; intellectual property</div>
+    <div class="eyebrow"><span class="idx">05</span> Publications &amp; IP</div>
     <h2>Work that stands up to review.</h2>
+    <p class="lede">One published patent application and three papers in progress — mechanism design, planetary sampling and gait biomechanics. Kept short here; happy to walk through any of them.</p>
 
-    <div class="records reveal">
+    <div class="pub-list reveal">
 
-      <!-- Patent -->
-      <div class="record">
-        <div class="rhead">
+      <div class="pub-item">
+        <div class="pub-main">
           <h3>An Apparatus, System and Method for Robotic Soil Analysis and Collection</h3>
-          <span class="status pub">Patent · Published application</span>
+          <div class="pv">Patent · Application 202511062827 · Filed Jul 2025 · TIET</div>
         </div>
-        <div class="authorline">Inventors: A. Singla, S. Kansal, S. Sharma, S. Aggarwal, P. Gupta, <u>A. Kaushik</u>, G. Singh · Applicant: Thapar Institute of Engineering &amp; Technology</div>
-        <div class="meta">
-          <div class="mi"><div class="mk">Application No.</div><div class="mv">202511062827</div></div>
-          <div class="mi"><div class="mk">Publication No.</div><div class="mv">29/2025</div></div>
-          <div class="mi"><div class="mk">Filed</div><div class="mv">01 Jul 2025</div></div>
-          <div class="mi"><div class="mk">Published</div><div class="mv">18 Jul 2025</div></div>
-        </div>
-        <div class="rnote">A robotic soil-analysis apparatus — soil-extraction mechanism, nutrient-sensing unit and retractable sample-handling tray on an autonomous platform. <b>Published Indian patent application (not granted);</b> verifiable on the Indian Patent Office public register (InPASS) by application number.</div>
+        <span class="status pub">Published application</span>
+        <div class="pub-note">Co-inventor. Robotic soil-extraction, nutrient-sensing and sample-handling apparatus — publicly verifiable on the Indian Patent Office register (InPASS).</div>
       </div>
 
-      <!-- IPRoMM paper -->
-      <div class="record">
-        <div class="rhead">
+      <div class="pub-item">
+        <div class="pub-main">
           <h3>Design and Development of a Multi-Axis Robotic Subsystem for In Situ Soil Sampling and Analysis</h3>
-          <span class="status">Conference paper · Submitted</span>
+          <div class="pv">IPRoMM 2026 · Conference paper</div>
         </div>
-        <div class="authorline"><u>A. Kaushik</u> (first author), K. Chhabra, M. Jain, R. Kapur, Y. Bhatia, A. P. Kandpal, A. Bhatia, S. Kansal, A. Singla</div>
-        <div class="meta">
-          <div class="mi"><div class="mk">Venue</div><div class="mv">IPRoMM 2026</div></div>
-          <div class="mi"><div class="mk">Subject</div><div class="mv">ABEx rover subsystem</div></div>
-          <div class="mi"><div class="mk">Field trials</div><div class="mv">21/30 cycles · 150 mm</div></div>
-          <div class="mi"><div class="mk">Deployment</div><div class="mv">IRC 2026 astrobiology</div></div>
-        </div>
-        <div class="rnote">The full engineering account of the ABEx subsystem — mechanism architecture, redesign from the patented dual-drive tray, sensing/chemical-screening workflow and terrestrial functional-test results. Submitted to the IPRoMM 2026 conference series.</div>
+        <span class="status">Submitted</span>
+        <div class="pub-note">First author. The engineering account of the ABEx rover subsystem behind the IRC 2026 win.</div>
       </div>
 
-      <!-- T-RO -->
-      <div class="record">
-        <div class="rhead">
+      <div class="pub-item">
+        <div class="pub-main">
           <h3>Experimental Validation of a Unified Euler–Lagrange Framework Using a Three-Link Leg Model for Human Gait Analysis</h3>
-          <span class="status">Manuscript · Submitted</span>
+          <div class="pv">IEEE Transactions on Robotics · Manuscript</div>
         </div>
-        <div class="meta">
-          <div class="mi"><div class="mk">Target</div><div class="mv">IEEE Trans. on Robotics</div></div>
-          <div class="mi"><div class="mk">Method</div><div class="mv">Moving-base Euler–Lagrange</div></div>
-          <div class="mi"><div class="mk">Validation</div><div class="mv">Visual3D · 5 subjects</div></div>
-          <div class="mi"><div class="mk">Status</div><div class="mv">Submitted</div></div>
-        </div>
-        <div class="rnote">Research from the TIET–UQ Centre of Excellence's R3 gait-analysis programme. <b>Presented as submitted only</b> — never as accepted or published. Author byline to be displayed on your confirmation.</div>
+        <span class="status">Submitted</span>
+        <div class="pub-note">From the TIET–UQ R3 gait-analysis programme; validated against Visual3D across five subjects.</div>
       </div>
 
-      <!-- Journal of Biomechanics -->
-      <div class="record">
-        <div class="rhead">
+      <div class="pub-item">
+        <div class="pub-main">
           <h3>Load-Dependent Changes in Lower-Limb Joint Kinetics and Hip–Knee Coordination During Walking</h3>
-          <span class="status prep">Manuscript · In final preparation</span>
+          <div class="pv">Journal of Biomechanics · Manuscript</div>
         </div>
-        <div class="meta">
-          <div class="mi"><div class="mk">Target</div><div class="mv">Journal of Biomechanics</div></div>
-          <div class="mi"><div class="mk">Topic</div><div class="mv">Joint kinetics · loading</div></div>
-          <div class="mi"><div class="mk">Focus</div><div class="mv">Hip–knee coordination</div></div>
-          <div class="mi"><div class="mk">Status</div><div class="mv">In final preparation</div></div>
-        </div>
-        <div class="rnote">A companion analysis from the same gait-analysis dataset, examining how added load changes lower-limb joint kinetics and inter-joint (hip–knee) coordination during walking. <b>Not yet submitted.</b></div>
+        <span class="status prep">In preparation</span>
+        <div class="pub-note">Companion analysis from the same gait dataset — not yet submitted.</div>
       </div>
 
     </div>
@@ -804,7 +794,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <a href="mailto:akaushik_be23@thapar.edu"><span class="ck">Email</span><span class="cv">akaushik_be23@thapar.edu</span></a>
         <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener"><span class="ck">LinkedIn</span><span class="cv">/in/anikait-kaushik →</span></a>
         <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener"><span class="ck">GitHub</span><span class="cv">/anikait-kaushik →</span></a>
-        <a href="https://anikait-portfolio-ivory.vercel.app" target="_blank" rel="noopener"><span class="ck">Portfolio</span><span class="cv">anikait-portfolio-ivory.vercel.app →</span></a>
         <a href="tel:+919729792834"><span class="ck">Phone</span><span class="cv">+91 97297 92834</span></a>
         <a href="assests/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="ck">Résumé</span><span class="cv">Download PDF ↓</span></a>
       </div>

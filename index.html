@@ -95,34 +95,99 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .drow .dv{color:var(--ink);text-align:right}
 .drow .dv em{color:var(--oxide);font-style:normal}
 
-/* ---------- about ---------- */
-.about-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:56px;margin-top:40px;align-items:start}
+/* ---------- about / profile ---------- */
+.about-grid{
+  display:grid;
+  grid-template-columns:1.25fr .9fr;
+  gap:52px;
+  margin-top:40px;
+  align-items:start
+}
 .about-grid p{color:#31353d}
 .about-grid p+p{margin-top:16px}
-.headshot-frame{
-  aspect-ratio:1/1;
-  width:320px;
-  max-width:100%;
-  overflow:hidden;
+
+.profile-lead{
+  font-size:18px;
+  line-height:1.65;
+  max-width:760px
+}
+.profile-lead strong{color:var(--ink)}
+
+.profile-focus{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:28px
+}
+.profile-focus .pf-card{
+  border:1px solid var(--line);
+  background:var(--card);
+  padding:18px 18px 20px;
+  border-radius:4px;
+  min-height:150px
+}
+.profile-focus .pf-label{
+  font-family:"IBM Plex Mono";
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--oxide)
+}
+.profile-focus h3{margin:8px 0 7px;font-size:17px}
+.profile-focus p{margin:0;font-size:14px;line-height:1.55}
+
+.profile-scope{
+  margin-top:28px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:14px 0;
+  font-size:13px;
+  line-height:1.7;
+  color:#31353d
+}
+.profile-scope .scope-label{
+  font-family:"IBM Plex Mono";
+  font-size:10.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--oxide);
+  margin-right:12px
 }
 
-.headshot-frame img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+.headshot-frame{
+  aspect-ratio:1/1;
+  width:380px;
+  max-width:100%;
+  overflow:hidden;
+  margin:0 auto
 }
-.view-tag{margin-top:10px;font-family:"IBM Plex Mono";font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.facts{border-left:2px solid var(--oxide);margin-top:22px}
-.facts .fitem{padding:14px 0 14px 20px;border-bottom:1px solid var(--line)}
-.facts .fitem:last-child{border-bottom:0}
-.facts .fk{font-family:"IBM Plex Mono";font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.facts .fv{margin-top:3px;font-weight:500}
-.edu-mini{margin-top:22px;display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--card)}
-.edu-mini .em{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-top:1px solid var(--line);font-size:14px}
-.edu-mini .em:first-child{border-top:0}
-.edu-mini .em .ek{color:#31353d}
-.edu-mini .em .ev{font-family:"IBM Plex Mono";color:var(--muted);white-space:nowrap}
+.headshot-frame img{width:100%;height:100%;object-fit:cover;display:block}
+
+.profile-facts{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:4px;
+  overflow:hidden
+}
+.profile-facts .pfact{
+  padding:15px 16px;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line)
+}
+.profile-facts .pfact:nth-child(-n+2){border-top:0}
+.profile-facts .pfact:nth-child(odd){border-left:0}
+.profile-facts .fk{
+  font-family:"IBM Plex Mono";
+  font-size:10.5px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  color:var(--muted)
+}
+.profile-facts .fv{margin-top:5px;font-size:14px;line-height:1.4;font-weight:500}
+.profile-facts .fv strong{font-size:16px}
 
 /* ---------- research ---------- */
 .research-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:44px;align-items:center}
@@ -273,6 +338,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
+  .profile-focus,.profile-facts{grid-template-columns:1fr;}
+  .profile-facts .pfact{border-left:0;}
+  .profile-facts .pfact:nth-child(2){border-top:1px solid var(--line);}
+  .profile-focus{grid-template-columns:1fr;}
   .navlinks{display:none}
   .navtoggle{display:block}
   .about-grid,.research-grid,.lead-grid,.contact-grid{grid-template-columns:1fr;gap:34px}
@@ -348,29 +417,61 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <section class="section" id="about">
   <div class="wrap">
     <div class="eyebrow"><span class="idx">01</span> Profile</div>
-    <h2>A hands-on engineer working across mechanical design, embedded control and experimental research.</h2>
+    <h2>I build physical robotic systems from mechanism design to field validation.</h2>
+
     <div class="about-grid reveal">
       <div>
-        <p>I am a final-year B.E. student in Mechatronics, Automation &amp; Robotics Engineering at the Thapar Institute of Engineering &amp; Technology (TIET), Patiala, with a CGPA of 9.29/10 through my 6th semester. My work sits at the intersection of mechanical design, robot kinematics &amp; motion control, biomechanics and human-motion data analysis, and manufacturing &amp; fabrication.</p>
-        <p>On the build side, I develop physical robotic systems end-to-end — from CAD and simulation through fabrication and field testing: a multi-axis soil-sampling and analysis subsystem for planetary-analogue rovers, competition rovers and drones, a stair-climbing load carrier, and robotic-manipulator kinematic validation — designed in SolidWorks, analysed in ANSYS, and fabricated through 3D printing, CNC and conventional machining.</p>
-        <p>On the research side, I contribute to the TIET–UQ Centre of Excellence's R3 programme on exoskeleton-enabled rehabilitation and human gait analysis — motion-capture, force-plate and EMG experiments, Euler–Lagrange dynamics, and data-driven validation. I also lead Team MARS, TIET's robotics team, as General Secretary and Team Captain.</p>
+        <p class="profile-lead">
+          I am a B.E. student in <strong>Mechatronics, Automation &amp; Robotics Engineering</strong>
+          at the Thapar Institute of Engineering &amp; Technology (TIET). My work combines
+          <strong>mechanical design, robotics, kinematics and motion control, biomechanics,
+          and hands-on prototyping</strong>.
+        </p>
+
+        <div class="profile-focus">
+          <div class="pf-card">
+            <div class="pf-label">01 · Build</div>
+            <h3>Physical robotic systems</h3>
+            <p>Robotic mechanisms, autonomous platforms, manipulators and product prototypes — from CAD and FEA through fabrication, integration and testing.</p>
+          </div>
+
+          <div class="pf-card">
+            <div class="pf-label">02 · Research</div>
+            <h3>Human motion &amp; robotics</h3>
+            <p>Exoskeleton rehabilitation, gait biomechanics, motion capture, force measurement, EMG, robot kinematics and experimental validation.</p>
+          </div>
+        </div>
+
+        <div class="profile-scope">
+          <span class="scope-label">Engineering scope</span>
+          Mechanical Design · Robotics · Kinematics &amp; Control · Biomechanics ·
+          CAD/CAE · Prototyping · Manufacturing · System Integration
+        </div>
       </div>
+
       <div>
         <div class="headshot-frame">
-  <img src="assests/img/anikait_headshot.jpg" 
-       alt="Anikait Kaushik — Mechatronics and Robotics Engineer">
-</div>
-       
-        <div class="facts">
-          <div class="fitem"><div class="fk">Degree</div><div class="fv">B.E. Mechatronics, Automation &amp; Robotics — TIET (Aug 2023 – May 2027)</div></div>
-          <div class="fitem"><div class="fk">Academics</div><div class="fv">CGPA 9.29 / 10 through 6th semester · Department Topper, 10.0 CGPA (one semester)</div></div>
-          <div class="fitem"><div class="fk">Focus</div><div class="fv">Robotic mechanisms · Kinematics &amp; motion control · Gait biomechanics · Manufacturing</div></div>
-          <div class="fitem"><div class="fk">Role</div><div class="fv">General Secretary &amp; Team Captain — Team MARS / MARS Society</div></div>
-          <div class="fitem"><div class="fk">Based in</div><div class="fv">Patiala, Punjab, India</div></div>
+          <img src="assests/img/anikait_headshot.jpg"
+               alt="Anikait Kaushik — Mechatronics and Robotics Engineer">
         </div>
-        <div class="edu-mini">
-          <div class="em"><span class="ek">Class XII — GMSSS MHC, Sector 13, Chandigarh</span><span class="ev">85.4%</span></div>
-          <div class="em"><span class="ek">Class X — Jainendra Public School, Panchkula</span><span class="ev">96.4%</span></div>
+
+        <div class="profile-facts">
+          <div class="pfact">
+            <div class="fk">Education</div>
+            <div class="fv">B.E. Mechatronics, Automation &amp; Robotics<br>TIET · 2023–2027</div>
+          </div>
+          <div class="pfact">
+            <div class="fk">Academics</div>
+            <div class="fv"><strong>9.29 / 10</strong><br>CGPA through 6th semester</div>
+          </div>
+          <div class="pfact">
+            <div class="fk">Research</div>
+            <div class="fv">TIET–UQ Centre of Excellence<br>R3 · Exoskeleton Rehabilitation</div>
+          </div>
+          <div class="pfact">
+            <div class="fk">Leadership</div>
+            <div class="fv">MARS<br>Former General Secretary &amp; Team Captain</div>
+          </div>
         </div>
       </div>
     </div>

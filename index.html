@@ -154,9 +154,15 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
   margin-right:12px
 }
 
+.profile-right{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  padding-top:calc(18px + 1.65em + 28px)
+}
 .headshot-frame{
   aspect-ratio:1/1;
-  width:380px;
+  width:340px;
   max-width:100%;
   overflow:hidden;
   margin:0 auto
@@ -164,7 +170,6 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .headshot-frame img{width:100%;height:100%;object-fit:cover;display:block}
 
 .profile-facts{
-  margin-top:20px;
   display:grid;
   grid-template-columns:1fr 1fr;
   border:1px solid var(--line);
@@ -175,7 +180,8 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .profile-facts .pfact{
   padding:15px 16px;
   border-top:1px solid var(--line);
-  border-left:1px solid var(--line)
+  border-left:1px solid var(--line);
+  min-height:92px
 }
 .profile-facts .pfact:nth-child(-n+2){border-top:0}
 .profile-facts .pfact:nth-child(odd){border-left:0}
@@ -186,7 +192,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
   text-transform:uppercase;
   color:var(--muted)
 }
-.profile-facts .fv{margin-top:5px;font-size:14px;line-height:1.4;font-weight:500}
+.profile-facts .fv{margin-top:5px;font-size:13.5px;line-height:1.4;font-weight:500}
 .profile-facts .fv strong{font-size:16px}
 
 /* ---------- research ---------- */
@@ -338,6 +344,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
 /* ---------- responsive ---------- */
 @media(max-width:900px){
+  .profile-right{padding-top:0;}
   .profile-focus,.profile-facts{grid-template-columns:1fr;}
   .profile-facts .pfact{border-left:0;}
   .profile-facts .pfact:nth-child(2){border-top:1px solid var(--line);}
@@ -449,7 +456,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         </div>
       </div>
 
-      <div>
+      <div class="profile-right">
         <div class="headshot-frame">
           <img src="assests/img/anikait_headshot.jpg"
                alt="Anikait Kaushik — Mechatronics and Robotics Engineer">

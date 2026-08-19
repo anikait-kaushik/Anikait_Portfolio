@@ -542,19 +542,58 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .mars-stat .sk{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:4px}
 .mars-magazine{background:var(--graphite);color:#fff;display:flex;flex-direction:column;justify-content:space-between}
 .mars-magazine p{color:#C4CAD2}
-.mars-magazine .mag-slot{min-height:220px;margin-top:20px;border:1px dashed #59616e;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:"IBM Plex Mono";font-size:12px;color:#9AA4B0}
-.mars-gallery{display:grid;grid-template-columns:1.25fr .75fr .75fr;gap:14px;margin-top:24px}
-.mars-gallery figure{margin:0;border:1px solid var(--line);background:var(--card);border-radius:4px;overflow:hidden}
-.mars-gallery figure:first-child{grid-row:span 2}
-.mars-gallery img{width:100%;height:220px;object-fit:cover;background:#0e1014}
-.mars-gallery figure:first-child img{height:454px}
-.mars-gallery figcaption{padding:10px 13px;border-top:1px solid var(--line);font-family:"IBM Plex Mono";font-size:10.5px;color:var(--muted)}
+
+/* ---------- MARS magazine flipbook ---------- */
+.mars-magazine{padding:26px;overflow:hidden}
+.mars-magazine-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.mars-magazine-head .mag-meta{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#9AA4B0;white-space:nowrap}
+.mars-flip-shell{margin-top:22px;border:1px solid #3B424E;border-radius:5px;background:#11151b;overflow:hidden}
+.mars-flip-loading{height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;color:#9AA4B0;font-family:"IBM Plex Mono";font-size:12px}
+.mars-flip-loading strong{color:#fff;font-family:"Space Grotesk";font-size:18px}
+.mars-flip-book{width:218px;height:300px;margin:0 auto;display:none;background:#11151b}
+.mars-flip-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-top:1px solid #3B424E;background:#171B22}
+.mars-flip-controls .mag-controls-left,.mars-flip-controls .mag-controls-right{display:flex;align-items:center;gap:8px}
+.mars-flip-btn{border:1px solid #4A5360;background:transparent;color:#EDEFF2;border-radius:2px;padding:8px 11px;font-family:"IBM Plex Mono";font-size:11px;cursor:pointer;transition:.2s}
+.mars-flip-btn:hover{background:#EDEFF2;color:#15171C}
+.mars-flip-btn:disabled{opacity:.35;cursor:not-allowed}
+.mars-flip-page{font-family:"IBM Plex Mono";font-size:11px;color:#9AA4B0;min-width:70px;text-align:center}
+.mars-magazine-download{display:inline-flex;align-items:center;gap:7px;margin-top:12px;color:#D96A4C;font-family:"IBM Plex Mono";font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.mars-magazine-download:hover{color:#fff}
+.mars-flip-error{display:none;min-height:430px;align-items:center;justify-content:center;padding:30px;text-align:center;color:#C4CAD2;font-family:"IBM Plex Mono";font-size:12px;line-height:1.7}
+.mars-flip-error strong{display:block;color:#fff;font-family:"Space Grotesk";font-size:18px;margin-bottom:8px}
+@media(max-width:900px){
+  .mars-flip-book{width:218px;height:300px}
+}
+@media(max-width:560px){
+  .mars-magazine{padding:20px}
+  .mars-magazine-head{display:block}
+  .mars-magazine-head .mag-meta{display:block;margin-top:8px}
+  .mars-flip-book{width:200px;height:275px}
+  .mars-flip-loading{height:275px}
+  .mars-flip-controls{flex-wrap:wrap;justify-content:center}
+}
+.mars-gallery{display:grid;grid-template-columns:1.25fr .875fr .875fr;grid-template-rows:240px 240px;gap:14px;margin-top:24px}
+.mars-gallery figure{margin:0;border:1px solid var(--line);background:var(--card);border-radius:4px;overflow:hidden;position:relative;min-width:0}
+.mars-gallery figure:first-child{grid-row:1 / span 2}
+.mars-gallery figure:nth-child(2),
+.mars-gallery figure:nth-child(4){grid-column:2}
+.mars-gallery figure:nth-child(3),
+.mars-gallery figure:nth-child(5){grid-column:3}
+.mars-gallery figure:nth-child(2),
+.mars-gallery figure:nth-child(3){grid-row:1}
+.mars-gallery figure:nth-child(4),
+.mars-gallery figure:nth-child(5){grid-row:2}
+.mars-gallery img{width:100%;height:100%;display:block;object-fit:cover;background:#0e1014;transition:transform .35s ease}
+.mars-gallery figure:first-child img{object-position:center center}
+.mars-gallery figure:hover img{transform:scale(1.025)}
+.mars-gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 13px 10px;background:linear-gradient(transparent,rgba(10,12,16,.82));color:#fff;border:0;font-family:"IBM Plex Mono";font-size:10.5px;line-height:1.45}
 .project-label{font-family:"IBM Plex Mono";font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--oxide);margin-bottom:8px}
 @media(max-width:900px){
   .mars-hero{grid-template-columns:1fr}
-  .mars-gallery{grid-template-columns:1fr 1fr}
-  .mars-gallery figure:first-child{grid-row:auto;grid-column:span 2}
-  .mars-gallery figure:first-child img{height:300px}
+  .mars-gallery{grid-template-columns:1fr 1fr;grid-template-rows:300px 220px 220px}
+  .mars-gallery figure:first-child{grid-row:1;grid-column:1 / span 2}
+  .mars-gallery figure:nth-child(2),.mars-gallery figure:nth-child(3),.mars-gallery figure:nth-child(4),.mars-gallery figure:nth-child(5){grid-column:auto;grid-row:auto}
+  .mars-gallery img{height:100%}
 }
 
 /* ---------- Ganga flagship media ---------- */
@@ -624,19 +663,153 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(238,240,243,.92);bor
 .outreach .oh .when{font-family:"IBM Plex Mono";font-size:12px;color:var(--muted);white-space:nowrap}
 .outreach .oi p{color:#31353d;font-size:15px;margin:8px 0 0}
 
+/* ---------- leadership video ---------- */
+.lead-video{
+  margin-top:32px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+  background:#0e1014;
+}
+.lead-video video{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:620px;
+  object-fit:contain;
+  background:#0e1014;
+}
+.lead-video .lead-video-cap{
+  padding:11px 14px;
+  border-top:1px solid var(--line);
+  background:var(--card);
+  color:var(--muted);
+  font-family:"IBM Plex Mono";
+  font-size:11.5px;
+  letter-spacing:.02em;
+}
+
 /* ---------- achievements band ---------- */
 .band{background:var(--ink);color:#EDEFF2;border-top:1px solid var(--line-d)}
 .band .wrap{padding:72px 28px}
 .band .eyebrow{color:var(--muted-d)}
-.band h2{color:#fff;font-size:clamp(24px,3.4vw,34px);margin-top:16px}
-.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-d);border:1px solid var(--line-d);border-radius:4px;margin-top:34px;overflow:hidden}
-.awards .aw{background:var(--graphite);padding:26px 24px}
-.awards .rank{font-family:"IBM Plex Mono";font-size:12px;color:var(--oxide-hi);letter-spacing:.06em}
-.awards h3{color:#fff;font-size:19px;margin-top:10px}
-.awards p{color:#AEB6C0;font-size:14px;margin-top:8px}
-.scholar{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;font-family:"IBM Plex Mono";font-size:13px;color:#AEB6C0}
-.scholar span{border:1px solid var(--line-d);border-radius:2px;padding:8px 12px}
+.band h2{color:#fff;font-size:clamp(28px,3.4vw,38px);margin-top:16px}
+
+.achievement-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+  margin-top:36px;
+}
+
+.achievement-card{
+  background:var(--graphite);
+  border:1px solid var(--line-d);
+  border-radius:5px;
+  overflow:hidden;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.achievement-head{
+  padding:24px 22px 20px;
+  border-bottom:1px solid var(--line-d);
+}
+
+.achievement-no{
+  font-family:"IBM Plex Mono";
+  font-size:11px;
+  color:var(--oxide-hi);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.achievement-head h3{
+  color:#fff;
+  font-size:20px;
+  line-height:1.18;
+  margin-top:10px;
+}
+
+.achievement-position{
+  margin-top:12px;
+  color:#C0C7D0;
+  font-family:"IBM Plex Mono";
+  font-size:12px;
+  line-height:1.55;
+}
+
+.achievement-media{
+  padding:18px;
+  display:grid;
+  grid-template-columns:1fr;
+  grid-template-rows:auto auto;
+  gap:18px;
+}
+
+.achievement-proof{
+  margin:0;
+}
+
+.achievement-proof-label{
+  display:block;
+  margin-bottom:9px;
+  color:#8F98A4;
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.achievement-proof img{
+  width:100%;
+  height:250px;
+  display:block;
+  object-fit:contain;
+  background:#fff;
+  border:1px solid #343b46;
+  border-radius:3px;
+}
+
+.achievement-proof.team img{
+  object-fit:cover;
+  background:#11151b;
+}
+
+.achievement-proof figcaption{
+  margin-top:8px;
+  color:#8F98A4;
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+}
+
+.scholar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:22px;
+  font-family:"IBM Plex Mono";
+  font-size:13px;
+  color:#AEB6C0;
+}
+
+.scholar span{
+  border:1px solid var(--line-d);
+  border-radius:2px;
+  padding:8px 12px;
+}
+
 .scholar span b{color:#fff;font-weight:500}
+
+@media(max-width:980px){
+  .achievement-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:680px){
+  .achievement-grid{grid-template-columns:1fr}
+  .achievement-proof img{height:auto;max-height:420px}
+}
 
 /* ---------- skills ---------- */
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
@@ -736,6 +909,48 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   html{scroll-behavior:auto}
   .card:hover{transform:none}
 }
+
+.clist-email-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+}
+.clist-email-row .cv{
+  display:block;
+  text-align:right;
+  white-space:nowrap;
+}
+.clist-email-row .cv a{
+  display:inline !important;
+  color:inherit;
+  text-decoration:none;
+  padding:0 !important;
+  border:0 !important;
+  font:inherit;
+}
+.clist-email-row .cv a:hover{
+  text-decoration:underline;
+}
+.email-separator{
+  margin:0 8px;
+  color:var(--muted);
+}
+@media(max-width:560px){
+  .clist-email-row{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:8px;
+  }
+  .clist-email-row .cv{
+    text-align:left;
+    white-space:normal;
+    word-break:break-word;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -876,7 +1091,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="exp-media uq-media">
 
           <div class="uq-video">
-            <video
+            <video muted
               controls
               playsinline
               preload="metadata"
@@ -1010,7 +1225,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 
       <div class="ganga-media">
         <div class="ganga-video">
-          <video
+          <video muted
             controls
             playsinline
             preload="metadata"
@@ -1068,8 +1283,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="tags"><span class="tag">Track drive</span><span class="tag">FEA</span><span class="tag">IMU levelling</span><span class="tag">SolidWorks</span></div>
         </div>
         <figure class="single-project-media">
-          <img src="assets/img/climbcart_cad.jpg" alt="ClimbCart staircase-climbing robot CAD" loading="lazy">
-          <figcaption>ClimbCart — mechanism architecture and staircase-climbing concept.</figcaption>
+          <img src="assets/img/25.png" alt="ClimbCart staircase-climbing robot" loading="lazy">
+          <figcaption>ClimbCart — staircase-climbing mechanism and system architecture.</figcaption>
         </figure>
       </article>
 
@@ -1082,7 +1297,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
           <div class="tags"><span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">BLDC</span><span class="tag">Aerial robotics</span></div>
         </div>
         <figure class="project-video">
-          <video controls preload="metadata" playsinline>
+          <video muted controls preload="metadata" playsinline>
             <source src="assets/img/6.mp4" type="video/mp4">
             Your browser does not support the video element.
           </video>
@@ -1136,21 +1351,66 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       </div>
 
       <div class="mars-magazine">
-        <div>
-          <div class="mars-kicker">MARS Magazine</div>
-          <h3>The archive behind the machines.</h3>
-          <p>Projects, competitions, people and the work that happens between the photographs.</p>
+        <div class="mars-magazine-head">
+          <div>
+            <div class="mars-kicker">MARS Magazine</div>
+            <h3>The archive behind the machines.</h3>
+            <p>Projects, competitions, people and the work that happens between the photographs.</p>
+          </div>
+          <span class="mag-meta">2025–26 · 40 pages</span>
         </div>
-        <div class="mag-slot">MARS MAGAZINE<br>PDF / COVER TO BE ADDED</div>
+
+        <div class="mars-flip-shell" aria-label="MARS Annual Magazine flipbook">
+          <div class="mars-flip-loading" id="marsFlipLoading">
+            <strong>Opening the magazine…</strong>
+            <span>Rendering the pages for the interactive reader.</span>
+          </div>
+          <div class="mars-flip-error" id="marsFlipError">
+            <div>
+              <strong>Magazine preview unavailable.</strong>
+              <span>The original PDF is still available below.</span>
+            </div>
+          </div>
+          <div class="mars-flip-book" id="marsFlipBook"></div>
+          <div class="mars-flip-controls" id="marsFlipControls" hidden>
+            <div class="mag-controls-left">
+              <button class="mars-flip-btn" id="marsFlipPrev" type="button" aria-label="Previous page">← Prev</button>
+              <button class="mars-flip-btn" id="marsFlipNext" type="button" aria-label="Next page">Next →</button>
+            </div>
+            <div class="mars-flip-page" id="marsFlipPage">01 / 40</div>
+            <div class="mag-controls-right">
+              <button class="mars-flip-btn" id="marsFlipFullscreen" type="button">Fullscreen</button>
+            </div>
+          </div>
+        </div>
+
+        <a class="mars-magazine-download" href="assets/img/MARS%20Annual%20Magazine%2026-27.pdf" target="_blank" rel="noopener">
+          Open full PDF ↗
+        </a>
       </div>
     </div>
 
     <div class="mars-gallery reveal">
-      <figure><img src="assets/img/hero_rover.jpg" alt="Team MARS rover Ganga during the IRC 2026 astrobiology task" loading="lazy"><figcaption>Ganga · IRC 2026 Champion</figcaption></figure>
-      <figure><img src="assets/img/abex_vertical_cad.png" alt="ABEx rover soil-sampling subsystem CAD" loading="lazy"><figcaption>ABEx · Soil-sampling mechanism</figcaption></figure>
-      <figure><img src="assets/img/abex_results.png" alt="ABEx field results from rover soil analysis" loading="lazy"><figcaption>Field testing · Soil analysis</figcaption></figure>
-      <figure><img src="assets/img/Marvin_team.png" data-image-base="Marvin_team" alt="MARVIN autonomous cleaning robot project team" loading="lazy"><figcaption>Internal robotics development · MARVIN</figcaption></figure>
-      <figure><img src="assets/img/MARVIN_COA.png" data-image-base="MARVIN_COA" alt="MARVIN project certificate" loading="lazy"><figcaption>Project recognition</figcaption></figure>
+      <figure>
+        <img src="assets/img/9.png" alt="Team MARS with the Ganga planetary rover at the International Rover Challenge" loading="lazy">
+        <figcaption>Ganga · IRC 2026 Champion</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/10.png" alt="Anikait leading and presenting with Team MARS" loading="lazy">
+        <figcaption>Leadership · Presenting with Team MARS</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/11.png" alt="Team MARS during a robotics presentation and outreach event" loading="lazy">
+        <figcaption>Outreach · MARS in action</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/12.png" alt="Team MARS group photograph" loading="lazy">
+        <figcaption>Team MARS · Building together</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/13.png" alt="Team MARS members at a robotics event" loading="lazy">
+        <figcaption>MARS · Team culture &amp; community</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1226,6 +1486,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <div class="oi"><div class="oh"><h3>Robotics workshop — IIT Ropar</h3><span class="when">Mar 2025</span></div><p>Participated in a robotics workshop at IIT Ropar and presented the mechanical subsystem of Mars Rover “Alaknanda.”</p></div>
       </div>
     </div>
+
+    <div class="lead-video reveal">
+      <video
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="MARS leadership and outreach video">
+        <source src="assets/img/18.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video>
+      <div class="lead-video-cap">MARS · Leadership &amp; outreach</div>
+    </div>
   </div>
 </section>
 
@@ -1234,11 +1508,87 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   <div class="wrap reveal">
     <div class="eyebrow">Achievements</div>
     <h2>Verified results.</h2>
-    <div class="awards">
-      <div class="aw"><div class="rank">1st · International</div><h3>International Rover Challenge 2026</h3><p>Champion · SPROS, MIT Manipal.</p></div>
-      <div class="aw"><div class="rank">2nd · International</div><h3>International Space Drone Challenge 2026</h3><p>1st Runner-Up · SPROS, MIT Manipal.</p></div>
-      <div class="aw"><div class="rank">2nd · International</div><h3>International Rover Challenge 2025</h3><p>1st Runner-Up · SPROS, Goa.</p></div>
+
+    <div class="achievement-grid">
+
+      <!-- 01 · IRC 2026 -->
+      <article class="achievement-card">
+        <div class="achievement-head">
+          <div class="achievement-no">01 · International</div>
+          <h3>International Rover Challenge 2026</h3>
+          <div class="achievement-position">1st Place · Champion<br>SPROS, MIT Manipal</div>
+        </div>
+
+        <div class="achievement-media">
+          <figure class="achievement-proof">
+            <span class="achievement-proof-label">Certificate</span>
+            <img src="assets/img/19.png"
+                 alt="International Rover Challenge 2026 certificate"
+                 loading="lazy">
+          </figure>
+
+          <figure class="achievement-proof team">
+            <span class="achievement-proof-label">Team · Stage</span>
+            <img src="assets/img/20.png"
+                 alt="Team MARS at the International Rover Challenge 2026"
+                 loading="lazy">
+          </figure>
+        </div>
+      </article>
+
+      <!-- 02 · ISDC 2026 -->
+      <article class="achievement-card">
+        <div class="achievement-head">
+          <div class="achievement-no">02 · International</div>
+          <h3>International Space Drone Challenge 2026</h3>
+          <div class="achievement-position">2nd Place · 1st Runner-Up<br>SPROS, MIT Manipal</div>
+        </div>
+
+        <div class="achievement-media">
+          <figure class="achievement-proof">
+            <span class="achievement-proof-label">Certificate</span>
+            <img src="assets/img/21.png"
+                 alt="International Space Drone Challenge 2026 certificate"
+                 loading="lazy">
+          </figure>
+
+          <figure class="achievement-proof team">
+            <span class="achievement-proof-label">Team · Stage</span>
+            <img src="assets/img/22.png"
+                 alt="Team at the International Space Drone Challenge 2026"
+                 loading="lazy">
+          </figure>
+        </div>
+      </article>
+
+      <!-- 03 · IRC 2025 -->
+      <article class="achievement-card">
+        <div class="achievement-head">
+          <div class="achievement-no">03 · International</div>
+          <h3>International Rover Challenge 2025</h3>
+          <div class="achievement-position">2nd Place · 1st Runner-Up<br>SPROS, Goa</div>
+        </div>
+
+        <div class="achievement-media">
+          <figure class="achievement-proof">
+            <span class="achievement-proof-label">Certificate</span>
+            <img src="assets/img/23.png"
+                 alt="International Rover Challenge 2025 certificate"
+                 loading="lazy">
+          </figure>
+
+          <figure class="achievement-proof team">
+            <span class="achievement-proof-label">Team · Stage</span>
+            <img src="assets/img/24.png"
+                 alt="Team MARS at the International Rover Challenge 2025"
+                 loading="lazy">
+          </figure>
+        </div>
+      </article>
+
     </div>
+
+    <!-- Other verified achievements retained unchanged -->
     <div class="scholar">
       <span>Department Topper — <b>10.0 CGPA</b></span>
       <span>Orangewood Labs — <b>Certificate of Achievement</b></span>
@@ -1359,10 +1709,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
         <p class="lede">If you're hiring for robotics/mechatronics R&amp;D, exploring a research collaboration, or reviewing for graduate admissions — I'd be glad to talk.</p>
       </div>
       <div class="clist">
-        <a href="mailto:akaushik_be23@thapar.edu"><span class="ck">Email</span><span class="cv">akaushik_be23@thapar.edu</span></a>
+        <div class="clist-email-row"><span class="ck">Email</span><span class="cv"><a href="mailto:anikaitkaushiksep@gmail.com">anikaitkaushiksep@gmail.com</a><span class="email-separator"> / </span><a href="mailto:akaushik_be23@thapar.edu">akaushik_be23@thapar.edu</a></span></div>
         <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener"><span class="ck">LinkedIn</span><span class="cv">/in/anikait-kaushik →</span></a>
         <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener"><span class="ck">GitHub</span><span class="cv">/anikait-kaushik →</span></a>
-        <a href="tel:+919729792834"><span class="ck">Phone</span><span class="cv">+91 97297 92834</span></a>
         <a href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="ck">Résumé</span><span class="cv">Download PDF ↓</span></a>
       </div>
     </div>
@@ -1404,6 +1753,128 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
     img.addEventListener('error', tryNext);
     tryNext();
   });
+})();
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+
+<script type="module">
+(async function () {
+  const PDF_URL = 'assets/img/MARS%20Annual%20Magazine%2026-27.pdf';
+  const loading = document.getElementById('marsFlipLoading');
+  const errorBox = document.getElementById('marsFlipError');
+  const bookEl = document.getElementById('marsFlipBook');
+  const controls = document.getElementById('marsFlipControls');
+  const prevBtn = document.getElementById('marsFlipPrev');
+  const nextBtn = document.getElementById('marsFlipNext');
+  const fullscreenBtn = document.getElementById('marsFlipFullscreen');
+  const pageLabel = document.getElementById('marsFlipPage');
+
+  if (!loading || !bookEl || !window.St || !window.St.PageFlip) {
+    if (loading) loading.style.display = 'none';
+    if (errorBox) { errorBox.style.display = 'flex'; }
+    return;
+  }
+
+  try {
+    const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+
+    const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
+    const totalPages = pdf.numPages;
+    const pageImages = [];
+
+    // Render pages as compressed JPEGs so the flipbook stays reasonably light.
+    for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
+      const page = await pdf.getPage(pageNumber);
+      const baseViewport = page.getViewport({ scale: 1 });
+      const targetWidth = 1050;
+      const scale = Math.min(1.55, targetWidth / baseViewport.width);
+      const viewport = page.getViewport({ scale });
+
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d', { alpha: false });
+      canvas.width = Math.ceil(viewport.width);
+      canvas.height = Math.ceil(viewport.height);
+
+      await page.render({
+        canvasContext: context,
+        viewport,
+        background: '#ffffff'
+      }).promise;
+
+      pageImages.push(canvas.toDataURL('image/jpeg', 0.88));
+      canvas.width = 1;
+      canvas.height = 1;
+    }
+
+    const pageFlip = new St.PageFlip(bookEl, {
+      width: 218,
+      height: 300,
+      size: 'fixed',
+      minWidth: 180,
+      maxWidth: 218,
+      minHeight: 248,
+      maxHeight: 300,
+      drawShadow: true,
+      flippingTime: 650,
+      usePortrait: true,
+      startPage: 0,
+      autoSize: false,
+      maxShadowOpacity: 0.32,
+      showCover: true,
+      mobileScrollSupport: true,
+      clickEventForward: false
+    });
+
+    pageFlip.loadFromImages(pageImages);
+
+    loading.style.display = 'none';
+    bookEl.style.display = 'block';
+    controls.hidden = false;
+
+    function updateControls() {
+      const current = pageFlip.getCurrentPageIndex();
+      const shown = Math.min(current + 1, totalPages);
+      pageLabel.textContent = String(shown).padStart(2, '0') + ' / ' + String(totalPages).padStart(2, '0');
+      prevBtn.disabled = current <= 0;
+      nextBtn.disabled = current >= totalPages - 1;
+    }
+
+    pageFlip.on('flip', updateControls);
+    updateControls();
+
+    prevBtn.addEventListener('click', function () {
+      pageFlip.flipPrev('bottom');
+    });
+
+    nextBtn.addEventListener('click', function () {
+      pageFlip.flipNext('bottom');
+    });
+
+    fullscreenBtn.addEventListener('click', async function () {
+      const shell = document.querySelector('.mars-flip-shell');
+      try {
+        if (!document.fullscreenElement) {
+          await shell.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (err) {
+        console.warn('Fullscreen unavailable:', err);
+      }
+    });
+
+    document.addEventListener('fullscreenchange', function () {
+      fullscreenBtn.textContent = document.fullscreenElement ? 'Exit Fullscreen' : 'Fullscreen';
+    });
+
+  } catch (err) {
+    console.error('MARS magazine flipbook failed:', err);
+    loading.style.display = 'none';
+    errorBox.style.display = 'flex';
+  }
 })();
 </script>
 

@@ -1,6 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/projects/abex", "destination": "/projects/alaknanda", "permanent": true },
+    { "source": "/projects/abex.html", "destination": "/projects/alaknanda", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

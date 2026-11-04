@@ -33,7 +33,7 @@ Never put the app password in the code or in Git.
 - [ ] **Exoskeleton:** which parts of Gen 2 / Gen 4 you designed, and who built the joint-tracking GUI.
 
 ## Please confirm (written on the site from the previous version, not from the new CV)
-- [ ] **IPRoMM 2026: first author?** (index.html, projects/abex.html)
+- [ ] **IPRoMM 2026: first author?** (index.html, research.html)
 - [ ] **Team Lead, ELC Internship 2025: 10-student team** (index.html → Roles)
 - [ ] **IIT Ropar, Mar 2025: you presented Alaknanda's mechanical subsystem** (index.html → Conferences)
 - [ ] **Garud: your personal scope** vs. the drone sub-team (projects/garud.html)

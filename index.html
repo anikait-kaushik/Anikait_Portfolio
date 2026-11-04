@@ -467,10 +467,9 @@
       <p class="lede">Hiring for robotics R&amp;D, or supervising robotics research? Send a note and I'll reply by email.</p>
     </div>
     <div class="contact-wrap">
-      <!-- Messages are delivered to Anikait's inbox by Formspree.
-           SETUP: create a free form at https://formspree.io (sign in with your Gmail),
-           then paste its endpoint into data-endpoint below, e.g. https://formspree.io/f/abcdwxyz
-           Until then the form falls back to opening the visitor's email app. -->
+      <!-- Messages go to /api/contact (api/contact.js, a Vercel function), which emails them
+           to Anikait's Gmail. Setup: GMAIL_USER + GMAIL_APP_PASSWORD env vars in Vercel.
+           If the function is unavailable the form opens the visitor's email app instead. -->
       <form class="cform" id="contactForm" data-endpoint="" data-fallback="anikaitkaushiksep@gmail.com" novalidate>
         <h3>Write to me</h3>
         <div class="cf-row">
@@ -491,7 +490,7 @@
         <div class="cf-field"><label for="cfMsg">Message</label><textarea id="cfMsg" name="message" rows="6" placeholder="A short note is enough…" required maxlength="5000"></textarea></div>
         <!-- spam trap: real visitors never see or fill this -->
         <div class="cf-hp" aria-hidden="true"><label for="cfHp">Leave this empty</label><input id="cfHp" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
-        <p class="cf-note">Your name, email and message are sent to me through <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> so I can reply. They're used only for that.</p>
+        <p class="cf-note">Your name, email and message are emailed to me so I can reply. They're used only for that.</p>
         <div class="cf-foot">
           <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
           <button class="btn btn-solid" type="submit" id="cfSend">Send message</button>
@@ -525,7 +524,7 @@
 </footer>
 
 <script>window.HERO_CHAPTERS = {"duration": 22.2, "chapters": [{"t": 0, "title": "Ganga", "sub": "Mars rover · IRC 2026 Champion", "href": "projects/ganga.html"}, {"t": 2.95, "title": "Garud", "sub": "Competition drone · ISDC 2026", "href": "projects/garud.html"}, {"t": 5.45, "title": "ClimbCart", "sub": "Stair-climbing prototype", "href": "projects/climbcart.html"}, {"t": 7.95, "title": "R3 Exoskeleton", "sub": "Rehabilitation research · TIET–UQ", "href": "projects/exoskeleton.html"}, {"t": 10.45, "title": "Gait capture", "sub": "Qualisys motion capture", "href": "projects/exoskeleton.html"}, {"t": 12.55, "title": "LoCoBot", "sub": "Sim2Real with MathWorks", "href": "projects/locobot.html"}, {"t": 14.65, "title": "Ganga", "sub": "Field run on Mars-analogue terrain", "href": "projects/ganga.html"}, {"t": 17.15, "title": "Gait dynamics", "sub": "Lower-limb simulation in MATLAB", "href": "projects/exoskeleton.html"}, {"t": 19.25, "title": "Ganga", "sub": "Integrated rover system", "href": "projects/ganga.html"}]};</script>
-<script src="assets/js/site.js?v=11"></script>
+<script src="assets/js/site.js?v=12"></script>
 <script src="assets/js/hero-fx.js?v=2"></script>
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}

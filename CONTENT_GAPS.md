@@ -8,10 +8,18 @@ so this list is the full checklist (there are no hidden TODO markers in the page
 leave it out.
 
 ## Turn on the contact form (5 minutes, once)
-1. Go to https://formspree.io and sign up with **anikaitkaushiksep@gmail.com**.
-2. Create a new form and copy its endpoint (looks like `https://formspree.io/f/abcdwxyz`).
-3. In `index.html`, search for `data-endpoint=""` and paste it between the quotes.
-4. Push. Messages then arrive in your Gmail. Until then, the form opens the visitor's email app instead.
+The form posts to `api/contact.js`, a Vercel function that emails each message to your Gmail
+(the same setup as pd-dev.vercel.app). It needs a Google **App Password**:
+1. Turn on 2-Step Verification for **anikaitkaushiksep@gmail.com**: https://myaccount.google.com/security
+2. Create an App Password at https://myaccount.google.com/apppasswords (name it "Portfolio"), then copy the 16 characters.
+3. Vercel → your project → Settings → Environment Variables, add (for Production and Preview):
+   - `GMAIL_USER` = `anikaitkaushiksep@gmail.com`
+   - `GMAIL_APP_PASSWORD` = the 16-character app password
+4. Vercel → Deployments → the latest one → ⋯ → Redeploy (env vars apply only to new deploys).
+5. Send yourself a test message from the live site. Hit Reply in Gmail to answer the sender.
+
+Until this is set up (and on the local preview), the form opens the visitor's email app instead.
+Never put the app password in the code or in Git.
 
 ## Conferences & workshops section
 - [x] TRS–DSAI workshop photo added.

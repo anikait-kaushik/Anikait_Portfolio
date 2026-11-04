@@ -290,7 +290,7 @@
     });
   });
 
-  /* ---------- contact form (Formspree, with mailto fallback) ---------- */
+  /* ---------- contact form (Vercel /api/contact → Gmail, with mailto fallback) ---------- */
   var form = $('#contactForm');
   if (form) {
     var status = $('#cfStatus'), send = $('#cfSend');
@@ -305,25 +305,22 @@
       if (bad) { bad.setAttribute('aria-invalid', 'true'); bad.focus(); say(bad === fEmail ? 'Please enter a valid email address.' : 'Please fill in your name, email and message.', 'err'); return; }
       if (fHp.value) return; // bot
 
-      var endpoint = form.getAttribute('data-endpoint');
+      var endpoint = form.getAttribute('data-endpoint') || '/api/contact';
       var subject = fSubj.value.trim() || ('Portfolio enquiry from ' + name);
-      if (!endpoint) {
-        // Not configured yet: hand over to the visitor's email client
+      var mailto = function () {
+        // Backend unavailable (e.g. local preview) or not set up: hand over to the visitor's email client
         var body = msg + '\n\n— ' + name + ' (' + email + ')\nReaching out as: ' + fRole.value;
         window.location.href = 'mailto:' + form.getAttribute('data-fallback') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         say('Opening your email app…');
-        return;
-      }
-      var data = new FormData(form);
-      data.set('subject', subject);
-      data.append('_replyto', email);
-      data.append('_subject', 'Portfolio: ' + subject);
+      };
+      var payload = { name: name, email: email, role: fRole.value, subject: subject, message: msg, _gotcha: fHp.value };
       send.disabled = true; say('Sending…');
-      fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+      fetch(endpoint, { method: 'POST', body: JSON.stringify(payload), headers: { 'Content-Type': 'application/json', Accept: 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return null; }).then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
         .then(function (res) {
-          if (res.ok) { form.reset(); say('Thanks — your message has been sent. I\'ll reply by email.', 'ok'); }
-          else { say((res.j.errors && res.j.errors[0] && res.j.errors[0].message) || 'Something went wrong. Please email me directly.', 'err'); }
+          if (res.ok && res.j && res.j.success) { form.reset(); say('Thanks, your message has been sent. I\'ll reply by email.', 'ok'); }
+          else if (!res.j || res.status === 404 || res.status === 405 || res.j.notConfigured) { mailto(); }
+          else { say(res.j.error || 'Something went wrong. Please email me directly.', 'err'); }
         })
         .catch(function () { say('Network error. Please email me directly at ' + form.getAttribute('data-fallback') + '.', 'err'); })
         .then(function () { send.disabled = false; });

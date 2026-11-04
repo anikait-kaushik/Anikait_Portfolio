@@ -1,0 +1,9 @@
+{
+  "name": "anikait-portfolio",
+  "private": true,
+  "description": "Static portfolio with one Vercel serverless function (api/contact.js) for the contact form.",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "nodemailer": "^6.9.16"
+  }
+}

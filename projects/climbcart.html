@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ClimbCart Stair-Climbing Carrier — Case Study · Anikait Kaushik</title>
+<meta name="description" content="Engineering case study: ClimbCart, a tracked stair-climbing load carrier for narrow Indian staircases. Requirements from field surveys, TPU-belt track iterations, and an FEA-driven sprocket material decision." />
+<meta property="og:image" content="../assets/img/web/climbcart-render.jpg" />
+<meta name="theme-color" content="#14161B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="wrap">
+  <a href="../index.html" class="brand">Anikait<span>.</span>Kaushik</a>
+  <nav class="navlinks" id="navlinks" aria-label="Primary">
+    <a href="../index.html#projects">← All projects</a><a href="../index.html#research">Research</a><a href="../index.html#contact">Contact</a>
+    <a class="btn btn-solid" href="../assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
+</div></header>
+
+<main>
+<section class="cs-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html#projects">Projects</a> / Case study 03</div>
+    <h1>ClimbCart: when the terrain is a staircase</h1>
+    <p class="sum">Most load carriers assume flat ground. ClimbCart is a tracked carrier for narrow, variable Indian staircases. It is designed from field-surveyed constraints on geometry, payload, terrain, portability and maintainability.</p>
+    <div class="cs-meta">
+      <div><div class="k">Type</div><div class="v">Capstone engineering project</div></div>
+      <div><div class="k">My work</div><div class="v">Mechanical design · CAD · FEA · prototyping · validation</div></div>
+      <div><div class="k">Envelope</div><div class="v">800 × 600 × 800 mm (preliminary design)</div></div>
+      <div><div class="k">Mentors</div><div class="v">Prof. Ashish Singla · Prof. Dheeraj Gupta</div></div>
+    </div>
+  </div>
+  <div class="cs-cover" style="background:#fff"><img src="../assets/img/web/climbcart-render.jpg" alt="ClimbCart CAD render climbing a staircase" width="745" height="630" style="background:#fff;max-height:520px"></div>
+</section>
+
+<div class="wrap cs-layout">
+  <nav class="toc" aria-label="On this page">
+    <b>On this page</b>
+    <a href="#overview">Summary</a><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a><a href="#iteration">Iteration</a><a href="#contribution">My contribution</a>
+  </nav>
+  <article class="cs-body">
+    <section class="cs-sec" id="overview">
+      <h2><span class="n">01</span>At a glance</h2>
+      <div class="cs-kpis">
+        <div><b>800³</b><span>mm envelope</span><small>800 × 600 × 800 mm, preliminary design</small></div>
+        <div><b>45 kg·cm</b><span>drive motor</span><small>specified in the preliminary build-up</small></div>
+        <div><b>27°</b><span>track incline</span><small>iteration 3, for better stair contact</small></div>
+        <div><b>~78</b><span>FOS, Al sprocket</span><small>at 400 N; over-designed, so rejected</small></div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="problem">
+      <h2><span class="n">02</span>The engineering problem</h2>
+      <p>Moving loads up stairs in Indian homes is a different problem from industrial stair-climbing. The stairs are narrow and irregular, and the device has to be portable, maintainable and affordable. The project started from site and market observations, which became design constraints on stair geometry, payload, terrain, portability and maintainability.</p>
+      <!-- TODO(Anikait): add the surveyed numbers (rise/tread range, stair width, target payload, target mass) if you have them. -->
+    </section>
+
+    <section class="cs-sec" id="architecture">
+      <h2><span class="n">03</span>Architecture</h2>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/climbcart-cad.jpg" alt="ClimbCart preliminary design: handling frame, 45 kg-cm motor, driving sprockets, tensioning and supporting pulleys, TPU soft chain, linear actuator, loading platform; 800 x 600 x 800 mm" loading="lazy"><figcaption>Fig. 1 · Preliminary design build-up, with major components labelled.</figcaption></figure>
+      <ul>
+        <li><strong>Track drive:</strong> TPU soft-chain track on driving sprockets, with tensioning and supporting pulleys, powered by a 45 kg·cm motor.</li>
+        <li><strong>Loading platform:</strong> carried on the chassis and adjusted by a linear actuator, to keep the load level during the climb.</li>
+        <li><strong>Handling frame:</strong> for manual guidance and portability.</li>
+      </ul>
+    </section>
+
+    <section class="cs-sec" id="decisions">
+      <h2><span class="n">04</span>Design decisions</h2>
+      <div class="decision">
+        <div class="dk">Decision 01 · Material selection</div>
+        <h3>Reject an aluminium sprocket: it was over-designed</h3>
+        <p>I ran a static FEA study of the sprocket under a 400 N load in SolidWorks Simulation.</p>
+        <div class="why">
+          <b>Found</b><span>Peak von Mises stress ≈ 2.75 × 10⁶ N/m² against a yield strength of 2.15 × 10⁸ N/m², giving a factor of safety of ~78. Deformation was negligible. Mass was 778.26 g.</span>
+          <b>Decided</b><span>Rejected. A factor of safety that high isn't needed, and aluminium added mass, cost and fabrication complexity for no benefit.</span>
+          <b>Lesson</b><span>Analysis that shows a part is far stronger than needed is as useful as analysis that shows it will fail. It points to where mass and cost can come out.</span>
+        </div>
+        <!-- TODO(Anikait): add the material/geometry you chose instead and its FOS + mass. -->
+      </div>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/climbcart-fea.jpg" alt="Sprocket FEA: mass properties, von Mises stress plot, FOS plot and conclusion rejecting aluminium" loading="lazy"><figcaption>Fig. 2 · Sprocket mass properties, von Mises stress and FOS plots, and the rejection rationale.</figcaption></figure>
+
+      <div class="decision" id="iteration">
+        <div class="dk">Decision 02 · Track design, iteration 3</div>
+        <h3>A modular TPU belt with a 27° incline</h3>
+        <div class="why">
+          <b>Modular TPU</b><span>Customisable and economical to produce and repair</span>
+          <b>27° incline</b><span>Better contact with the stair edges</span>
+          <b>Smooth profile</b><span>A stable climb without jerks</span>
+          <b>Sprocket grooves</b><span>Reliable power transfer from sprocket to belt</span>
+        </div>
+      </div>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/climbcart-track.jpg" alt="Belt track design iteration 3: angled track, CAD dimensions, sprocket groove design" loading="lazy"><figcaption>Fig. 3 · Belt-track design, iteration 3.</figcaption></figure>
+    </section>
+
+    <section class="cs-sec" id="contribution">
+      <h2><span class="n">05</span>My contribution &amp; status</h2>
+      <p>I translated the surveyed constraints into the mechanical design, carrying it through mechanism development, CAD, FEA, material selection, prototyping and experimental validation.</p>
+      <!-- TODO(Anikait): list team members' roles, prototype test results (payload carried, stairs climbed, speed), and photos of the physical prototype. Do not add numbers you haven't measured. -->
+      <h3 class="sub-h">Tools</h3>
+      <div><span class="chip">SolidWorks</span><span class="chip">SolidWorks Simulation (FEA)</span><span class="chip">Material selection</span><span class="chip">Prototyping</span></div>
+      <h3 class="sub-h">Related</h3>
+      <div class="next">
+        <a href="abex.html"><span class="k">Previous</span><b>ABEx soil sampling →</b></a>
+        <a href="marvin.html"><span class="k">Next</span><b>MARVIN cleaning robot →</b></a>
+      </div>
+    </section>
+  </article>
+</div>
+</main>
+<footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
+<script src="../assets/js/site.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MATLAB–ROS × LoCoBot Sim2Real — Project · Anikait Kaushik</title>
+<meta name="description" content="In-progress project with MathWorks: a MATLAB–ROS framework and Simscape digital twin of the Trossen Robotics LoCoBot for a Sim2Real workflow." />
+<meta name="theme-color" content="#14161B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="wrap">
+  <a href="../index.html" class="brand">Anikait<span>.</span>Kaushik</a>
+  <nav class="navlinks" id="navlinks" aria-label="Primary">
+    <a href="../index.html#projects">← All projects</a><a href="../index.html#research">Research</a><a href="../index.html#contact">Contact</a>
+    <a class="btn btn-solid" href="../assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
+</div></header>
+
+<main>
+<section class="cs-hero" style="padding-bottom:48px">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html#projects">Projects</a> / In progress</div>
+    <h1>MATLAB–ROS × LoCoBot: build it in simulation, prove it on hardware</h1>
+    <p class="sum">I'm developing a MATLAB–ROS framework, using MATLAB Copilot and a Simscape-based digital twin of the Trossen Robotics LoCoBot. It brings robot kinematics, dynamics, sensing and control interfaces into one Sim2Real workflow for simulation-driven development and physical validation.</p>
+    <div class="cs-meta">
+      <div><div class="k">Status</div><div class="v"><span class="badge b-ongoing">In progress</span></div></div>
+      <div><div class="k">Collaboration</div><div class="v">MathWorks</div></div>
+      <div><div class="k">Platform</div><div class="v">Trossen Robotics LoCoBot (mobile manipulator)</div></div>
+      <div><div class="k">Mentors</div><div class="v">Prof. Ashish Singla · Dr. Pranav Lad (MathWorks)</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap cs-layout">
+  <nav class="toc" aria-label="On this page">
+    <b>On this page</b>
+    <a href="#overview">Why</a><a href="#architecture">Workflow</a><a href="#status">Status</a>
+  </nav>
+  <article class="cs-body">
+    <section class="cs-sec" id="overview">
+      <h2><span class="n">01</span>Why a digital twin</h2>
+      <p>Developing behaviour directly on hardware is slow and risky. A physics-based twin lets kinematics, dynamics, sensing and control be developed and tested in simulation first. The aim is to then move to the physical robot through the same interfaces, so that what worked in simulation can be checked against reality rather than rewritten for it.</p>
+    </section>
+    <section class="cs-sec" id="architecture">
+      <h2><span class="n">02</span>Workflow</h2>
+      <figure class="arch">
+        <svg viewBox="0 0 760 150" role="img" aria-label="Workflow: MATLAB and Copilot, Simscape digital twin, ROS interface, LoCoBot hardware, with validation feedback">
+          <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#3F6474"/></marker></defs>
+          <g font-family="IBM Plex Sans, sans-serif">
+            <g fill="#fff" stroke="#3F6474" stroke-width="1.5"><rect x="10" y="20" width="160" height="70" rx="3"/><rect x="200" y="20" width="160" height="70" rx="3"/><rect x="390" y="20" width="160" height="70" rx="3"/><rect x="580" y="20" width="170" height="70" rx="3" fill="#E1EAEE"/></g>
+            <g font-size="13.5" font-weight="600" fill="#14161B"><text x="24" y="50">MATLAB + Copilot</text><text x="214" y="50">Simscape twin</text><text x="404" y="50">ROS interface</text><text x="594" y="50">LoCoBot hardware</text></g>
+            <g font-size="11" fill="#626A75"><text x="24" y="70">kinematics · dynamics</text><text x="214" y="70">physics-based model</text><text x="404" y="70">sensing · commands</text><text x="594" y="70">physical validation</text></g>
+            <g stroke="#3F6474" stroke-width="1.5" marker-end="url(#a3)"><line x1="170" y1="55" x2="198" y2="55"/><line x1="360" y1="55" x2="388" y2="55"/><line x1="550" y1="55" x2="578" y2="55"/></g>
+            <path d="M665 90 C 665 130, 290 130, 280 92" fill="none" stroke="#3F6474" stroke-dasharray="4 4" stroke-width="1.3" marker-end="url(#a3)"/>
+            <text x="380" y="140" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#626A75" text-anchor="middle">compare hardware behaviour against the twin</text>
+          </g>
+        </svg>
+        <figcaption>Fig. 1 · Intended Sim2Real loop.</figcaption>
+      </figure>
+    </section>
+    <section class="cs-sec" id="status">
+      <h2><span class="n">03</span>Status</h2>
+      <div class="callout neutral">This project is in progress. No performance results are reported until they've been measured on hardware. This page will be updated with simulation-versus-hardware comparisons, figures and code.</div>
+      <!-- TODO(Anikait): add screenshots of the Simscape model, a short screen recording, and a GitHub link when ready. -->
+      <h3 class="sub-h">Tools</h3>
+      <div><span class="chip">MATLAB</span><span class="chip">MATLAB Copilot</span><span class="chip">Simscape</span><span class="chip">Simulink</span><span class="chip">ROS</span></div>
+      <h3 class="sub-h">Related</h3>
+      <div class="next">
+        <a href="../index.html#r-sim2real"><span class="k">Research</span><b>R5 · Sim2Real research thread →</b></a>
+        <a href="ganga.html"><span class="k">Case study</span><b>Ganga Mars rover →</b></a>
+      </div>
+    </section>
+  </article>
+</div>
+</main>
+<footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
+<script src="../assets/js/site.js?v=3"></script>
+</body>
+</html>

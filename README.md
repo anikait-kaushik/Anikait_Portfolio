@@ -8,9 +8,13 @@ Single-file static site. No build step, no dependencies, no tracking. Loads fast
 ```
 .
 ├── index.html                 # the whole site (HTML + CSS + JS inline)
+├── projects/                  # engineering case studies (ganga, abex, climbcart, locobot, marvin, garud)
+├── CONTENT_GAPS.md            # facts to confirm/add — search TODO(Anikait) in the HTML
 ├── assets/
-│   ├── css/live.css           # motion & interaction layer (animations, lightbox, ticker)
-│   ├── js/live.js             # live behaviour: clock, typing, counters, scroll-spy, hero canvas
+│   ├── css/site.css           # shared design system for every page
+│   ├── js/site.js             # nav, scroll-spy, lightbox, publication filter, IK arm demo
+│   ├── js/leg3d.js            # lazy-loaded Three.js three-link leg model (research section)
+│   ├── img/web/               # optimised images actually used by the site (originals kept beside)
 │   ├── img/                   # engineering figures (rover, ABEx CAD, gait lab, CLIMB CART)
 │   └── docs/Anikait_Kaushik_Resume.pdf
 ├── vercel.json

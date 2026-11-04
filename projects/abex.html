@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ABEx Soil Sampling Subsystem — Case Study · Anikait Kaushik</title>
+<meta name="description" content="Engineering case study: the ABEx soil collection and testing subsystem for Mars rovers Alaknanda and Ganga. Designed and fabricated by Anikait Kaushik. Highest ABEx score at IRC 2025; published patent application." />
+<meta property="og:image" content="../assets/img/web/abex-auger-cad.jpg" />
+<meta name="theme-color" content="#14161B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+</head>
+<body>
+<a class="skip" href="#overview">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="wrap">
+  <a href="../index.html" class="brand">Anikait<span>.</span>Kaushik</a>
+  <nav class="navlinks" id="navlinks" aria-label="Primary">
+    <a href="../index.html#projects">← All projects</a><a href="../index.html#research">Research</a><a href="../index.html#contact">Contact</a>
+    <a class="btn btn-solid" href="../assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
+</div></header>
+
+<main>
+<section class="cs-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html#projects">Projects</a> / Case study 02</div>
+    <h1>ABEx: a soil collection &amp; testing subsystem for Mars rovers</h1>
+    <p class="sum">For the Astrobiology Expedition (ABEx) task, a rover has to reach into the ground, recover a representative soil sample and characterise it on board. I designed and fabricated the complete subsystem for Alaknanda (IRC 2025), and it carried forward onto Ganga (IRC 2026).</p>
+    <div class="cs-meta">
+      <div><div class="k">My role</div><div class="v">Designed &amp; fabricated the complete subsystem (Alaknanda)</div></div>
+      <div><div class="k">Period</div><div class="v">2024–25 · carried into 2025–26</div></div>
+      <div><div class="k">Outcome</div><div class="v">Highest ABEx score, IRC 2025 · team 2nd of 31</div></div>
+      <div><div class="k">Outputs</div><div class="v">Published patent application · IPRoMM paper (under review)</div></div>
+    </div>
+  </div>
+  <div class="cs-cover"><img src="../assets/img/web/alaknanda-field.jpg" alt="Mars rover Alaknanda during field testing" width="1800" height="1200"></div>
+</section>
+
+<div class="wrap cs-layout">
+  <nav class="toc" aria-label="On this page">
+    <b>On this page</b>
+    <a href="#overview">Results</a><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#design">Design</a><a href="#contribution">My contribution</a><a href="#testing">Testing</a><a href="#ip">IP &amp; papers</a>
+  </nav>
+  <article class="cs-body">
+    <section class="cs-sec" id="overview">
+      <h2><span class="n">01</span>Results</h2>
+      <div class="cs-kpis">
+        <div><b>Highest</b><span>ABEx points</span><small>IRC 2025, Alaknanda</small></div>
+        <div><b>Best-designed</b><span>soil-testing system</span><small>judges' recognition, IRC 2025</small></div>
+        <div><b>150 mm</b><span>penetration</span><small>on Ganga, IRC 2026</small></div>
+        <div><b>12 g</b><span>sample recovered</span><small>on Ganga, IRC 2026</small></div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="problem">
+      <h2><span class="n">02</span>The engineering problem</h2>
+      <p>A rover is only as good as the task it can complete. ABEx turns a science requirement into a mechanical chain: get through the surface, extract soil without losing it, move it to where it can be tested, run chemical and sensor measurements, and report the result, all under competition time limits on unprepared ground.</p>
+      <p>The mechanism had to do more than move. It needed guided vertical motion, alignment, actuation, compact packaging and clean integration with the rest of the rover, and it had to work reliably in the field.</p>
+    </section>
+
+    <section class="cs-sec" id="architecture">
+      <h2><span class="n">03</span>Functional architecture</h2>
+      <figure class="arch">
+        <svg viewBox="0 0 760 170" role="img" aria-label="ABEx functional chain: penetration, extraction, sample handling, chemical testing, sensing and analysis">
+          <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#B9472C"/></marker></defs>
+          <g font-family="IBM Plex Sans, sans-serif">
+            <g fill="#fff" stroke="#B9472C" stroke-width="1.5">
+              <rect x="10" y="30" width="130" height="70" rx="3"/><rect x="160" y="30" width="130" height="70" rx="3"/><rect x="310" y="30" width="130" height="70" rx="3"/>
+              <rect x="460" y="30" width="130" height="70" rx="3"/><rect x="610" y="30" width="140" height="70" rx="3" fill="#F6E5DF"/>
+            </g>
+            <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#B9472C" letter-spacing="1"><text x="22" y="50">01</text><text x="172" y="50">02</text><text x="322" y="50">03</text><text x="472" y="50">04</text><text x="622" y="50">05</text></g>
+            <g font-size="13.5" font-weight="600" fill="#14161B"><text x="22" y="70">Penetration</text><text x="172" y="70">Extraction</text><text x="322" y="70">Sample handling</text><text x="472" y="70">Chemical testing</text><text x="622" y="70">Sensing &amp; analysis</text></g>
+            <g font-size="11" fill="#626A75"><text x="22" y="88">guided vertical axis</text><text x="172" y="88">auger recovery</text><text x="322" y="88">transfer to test</text><text x="472" y="88">reagent delivery</text><text x="622" y="88">sensor interfaces</text></g>
+            <g stroke="#B9472C" stroke-width="1.5" marker-end="url(#a2)"><line x1="140" y1="65" x2="158" y2="65"/><line x1="290" y1="65" x2="308" y2="65"/><line x1="440" y1="65" x2="458" y2="65"/><line x1="590" y1="65" x2="608" y2="65"/></g>
+            <text x="10" y="135" font-family="IBM Plex Mono, monospace" font-size="11" fill="#626A75">Measured outputs include soil temperature, pH and a colorimetric iron test (Fig. 4).</text>
+          </g>
+        </svg>
+        <figcaption>Fig. 1 · Penetration → extraction → handling → testing → sensing, built as one subsystem.</figcaption>
+      </figure>
+    </section>
+
+    <section class="cs-sec" id="design">
+      <h2><span class="n">04</span>Design &amp; implementation</h2>
+      <div class="fig-row">
+        <figure class="fig"><img class="zoom" src="../assets/img/web/abex-auger-cad.jpg" alt="CAD of the vertical auger sampling mechanism" loading="lazy"><figcaption>Fig. 2 · Vertical sampling mechanism (CAD).</figcaption></figure>
+        <figure class="fig"><img class="zoom" src="../assets/img/web/abex-sensing.jpg" alt="ABEx soil sensing and reagent delivery hardware" loading="lazy"><figcaption>Fig. 3 · Sensing and reagent-delivery integration.</figcaption></figure>
+      </div>
+      <p>The subsystem combines a guided vertical sampling axis with an auger for extraction, a sample-handling path, a reagent-delivery stage for chemical tests, and sensor interfaces for on-board measurement.</p>
+      <p>Components were designed in SolidWorks, checked with FEA, and made by 3D printing and CNC machining.</p>
+      <!-- TODO(Anikait): add 1–3 real design decisions (e.g. why an auger, actuator choice, how alignment was guaranteed, material choices) with the alternative you rejected and why. Follow the "decision" block format used on the ClimbCart page. -->
+    </section>
+
+    <section class="cs-sec" id="contribution">
+      <h2><span class="n">05</span>My contribution</h2>
+      <div class="contrib">
+        <div><h3>What I did</h3><ul><li>Designed the complete ABEx soil-collection and testing subsystem for Alaknanda</li><li>Fabricated it (3D printing, CNC machining)</li><li>Validated components with SolidWorks and FEA</li><li>Integrated soil extraction, sample handling, chemical testing and sensor interfaces</li></ul></div>
+        <div><h3 class="team">Carried forward</h3><ul><li>On Ganga (IRC 2026) I oversaw the ABEx subsystem as Team Captain</li><li>Named inventor on the resulting patent application</li><li>First author of the IPRoMM 2026 paper (under review)</li></ul></div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="testing">
+      <h2><span class="n">06</span>Testing &amp; results</h2>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/abex-results.jpg" alt="Colorimetric iron test and bar charts of soil temperature and pH across five sites" loading="lazy"><figcaption>Fig. 4 · Example outputs: colorimetric iron test (left); soil temperature and pH across a home site and four test sites (right).</figcaption></figure>
+      <p>At IRC 2025, Alaknanda's ABEx run earned the <strong>highest ABEx points</strong> of the competition, and the judges recognised it as the <strong>best-designed soil-testing system</strong>. On Ganga at IRC 2026, the subsystem reached <strong>150 mm</strong> of penetration and recovered a <strong>12 g</strong> sample.</p>
+      <!-- TODO(Anikait): add what failed or changed between Alaknanda and Ganga, and the reason. -->
+    </section>
+
+    <section class="cs-sec" id="ip">
+      <h2><span class="n">07</span>Patent &amp; publication</h2>
+      <ul>
+        <li><strong>Patent application (published, 2025):</strong> An Apparatus, System and Method for Robotic Soil Analysis and Collection. Application No. 202511062827. Named inventor. This is a published application, not a granted patent.</li>
+        <li><strong>IPRoMM 2026 (under review):</strong> Design and Development of a Multi-Axis Robotic Subsystem for In-Situ Soil Sampling and Analysis.</li>
+      </ul>
+      <h3 class="sub-h">Tools</h3>
+      <div><span class="chip">SolidWorks</span><span class="chip">FEA</span><span class="chip">3D printing</span><span class="chip">CNC machining</span><span class="chip">Sensor integration</span></div>
+      <h3 class="sub-h">Related</h3>
+      <div class="next">
+        <a href="ganga.html"><span class="k">System context</span><b>Ganga, IRC 2026 Champion →</b></a>
+        <a href="climbcart.html"><span class="k">Next case study</span><b>ClimbCart stair-climbing carrier →</b></a>
+      </div>
+    </section>
+  </article>
+</div>
+</main>
+<footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
+<script src="../assets/js/site.js?v=3"></script>
+</body>
+</html>

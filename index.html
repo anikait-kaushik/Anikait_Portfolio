@@ -11,6 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/img/hero_rover.jpg" />
 <meta name="theme-color" content="#EEF0F3" />
+<link rel="preload" as="image" href="assets/img/hero_rover.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -951,7 +952,243 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
   }
 }
 
+
+/* ==========================================================
+   REFINEMENT PASS
+   - Preserve image composition and faces.
+   - Keep media frames visually uniform without distortion.
+   - Preserve document-native proportions.
+   ========================================================== */
+
+section[id]{
+  scroll-margin-top:78px;
+}
+
+/* The About section uses .kicker in the markup; keep it aligned
+   with the site's established section-label language. */
+.kicker{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:12.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.kicker-line{
+  width:26px;
+  height:2px;
+  background:var(--oxide);
+  display:inline-block;
+  flex:0 0 auto;
+}
+
+/* Never allow an undefined accent token to silently remove the
+   reconfigurable-project accent border. */
+.recon-hook{
+  border-left-color:var(--oxide);
+}
+
+/* ----------------------------------------------------------
+   Composition-safe image system
+   ---------------------------------------------------------- */
+
+/* Portrait/headshot: show the entire image rather than cropping
+   the face to force a square crop. */
+.headshot-frame{
+  background:var(--card);
+}
+.headshot-frame img{
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fa;
+}
+
+/* Shared media slots: fixed visual frame, preserved source. */
+.mediaslot{
+  background:#f7f8fa;
+}
+.mediaslot img,
+.mediaslot.contain img{
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fa;
+}
+
+/* Experience media is already composition-safe; make sizing explicit
+   so nested rules cannot introduce accidental cropping later. */
+.exp-media img,
+.exp-media .media-proof img,
+.exp-media.orangewood-media .media-main img,
+.exp-media.orangewood-media .media-proof img,
+.exp-media.marvin-media .media-main img,
+.exp-media.marvin-media .media-proof img{
+  object-fit:contain;
+  object-position:center center;
+}
+
+/* Flagship / project media: preserve the entire engineering subject. */
+.flag .media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#0e1014;
+  min-height:320px;
+}
+.flag .media img{
+  width:100%;
+  height:100%;
+  min-height:320px;
+  object-fit:contain;
+  object-position:center center;
+  background:#0e1014;
+}
+
+/* CAD, PCB, mechanism and technical figures should never be cropped. */
+.subfig{
+  background:#fff;
+}
+.subfig img{
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fa;
+  padding:12px;
+}
+
+/* Alaknanda gallery: preserve all three compositions. */
+.alaknanda-media img{
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fa;
+  padding:14px;
+}
+.alaknanda-media figure:first-child img{
+  padding:0;
+  background:#0e1014;
+}
+
+/* Single-project media: no cropped mechanism / robot. */
+.single-project-media{
+  background:#fff;
+}
+.single-project-media img{
+  height:430px;
+  object-fit:contain;
+  object-position:center center;
+  background:#f7f8fa;
+  padding:10px;
+}
+
+/* MARS gallery: consistent frames while protecting faces and robots.
+   The dark frame makes any intentional letterboxing look designed. */
+.mars-gallery img{
+  object-fit:contain;
+  object-position:center center;
+  background:#0e1014;
+  padding:8px;
+  transition:transform .35s ease;
+}
+.mars-gallery figure:first-child img{
+  object-position:center center;
+}
+
+/* Achievement team photographs must never crop a person out of frame. */
+.achievement-proof.team img{
+  object-fit:contain;
+  object-position:center center;
+  background:#11151b;
+  padding:8px;
+}
+
+/* Certificates already use contain; make the frame feel intentional. */
+.achievement-proof img{
+  object-position:center center;
+}
+
+/* Small-screen media remains full-content rather than changing to crop mode. */
+@media(max-width:900px){
+  .flag .media{
+    min-height:260px;
+  }
+  .flag .media img{
+    min-height:260px;
+  }
+  .single-project-media img{
+    height:auto;
+    max-height:none;
+  }
+  .mars-gallery img{
+    padding:6px;
+  }
+}
+
+@media(max-width:560px){
+  .headshot-frame{
+    width:min(100%,380px);
+  }
+  .subfig img{
+    height:250px;
+  }
+  .single-project-media img{
+    height:auto;
+    padding:6px;
+  }
+}
+
+/* ----------------------------------------------------------
+   MARS magazine: native-page proportions, never stretched
+   ---------------------------------------------------------- */
+.mars-flip-shell{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.mars-flip-loading{
+  width:min(100%,320px);
+  aspect-ratio:210 / 297;
+  height:auto;
+  min-height:0;
+  margin:0 auto;
+}
+.mars-flip-book{
+  width:320px;
+  height:auto;
+  aspect-ratio:210 / 297;
+  margin:0 auto;
+  background:#11151b;
+}
+.mars-flip-book canvas{
+  display:block;
+}
+.mars-flip-error{
+  width:min(100%,320px);
+  aspect-ratio:210 / 297;
+  min-height:0;
+  margin:0 auto;
+}
+@media(max-width:900px){
+  .mars-flip-book,
+  .mars-flip-loading,
+  .mars-flip-error{
+    width:290px;
+  }
+}
+@media(max-width:560px){
+  .mars-flip-book,
+  .mars-flip-loading,
+  .mars-flip-error{
+    width:min(100%,240px);
+  }
+}
+
+/* Video remains native-ratio; never force a crop on field footage. */
+video{
+  max-width:100%;
+}
+
 </style>
+<link rel="stylesheet" href="assets/css/live.css?v=1" />
 </head>
 <body>
 
@@ -969,7 +1206,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="#contact">Contact</a>
       <a class="btn btn-oxide" href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
     </nav>
-    <button class="navtoggle" id="navtoggle" aria-label="Menu">≡</button>
+    <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
   </div>
 </header>
 
@@ -977,10 +1214,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
 <section class="hero" id="top">
   <div class="bg" role="img" aria-label="Team MARS rover with the ABEx soil-sampling subsystem deployed on red terrain during the International Rover Challenge 2026 astrobiology task"></div>
   <div class="veil"></div>
+  <canvas class="hero-fx" aria-hidden="true"></canvas>
   <div class="wrap">
+    <div class="live-chip"><span class="live-dot" aria-hidden="true"></span><span><span id="liveGreeting">Hello</span> · open to research &amp; robotics roles · <b id="liveClock">Patiala, India</b></span></div>
     <div class="eyebrow">Mechatronics · Robotics · Field Engineering</div>
     <h1>Anikait&nbsp;Kaushik</h1>
-    <div class="role">I build machines that have to work outside the lab.</div>
+    <div class="role">I build <span class="typed" data-words="autonomous machines|planetary rovers|aerial robots|exoskeleton rigs|soil-sampling mechanisms">autonomous machines</span> for environments where failure isn&apos;t an option.</div>
     <p class="thesis">Mechatronics and Robotics Engineer working across mechanical design, robotics, autonomy and experimental systems. From planetary rovers and aerial robots to exoskeleton research, I take engineering problems from the first sketch to something that can actually be built, tested and challenged.</p>
     <div class="cta">
       <a class="btn" href="#work">View selected work</a>
@@ -994,7 +1233,34 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
       <a href="#publications">Patent · Papers</a>
     </div>
   </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to profile"></a>
 </section>
+
+<!-- ================= LIVE TICKER ================= -->
+<div class="ticker" aria-label="Highlights">
+  <div class="ticker-track">
+    <div class="ticker-group">
+      <span class="ticker-item"><b>IRC 2026</b> Champion</span>
+      <span class="ticker-item"><b>ISDC 2026</b> 1st Runner-Up</span>
+      <span class="ticker-item"><b>IRC 2025</b> 1st Runner-Up</span>
+      <span class="ticker-item"><b>Patent</b> application published</span>
+      <span class="ticker-item"><b>9.29 / 10</b> CGPA</span>
+      <span class="ticker-item"><b>100+</b> students led at Team MARS</span>
+      <span class="ticker-item"><b>TIET–UQ</b> exoskeleton research</span>
+      <span class="ticker-item"><b>3</b> papers in the pipeline</span>
+    </div>
+    <div class="ticker-group" aria-hidden="true">
+      <span class="ticker-item"><b>IRC 2026</b> Champion</span>
+      <span class="ticker-item"><b>ISDC 2026</b> 1st Runner-Up</span>
+      <span class="ticker-item"><b>IRC 2025</b> 1st Runner-Up</span>
+      <span class="ticker-item"><b>Patent</b> application published</span>
+      <span class="ticker-item"><b>9.29 / 10</b> CGPA</span>
+      <span class="ticker-item"><b>100+</b> students led at Team MARS</span>
+      <span class="ticker-item"><b>TIET–UQ</b> exoskeleton research</span>
+      <span class="ticker-item"><b>3</b> papers in the pipeline</span>
+    </div>
+  </div>
+</div>
 
 <!-- ================= ABOUT ================= -->
 <section class="section" id="about">
@@ -1731,10 +1997,37 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 var nl=document.getElementById('navlinks'),nt=document.getElementById('navtoggle');
 nt.addEventListener('click',function(){
   var open=nl.style.display==='flex';
-  if(open){nl.style.display='';}
-  else{nl.style.display='flex';nl.style.position='absolute';nl.style.top='60px';nl.style.left='0';nl.style.right='0';nl.style.flexDirection='column';nl.style.background='var(--paper)';nl.style.padding='18px 28px';nl.style.borderBottom='1px solid var(--line)';nl.style.gap='16px';}
+  if(open){
+    nl.style.display='';
+    nt.setAttribute('aria-expanded','false');
+  } else {
+    nl.style.display='flex';
+    nl.style.position='absolute';
+    nl.style.top='60px';
+    nl.style.left='0';
+    nl.style.right='0';
+    nl.style.flexDirection='column';
+    nl.style.background='var(--paper)';
+    nl.style.padding='18px 28px';
+    nl.style.borderBottom='1px solid var(--line)';
+    nl.style.gap='16px';
+    nt.setAttribute('aria-expanded','true');
+  }
 });
-nl.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<=900){nl.style.display='';}});});
+nl.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){
+    if(window.innerWidth<=900){
+      nl.style.display='';
+      nt.setAttribute('aria-expanded','false');
+    }
+  });
+});
+window.addEventListener('resize',function(){
+  if(window.innerWidth>900){
+    nl.style.display='';
+    nt.setAttribute('aria-expanded','false');
+  }
+});
 // scroll reveal
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
@@ -1744,6 +2037,7 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 (function () {
   const extensions = ['.png', '.jpg', '.jpeg', '.webp'];
   document.querySelectorAll('img[data-image-base]').forEach(function (img) {
+    img.decoding = 'async';
     const base = img.dataset.imageBase;
     let index = 0;
     function tryNext() {
@@ -1753,9 +2047,15 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
     img.addEventListener('error', tryNext);
     tryNext();
   });
+
+  document.querySelectorAll('img').forEach(function (img) {
+    if (!img.hasAttribute('decoding')) img.setAttribute('decoding','async');
+  });
 })();
 </script>
 
+
+<script src="assets/js/live.js?v=1"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
 
@@ -1773,28 +2073,47 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
   if (!loading || !bookEl || !window.St || !window.St.PageFlip) {
     if (loading) loading.style.display = 'none';
-    if (errorBox) { errorBox.style.display = 'flex'; }
+    if (errorBox) errorBox.style.display = 'flex';
     return;
   }
 
+  let objectUrls = [];
+  let pageFlip = null;
+
   try {
     const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs');
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
 
     const pdf = await pdfjsLib.getDocument(PDF_URL).promise;
     const totalPages = pdf.numPages;
     const pageImages = [];
 
-    // Render pages as compressed JPEGs so the flipbook stays reasonably light.
+    /* Render close to the displayed size rather than generating
+       unnecessarily large 1050px pages. This keeps the flipbook
+       substantially lighter while remaining crisp on the site. */
+    const targetWidth = window.innerWidth <= 560 ? 720 : 820;
+
+    let pageRatio = 210 / 297;
+
     for (let pageNumber = 1; pageNumber <= totalPages; pageNumber++) {
       const page = await pdf.getPage(pageNumber);
       const baseViewport = page.getViewport({ scale: 1 });
-      const targetWidth = 1050;
-      const scale = Math.min(1.55, targetWidth / baseViewport.width);
+
+      if (pageNumber === 1) {
+        pageRatio = baseViewport.width / baseViewport.height;
+      }
+
+      const scale = Math.min(1.35, targetWidth / baseViewport.width);
       const viewport = page.getViewport({ scale });
 
       const canvas = document.createElement('canvas');
       const context = canvas.getContext('2d', { alpha: false });
+
+      if (!context) {
+        throw new Error('Unable to create the magazine rendering context.');
+      }
+
       canvas.width = Math.ceil(viewport.width);
       canvas.height = Math.ceil(viewport.height);
 
@@ -1804,19 +2123,42 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
         background: '#ffffff'
       }).promise;
 
-      pageImages.push(canvas.toDataURL('image/jpeg', 0.88));
+      /* Object URLs avoid base64 inflation from toDataURL(). */
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob(
+          result => result ? resolve(result) : reject(new Error('Unable to encode magazine page.')),
+          'image/jpeg',
+          0.84
+        );
+      });
+
+      const url = URL.createObjectURL(blob);
+      objectUrls.push(url);
+      pageImages.push(url);
+
       canvas.width = 1;
       canvas.height = 1;
+      page.cleanup?.();
     }
 
-    const pageFlip = new St.PageFlip(bookEl, {
-      width: 218,
-      height: 300,
+    /* Keep the display page ratio tied to the actual PDF page. */
+    const displayWidth = window.innerWidth <= 560 ? 240 :
+                         window.innerWidth <= 900 ? 290 : 320;
+    const displayHeight = Math.round(displayWidth / pageRatio);
+
+    bookEl.style.width = displayWidth + 'px';
+    bookEl.style.height = displayHeight + 'px';
+    loading.style.width = displayWidth + 'px';
+    errorBox.style.width = displayWidth + 'px';
+
+    pageFlip = new St.PageFlip(bookEl, {
+      width: displayWidth,
+      height: displayHeight,
       size: 'fixed',
-      minWidth: 180,
-      maxWidth: 218,
-      minHeight: 248,
-      maxHeight: 300,
+      minWidth: displayWidth,
+      maxWidth: displayWidth,
+      minHeight: displayHeight,
+      maxHeight: displayHeight,
       drawShadow: true,
       flippingTime: 650,
       usePortrait: true,
@@ -1837,7 +2179,8 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
     function updateControls() {
       const current = pageFlip.getCurrentPageIndex();
       const shown = Math.min(current + 1, totalPages);
-      pageLabel.textContent = String(shown).padStart(2, '0') + ' / ' + String(totalPages).padStart(2, '0');
+      pageLabel.textContent =
+        String(shown).padStart(2, '0') + ' / ' + String(totalPages).padStart(2, '0');
       prevBtn.disabled = current <= 0;
       nextBtn.disabled = current >= totalPages - 1;
     }
@@ -1845,13 +2188,8 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
     pageFlip.on('flip', updateControls);
     updateControls();
 
-    prevBtn.addEventListener('click', function () {
-      pageFlip.flipPrev('bottom');
-    });
-
-    nextBtn.addEventListener('click', function () {
-      pageFlip.flipNext('bottom');
-    });
+    prevBtn.addEventListener('click', () => pageFlip.flipPrev('bottom'));
+    nextBtn.addEventListener('click', () => pageFlip.flipNext('bottom'));
 
     fullscreenBtn.addEventListener('click', async function () {
       const shell = document.querySelector('.mars-flip-shell');
@@ -1867,11 +2205,21 @@ document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
     });
 
     document.addEventListener('fullscreenchange', function () {
-      fullscreenBtn.textContent = document.fullscreenElement ? 'Exit Fullscreen' : 'Fullscreen';
+      fullscreenBtn.textContent =
+        document.fullscreenElement ? 'Exit Fullscreen' : 'Fullscreen';
     });
+
+    window.addEventListener('beforeunload', function () {
+      if (pageFlip) pageFlip.destroy();
+      objectUrls.forEach(url => URL.revokeObjectURL(url));
+      objectUrls = [];
+    }, { once: true });
 
   } catch (err) {
     console.error('MARS magazine flipbook failed:', err);
+    if (pageFlip) pageFlip.destroy();
+    objectUrls.forEach(url => URL.revokeObjectURL(url));
+    objectUrls = [];
     loading.style.display = 'none';
     errorBox.style.display = 'flex';
   }

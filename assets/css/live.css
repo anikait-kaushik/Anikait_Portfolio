@@ -1,0 +1,173 @@
+/* ==========================================================
+   LIVE LAYER — motion & interaction on top of the base styles.
+   Everything here is progressive: without JS the site still
+   renders exactly as before.
+   ========================================================== */
+
+/* ---------- scroll progress ---------- */
+.scroll-progress{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:100;
+  background:linear-gradient(90deg,var(--oxide),var(--oxide-hi) 60%,var(--steel-hi));
+  transform-origin:0 50%;transform:scaleX(0);pointer-events:none;
+}
+
+/* ---------- nav: scrolled state + active link ---------- */
+header.nav{transition:box-shadow .3s ease,background .3s ease}
+header.nav.scrolled{box-shadow:0 10px 30px -22px rgba(20,24,30,.55);background:rgba(238,240,243,.97)}
+.navlinks a.active{color:var(--ink)}
+.navlinks a.active::after{width:100%}
+
+/* ---------- hero ---------- */
+.hero .bg{animation:kenburns 26s ease-in-out infinite alternate;will-change:translate,scale}
+@keyframes kenburns{from{scale:1.02}to{scale:1.1}}
+.hero-fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
+.hero .wrap > *{animation:heroUp .9s cubic-bezier(.2,.7,.2,1) both}
+.hero .wrap > *:nth-child(1){animation-delay:.05s}
+.hero .wrap > *:nth-child(2){animation-delay:.15s}
+.hero .wrap > *:nth-child(3){animation-delay:.28s}
+.hero .wrap > *:nth-child(4){animation-delay:.4s}
+.hero .wrap > *:nth-child(5){animation-delay:.52s}
+.hero .wrap > *:nth-child(6){animation-delay:.64s}
+.hero .wrap > *:nth-child(7){animation-delay:.76s}
+@keyframes heroUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+.typed{color:var(--oxide-hi);white-space:nowrap}
+.typed::after{content:"";display:inline-block;width:2px;height:.95em;margin-left:3px;vertical-align:-.1em;background:var(--oxide-hi);animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{opacity:0}}
+
+.live-chip{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;margin-bottom:22px;
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;color:#C4CAD2;
+  padding:7px 13px;border:1px solid rgba(255,255,255,.14);border-radius:999px;
+  background:rgba(15,17,22,.55);backdrop-filter:blur(6px);
+}
+.live-chip b{color:#fff;font-weight:500}
+.live-dot{position:relative;width:8px;height:8px;border-radius:50%;background:#4cd18a;flex:0 0 auto}
+.live-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#4cd18a;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.6);opacity:0}}
+
+.scroll-cue{
+  position:absolute;left:50%;bottom:18px;translate:-50% 0;width:22px;height:34px;
+  border:1.5px solid rgba(255,255,255,.35);border-radius:12px;z-index:2;
+}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--oxide-hi);animation:cue 1.8s ease-in-out infinite}
+@media(max-width:560px),(max-height:620px){.scroll-cue{display:none}}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(12px)}}
+
+/* ---------- achievements ticker ---------- */
+.ticker{background:var(--graphite);color:#DDE2E8;border-top:1px solid var(--line-d);border-bottom:1px solid var(--line-d);overflow:hidden;position:relative}
+.ticker::before,.ticker::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:1;pointer-events:none}
+.ticker::before{left:0;background:linear-gradient(90deg,var(--graphite),transparent)}
+.ticker::after{right:0;background:linear-gradient(-90deg,var(--graphite),transparent)}
+.ticker-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-group{display:flex;flex:0 0 auto}
+.ticker-item{display:flex;align-items:center;gap:12px;padding:15px 26px;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.04em;white-space:nowrap}
+.ticker-item b{color:#fff;font-weight:500}
+.ticker-item::before{content:"";width:6px;height:6px;background:var(--oxide-hi);transform:rotate(45deg);flex:0 0 auto}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- section headings ---------- */
+.section .eyebrow::before,.section .kicker-line,.band .eyebrow::before{transition:width .8s cubic-bezier(.2,.7,.2,1) .1s}
+.js-live .section:not(.seen) .eyebrow::before,
+.js-live .section:not(.seen) .kicker-line,
+.js-live .band:not(.seen) .eyebrow::before{width:0}
+
+.split-word{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.split-word > span{display:inline-block;transform:translateY(105%);transition:transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--wi,0) * 35ms)}
+.seen .split-word > span{transform:none}
+
+/* staggered children inside reveal blocks */
+.reveal.stagger{opacity:1;transform:none}
+.stagger > .reveal-child{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease;transition-delay:calc(var(--ci,0) * 90ms),calc(var(--ci,0) * 90ms),0s,0s}
+.stagger.in > .reveal-child{opacity:1;transform:none}
+.stagger.in > .card.reveal-child:hover{transform:translateY(-3px)}
+
+/* ---------- interactive surfaces ---------- */
+.spot{position:relative;isolation:isolate}
+.spot::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(190,74,46,.10),transparent 45%);
+  transition:opacity .35s ease;
+}
+.spot:hover::after{opacity:1}
+.band .spot::after{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(217,106,76,.16),transparent 45%)}
+
+.tilt{will-change:transform}
+.tilt:hover{box-shadow:0 22px 40px -26px rgba(20,24,30,.5);border-color:#c2c9d2}
+.band .tilt:hover{border-color:#4a5360}
+
+.exp{transition:box-shadow .3s ease,border-color .3s ease,transform .3s ease}
+.exp:hover{box-shadow:0 18px 40px -30px rgba(20,24,30,.55);border-color:#c2c9d2}
+
+.tag{transition:transform .2s ease,color .2s ease,border-color .2s ease,background .2s ease}
+.tag:hover{transform:translateY(-2px);color:var(--oxide);border-color:var(--oxide);background:#fff}
+
+.skcol li{transition:transform .2s ease,color .2s ease}
+.skcol li:hover{transform:translateX(5px);color:var(--ink)}
+.skcol li::before{content:"";width:0;height:2px;background:var(--oxide);align-self:center;transition:width .2s ease;margin-right:0;flex:0 0 auto}
+.skcol li:hover::before{width:10px;margin-right:2px}
+.skcol li{justify-content:flex-start}
+.skcol li .lvl{margin-left:auto}
+
+.pub-item{transition:background .25s ease}
+.pub-item:hover{background:#fff}
+.pub-item h3{transition:color .2s ease}
+.pub-item:hover h3{color:var(--oxide)}
+
+.outreach .oi{transition:padding-left .25s ease;border-left:2px solid transparent}
+.outreach .oi:hover{padding-left:12px;border-left-color:var(--oxide)}
+
+.scholar span{transition:border-color .2s ease,transform .2s ease}
+.scholar span:hover{border-color:var(--oxide-hi);transform:translateY(-2px)}
+
+.btn{will-change:transform}
+
+/* zoomable media */
+img.zoomable{cursor:zoom-in}
+.exp-media img,.flag img,.card figure img,.mars-gallery img,.achievement-proof img{transition:transform .45s cubic-bezier(.2,.7,.2,1),filter .3s ease}
+.exp-media div:hover img,.card figure:hover img,.ganga-image:hover img,.achievement-proof:hover img{transform:scale(1.025)}
+.exp-media > div,.card figure,.ganga-image,.achievement-proof{overflow:hidden}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,12,16,.92);backdrop-filter:blur(6px);opacity:0;visibility:hidden;
+  transition:opacity .3s ease,visibility .3s;padding:56px 16px 70px;
+}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(1200px,100%);max-height:100%;object-fit:contain;border-radius:3px;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);transform:scale(.96);transition:transform .35s cubic-bezier(.2,.7,.2,1);background:#fff}
+.lightbox.open img{transform:none}
+.lb-cap{position:absolute;left:16px;right:16px;bottom:22px;text-align:center;color:#C4CAD2;font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.lb-count{color:var(--oxide-hi);margin-right:10px}
+.lb-btn{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;width:44px;height:44px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease}
+.lb-btn:hover{background:var(--oxide)}
+.lb-close{top:12px;right:16px}
+.lb-prev{left:16px;top:50%;margin-top:-22px}
+.lb-next{right:16px;top:50%;margin-top:-22px}
+@media(max-width:560px){.lb-prev,.lb-next{top:auto;bottom:56px;margin-top:0}}
+
+/* ---------- back to top ---------- */
+.to-top{
+  position:fixed;right:20px;bottom:20px;z-index:90;width:48px;height:48px;border-radius:50%;
+  border:0;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 26px -12px rgba(0,0,0,.55);opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease,background .2s ease;
+}
+.to-top.show{opacity:1;transform:none;pointer-events:auto}
+.to-top:hover{background:var(--oxide)}
+.to-top svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.to-top circle{fill:none;stroke-width:2.5}
+.to-top .ring-bg{stroke:rgba(255,255,255,.15)}
+.to-top .ring{stroke:var(--oxide-hi);stroke-linecap:round;transition:stroke-dashoffset .1s linear}
+.to-top:hover .ring{stroke:#fff}
+.to-top span{position:relative;font-size:16px}
+
+/* ---------- reduced motion: keep it calm ---------- */
+@media(prefers-reduced-motion:reduce){
+  .hero .bg,.hero .wrap > *,.ticker-track,.live-dot::after,.scroll-cue::after,.typed::after{animation:none!important}
+  .split-word > span,.stagger > .reveal-child{transform:none!important;opacity:1!important;transition:none!important}
+  .tilt,.tag:hover,.skcol li:hover,.scholar span:hover{transform:none!important}
+  .ticker-track{flex-wrap:wrap;width:auto}
+  .ticker-group[aria-hidden]{display:none}
+}

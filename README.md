@@ -9,6 +9,8 @@ Single-file static site. No build step, no dependencies, no tracking. Loads fast
 .
 ├── index.html                 # the whole site (HTML + CSS + JS inline)
 ├── assets/
+│   ├── css/live.css           # motion & interaction layer (animations, lightbox, ticker)
+│   ├── js/live.js             # live behaviour: clock, typing, counters, scroll-spy, hero canvas
 │   ├── img/                   # engineering figures (rover, ABEx CAD, gait lab, CLIMB CART)
 │   └── docs/Anikait_Kaushik_Resume.pdf
 ├── vercel.json

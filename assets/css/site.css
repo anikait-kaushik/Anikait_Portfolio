@@ -763,3 +763,15 @@ img.zoom{cursor:zoom-in}
 .rp-duo{display:grid;grid-template-columns:1.45fr 1fr;gap:8px;padding:10px;flex:1;align-items:stretch;background:#fff}
 .rp-duo video{width:100%;height:100%;min-height:240px;max-height:380px;object-fit:cover;border-radius:8px;background:#0B1220;display:block}
 .rp-duo video:first-child{object-fit:contain;background:#fff;border:1px solid var(--line)}
+
+/* magazine flipbook link */
+.mag-cta{display:grid;grid-template-columns:180px 1fr auto;gap:22px;align-items:center;margin-top:18px;padding:14px 22px 14px 14px;text-decoration:none;color:inherit;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .3s}
+.mag-cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.mag-cover{display:block;border-radius:8px;overflow:hidden;aspect-ratio:595/419;box-shadow:0 10px 24px -12px rgba(16,24,40,.45);transform:perspective(600px) rotateY(-8deg);transition:transform .6s var(--ease)}
+.mag-cta:hover .mag-cover{transform:perspective(600px) rotateY(0)}
+.mag-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.mag-txt{display:flex;flex-direction:column;gap:6px}
+.mag-txt b{font-family:var(--font-head);font-size:20px;color:var(--head);font-weight:600;line-height:1.25}
+.mag-txt span:last-child{font-size:14px;color:var(--text-2)}
+.mag-go{font-family:var(--font-mono);font-size:12.5px;color:#fff;background:var(--accent);padding:10px 16px;border-radius:999px;white-space:nowrap}
+@media(max-width:700px){.mag-cta{grid-template-columns:110px 1fr;gap:14px;padding-right:14px}.mag-go{grid-column:1/-1;justify-self:start}.mag-txt b{font-size:17px}}

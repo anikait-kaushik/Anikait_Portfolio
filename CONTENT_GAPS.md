@@ -1,9 +1,8 @@
 # Content gaps: evidence only Anikait can supply
 
 The site only states what the résumé, the previous site or the project images support.
-The items below would make it much stronger. Each one is also marked in the HTML as a
-hidden `<!-- TODO(Anikait): ... -->` comment at the exact spot it belongs.
-Search for `TODO(Anikait)` in VS Code.
+The items below would make it much stronger. The case studies are now visual showcases,
+so this list is the full checklist (there are no hidden TODO markers in the pages any more).
 
 **Rule:** add only real, measured or documented facts. If something wasn't measured,
 leave it out.
@@ -13,6 +12,10 @@ leave it out.
 2. Create a new form and copy its endpoint (looks like `https://formspree.io/f/abcdwxyz`).
 3. In `index.html`, search for `data-endpoint=""` and paste it between the quotes.
 4. Push. Messages then arrive in your Gmail. Until then, the form opens the visitor's email app instead.
+
+## Conferences & workshops section
+- [x] TRS–DSAI workshop photo added.
+- [ ] **IIT Ropar:** the site now says "Participant" everywhere. If you presented Alaknanda's mechanical subsystem there, tell me and I'll add it back.
 
 ## Found in your documents folder: please fix or confirm
 - [ ] **AIR 2025 was 2–5 July 2025** (per both certificates). Your résumé PDF says June 2025; the website now says July.

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Research &amp; Publications — Anikait Kaushik</title>
+<meta name="description" content="Research by Anikait Kaushik: Euler–Lagrange gait dynamics (IEEE T-RO, under review), exoskeleton-enabled rehabilitation (TIET–UQ), planetary soil sampling, Sim2Real. Publications with exact status." />
+<meta name="theme-color" content="#FFFFFF" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/css/site.css?v=20" />
+</head>
+<body>
+<a class="skip" href="#research">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="wrap">
+  <a href="index.html" class="brand">Anikait<span>.</span>Kaushik</a>
+  <nav class="navlinks" id="navlinks" aria-label="Primary">
+    <a href="index.html">← Home</a><a href="#research">Research</a><a href="#publications">Publications</a><a href="index.html#work">Projects</a><a href="index.html#contact">Contact</a>
+    <a class="btn btn-solid" href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
+</div></header>
+<main>
+<!-- ======================= RESEARCH ======================= -->
+<section class="section" id="research">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label"><span class="n">01</span> Research</div>
+      <h2>Understanding the dynamics of how humans and robots move, then building machines around it.</h2>
+      <p class="lede">I'm interested in robots that move through, and work alongside, the physical world: legged and wearable systems, manipulators and field robots. My research so far combines Euler–Lagrange modelling with instrumented experiments, and checks every model against measured data.</p>
+    </div>
+
+    <h3 class="sub-h">Research interests <small>with current evidence for each</small></h3>
+    <div class="interests reveal">
+      <div class="interest">
+        <h3>Legged locomotion</h3>
+        <p>How legs generate, absorb and redistribute energy, and how models of human gait can inform legged and wearable robots.</p>
+        <div class="ev-line"><b>Evidence:</b> three-link gait dynamics model (T-RO, under review) · hands-on commissioning of a Unitree Go2 Pro EDU</div>
+      </div>
+      <div class="interest">
+        <h3>Robot dynamics &amp; modelling</h3>
+        <p>Euler–Lagrange formulations that are compact enough to use and accurate enough to trust, validated against measurement.</p>
+        <div class="ev-line"><b>Evidence:</b> model validated against Visual3D across five subjects · Dynamics of Robotic Systems (AIR 2025, IIT Jodhpur)</div>
+      </div>
+      <div class="interest">
+        <h3>Exoskeletons &amp; physical HRI</h3>
+        <p>Wearable lower-limb exoskeletons for rehabilitation, where robot motion has to be judged by human biomechanics.</p>
+        <div class="ev-line"><b>Evidence:</b> R3 programme, TIET–UQ Centre of Excellence (ongoing since Jun 2025)</div>
+      </div>
+      <div class="interest">
+        <h3>Manipulation</h3>
+        <p>Manipulator design and integration for field tasks: reaching, servicing hardware and handling samples.</p>
+        <div class="ev-line"><b>Evidence:</b> Ganga's 5-DOF manipulator (team captain) · Orangewood arm pick-and-place · LoCoBot Sim2Real (ongoing)</div>
+      </div>
+      <div class="interest">
+        <h3>Control &amp; Sim2Real</h3>
+        <p>Using physics-based digital twins to develop behaviour in simulation that holds up on hardware.</p>
+        <div class="ev-line"><b>Evidence:</b> MATLAB–ROS framework with a Simscape LoCoBot twin, with MathWorks (in progress)</div>
+      </div>
+      <div class="interest">
+        <h3>Autonomous field robotics</h3>
+        <p>Robots that complete mission tasks in unstructured terrain: mobility, sampling, instrument deployment and autonomy.</p>
+        <div class="ev-line"><b>Evidence:</b> Ganga (IRC 2026, 1st/33) · Alaknanda (IRC 2025, 2nd/31)</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Research programme <small>status shown for every output</small></h3>
+    <div class="legend" aria-label="Status legend">
+      <span class="badge b-pub">Published</span>
+      <span class="badge b-acc">Accepted</span>
+      <span class="badge b-review">Under review</span>
+      <span class="badge b-prep">In preparation</span>
+      <span class="badge b-ongoing">Ongoing</span>
+    </div>
+
+    <div class="rprog">
+      <!-- R1 -->
+      <article class="rp reveal" id="r-gait">
+        <div class="rp-body">
+          <div class="rp-top"><span class="kicker">R1 · Gait dynamics · TIET–UQ R3</span><span class="badge b-review">Under review · IEEE T-RO</span></div>
+          <h3>A unified Euler–Lagrange framework for human gait, using a three-link leg model</h3>
+          <p class="q">Aim: test whether a compact three-link (thigh–shank–foot) Euler–Lagrange model, driven by measured motion and force data, agrees with an established biomechanics pipeline.</p>
+          <div class="method" aria-label="Methodology">
+            <div><b>1 · Model</b><span>Three-link sagittal leg; equations of motion via Euler–Lagrange</span></div>
+            <div><b>2 · Capture</b><span>Qualisys motion capture, AMTI force plates, Noraxon EMG</span></div>
+            <div><b>3 · Process</b><span>Synchronised in QTM; 3D reconstruction; filtering &amp; analysis in MATLAB</span></div>
+            <div><b>4 · Validate</b><span>Compared against Visual3D across five subjects</span></div>
+          </div>
+          <details class="more">
+            <summary>My role and what's still open</summary>
+            <div class="inner">
+              <p>I developed the experimental workflow in the gait laboratory: synchronised capture of lower-limb kinematics, gait cycles, ground-reaction force (GRF), centre of pressure (COP) and muscle activity. I then turned the measurements into inputs the model can use, including body-segment parameters.</p>
+              <p>The results are under peer review, so they aren't reproduced here. I'm happy to discuss the method and findings directly.</p>
+            </div>
+          </details>
+        </div>
+        <div class="rp-media">
+          <figure>
+            <img class="zoom" src="assets/img/web/mocap-pipeline.jpg" alt="Gait pipeline: motion capture cameras and IR markers, AMTI force capture, data synchronisation, interpretation, MATLAB filtering and joint-angle outputs" loading="lazy" width="1800" height="1013">
+            <figcaption>Experimental pipeline: capture → synchronise → reconstruct → analyse.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- Interactive model -->
+      <div class="callout neutral reveal">Try the three-link leg model interactively: pose it and compute its gravity torques in 3D. <a class="link" href="index.html#playground">Open the playground →</a></div>
+      <!-- R2 -->
+      <article class="rp reveal" id="r-exo">
+        <div class="rp-body">
+          <div class="rp-top"><span class="kicker">R2 · Exoskeleton rehabilitation · TIET–UQ CoE</span><span class="badge b-ongoing">Ongoing since Jun 2025</span></div>
+          <h3>R3 (Realize, Revive &amp; Recover): AI-enabled, data-driven exoskeleton rehabilitation</h3>
+          <p class="q">A robot can move perfectly and still move a human badly. R3 develops a custom wearable lower-limb exoskeleton and evaluates it through the biomechanics of the person wearing it.</p>
+          <p>The work spans robotics, human–robot collaboration and biomechanics. I contribute to the mechanical side of exoskeleton development and run the experimental side: synchronised kinematics, GRF, COP and EMG during exoskeleton-assisted gait experiments.</p>
+          <p class="meta" style="margin-top:14px">Mentors: Prof. Ashish Singla, Dr. Sachin Kansal (TIET) · Dr. Alejandro Melendez-Calderon (UQ)</p>
+          <p style="margin-top:12px"><a class="link" href="projects/exoskeleton.html">Research case study: pipeline, simulation, hardware, interface →</a></p>
+        </div>
+        <div class="rp-media">
+          <figure>
+            <img class="zoom" src="assets/img/web/exo-gen4-real.jpg" alt="Gen 4 wearable lower-limb exoskeleton hardware" loading="lazy" width="694" height="1105">
+            <figcaption>Gen 4 exoskeleton hardware.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- R3 -->
+      <article class="rp reveal" id="r-load">
+        <div class="rp-body">
+          <div class="rp-top"><span class="kicker">R3 · Biomechanics</span><span class="badge b-prep">Final preparation · J. Biomechanics</span></div>
+          <h3>Load-dependent changes in lower-limb joint kinetics and hip–knee coordination during walking</h3>
+          <p class="q">How does carrying load change the joint kinetics of walking, and how the hip and knee coordinate?</p>
+          <p>This is a companion analysis built on the same instrumented gait dataset as R1. The manuscript is in final preparation, so no results are reported here yet.</p>
+        </div>
+        <div class="rp-media">
+          <figure>
+            <img class="zoom" src="assets/img/web/bsp-calculator.jpg" alt="Body segment parameters calculator computing segment masses and inertial properties from subject measurements" loading="lazy" width="1790" height="954">
+            <figcaption>Body-segment parameter calculation used to prepare subject-specific model inputs.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- R4 -->
+      <article class="rp reveal" id="r-soil">
+        <div class="rp-body">
+          <div class="rp-top"><span class="kicker">R4 · Planetary robotics</span><span><span class="badge b-acc">Accepted · IPRoMM 2026</span> <span class="badge b-pub">Patent application published</span></span></div>
+          <h3>Multi-axis robotic subsystem for in-situ soil sampling and analysis</h3>
+          <p class="q">Can a rover-mounted subsystem penetrate, extract, transfer and chemically characterise soil reliably enough for a timed field mission?</p>
+          <p>This is the engineering research behind the ABEx subsystems on Alaknanda and Ganga. At IRC 2026, Ganga achieved 150 mm soil penetration and 12 g sample recovery. Related IP: <em>An Apparatus, System and Method for Robotic Soil Analysis and Collection</em> (Application No. 202511062827).</p>
+          <p style="margin-top:12px"><a class="link" href="projects/abex.html">Engineering case study →</a></p>
+        </div>
+        <div class="rp-media">
+          <figure>
+            <img class="zoom" src="assets/img/web/abex-results.jpg" alt="ABEx results: colorimetric iron test and bar charts of soil temperature and pH across a home site and four test sites" loading="lazy" width="1000" height="785">
+            <figcaption>Soil temperature, pH and a colorimetric iron test across five sites.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- R5 -->
+      <article class="rp reveal" id="r-sim2real">
+        <div class="rp-body">
+          <div class="rp-top"><span class="kicker">R5 · Sim2Real · with MathWorks</span><span class="badge b-ongoing">In progress</span></div>
+          <h3>MATLAB–ROS framework and Simscape digital twin of the Trossen LoCoBot</h3>
+          <p class="q">Can one physics-based twin carry robot kinematics, dynamics, sensing and control interfaces from simulation to the physical robot unchanged?</p>
+          <p>Developed with MATLAB Copilot and Simscape. Mentors: Prof. Ashish Singla and Dr. Pranav Lad (MathWorks).</p>
+          <p style="margin-top:12px"><a class="link" href="projects/locobot.html">Project page →</a></p>
+        </div>
+        <div class="rp-media" style="background:#0D1117;justify-content:center;padding:22px">
+          <svg viewBox="0 0 300 260" role="img" aria-label="Sim2Real pipeline: MATLAB and Copilot, Simscape twin, ROS interface, LoCoBot hardware" style="width:100%;height:auto">
+            <g font-family="IBM Plex Mono, monospace" font-size="11">
+              <g fill="none" stroke="#3A4452"><rect x="20" y="14" width="260" height="40" rx="3"/><rect x="20" y="78" width="260" height="40" rx="3"/><rect x="20" y="142" width="260" height="40" rx="3"/><rect x="20" y="206" width="260" height="40" rx="3" stroke="#4FB38A"/></g>
+              <g stroke="#4FB38A" stroke-dasharray="3 4"><line x1="150" y1="54" x2="150" y2="78"/><line x1="150" y1="118" x2="150" y2="142"/><line x1="150" y1="182" x2="150" y2="206"/></g>
+              <g fill="#4FB38A" font-size="9.5" letter-spacing="1"><text x="32" y="30">01 · AUTHOR</text><text x="32" y="94">02 · SIMULATE</text><text x="32" y="158">03 · BRIDGE</text><text x="32" y="222">04 · VALIDATE</text></g>
+              <g fill="#fff" font-size="12.5"><text x="32" y="46">MATLAB + Copilot</text><text x="32" y="110">Simscape digital twin</text><text x="32" y="174">ROS interface</text><text x="32" y="238">LoCoBot hardware</text></g>
+            </g>
+          </svg>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PUBLICATIONS ======================= -->
+<section class="section alt" id="publications">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="label"><span class="n">02</span> Publications, IP &amp; contributions</div>
+      <h2>Every output, with its exact status.</h2>
+      <p class="lede">1 published patent application · 1 accepted conference paper · 2 accepted book chapters · 1 manuscript under review · 1 in final preparation.</p>
+    </div>
+    <div class="pfilter" role="toolbar" aria-label="Filter by status or type">
+      <button type="button" data-f="all" aria-pressed="true">All (6)</button>
+      <button type="button" data-f="published" aria-pressed="false">Published / accepted (4)</button>
+      <button type="button" data-f="review" aria-pressed="false">Under review (1)</button>
+      <button type="button" data-f="prep" aria-pressed="false">In preparation (1)</button>
+    </div>
+    <div class="pubs">
+      <div class="pub" data-kind="review journal">
+        <div class="ptype">Journal</div>
+        <div>
+          <h3>Experimental Validation of a Unified Euler–Lagrange Framework Using a Three-Link Leg Model for Human Gait Analysis</h3>
+          <div class="venue">IEEE Transactions on Robotics · impact factor 11.1</div>
+          <div class="note">From the TIET–UQ R3 gait programme; validated against Visual3D across five subjects. <a class="link" href="#r-gait">Methodology ↑</a></div>
+        </div>
+        <span class="badge b-review">Under review</span>
+      </div>
+      <div class="pub" data-kind="published conference">
+        <div class="ptype">Conference</div>
+        <div>
+          <h3>Design and Development of a Multi-Axis Robotic Subsystem for In-Situ Soil Sampling and Analysis</h3>
+          <div class="venue">IPRoMM 2026</div>
+          <div class="role">First author</div>
+          <div class="note">The engineering account of the ABEx rover subsystem. <a class="link" href="projects/abex.html">Case study →</a></div>
+        </div>
+        <span class="badge b-acc">Accepted</span>
+      </div>
+      <div class="pub" data-kind="published ip">
+        <div class="ptype">Patent</div>
+        <div>
+          <h3>An Apparatus, System and Method for Robotic Soil Analysis and Collection</h3>
+          <div class="venue">Indian Patent Office · Application No. 202511062827 · published 2025</div>
+          <div class="role">Named inventor</div>
+          <div class="note">Published application, not a granted patent. Listed on the InPASS register.</div>
+        </div>
+        <span class="badge b-pub">Published application</span>
+      </div>
+      <div class="pub" data-kind="published chapter">
+        <div class="ptype">Book chapter</div>
+        <div>
+          <h3>Urban Air Quality Management through AI-Driven Decision Support</h3>
+          <div class="venue">Bentham Science · in <em>Smart Approaches to Air Remediation: AI Applications in Air Pollution Control and Monitoring</em></div>
+        </div>
+        <span class="badge b-acc">Accepted</span>
+      </div>
+      <div class="pub" data-kind="published chapter">
+        <div class="ptype">Book chapter</div>
+        <div>
+          <h3>Industrial and Municipal Case Studies on AI-Enabled Water Cleanup</h3>
+          <div class="venue">Bentham Science · in <em>Intelligent Systems for Water Remediation: Transforming Wastewater and Water Quality Management</em></div>
+        </div>
+        <span class="badge b-acc">Accepted</span>
+      </div>
+      <div class="pub" data-kind="prep journal">
+        <div class="ptype">Journal</div>
+        <div>
+          <h3>Load-Dependent Changes in Lower-Limb Joint Kinetics and Hip–Knee Coordination During Walking</h3>
+          <div class="venue">Journal of Biomechanics · impact factor 2.9</div>
+          <div class="note">Companion analysis on the R1 gait dataset.</div>
+        </div>
+        <span class="badge b-prep">Final preparation</span>
+      </div>
+    </div>
+
+    <h3 class="sub-h">Conferences, workshops &amp; academic service</h3>
+    <div class="talks reveal">
+      <div class="talk">
+        <img class="zoom" src="assets/img/web/iitropar-ceremony.jpg" alt="Anikait receiving a certificate at the TRS workshop at IIT Ropar" loading="lazy" width="1412" height="1536">
+        <div><span class="kicker">Mar 2025 · IIT Ropar</span><h4>Practicing Robotics: Reconfigurable Robotics (ROS)</h4><p>TRS workshop on reconfigurable robots built on ROS.</p></div>
+      </div>
+      <div class="talk">
+        <img class="zoom" src="assets/img/web/air2025-iitj.jpg" alt="Team at Advances in Robotics (AIR) 2025, the 7th International Conference of The Robotics Society, IIT Jodhpur" loading="lazy" width="1800" height="1350">
+        <div><span class="kicker">2–5 Jul 2025 · IIT Jodhpur</span><h4>Advances in Robotics (AIR 2025)</h4><p>Participated in the 7th International Conference of The Robotics Society, including the workshop "Dynamics of Robotic Systems" (2 Jul).</p></div>
+      </div>
+      <div class="talk">
+        <img class="zoom" src="assets/img/web/trs-dsai-2026.jpg" alt="Anikait at the TRS–DSAI International Workshop on Intelligent Systems, TIET" loading="lazy" width="960" height="1280">
+        <div><span class="kicker">Oct 2026 · TIET</span><h4>TRS–DSAI International Workshop on Intelligent Systems</h4><p>Organising committee, "The Future of Robotics and AI" (Oct 30–31). Active TRS member (No. S254791).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="index.html">← Back to home</a></div></footer>
+<script src="assets/js/site.js?v=11"></script>
+</body>
+</html>

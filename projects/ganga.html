@@ -3,177 +3,135 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ganga Mars Rover — Case Study · Anikait Kaushik</title>
-<meta name="description" content="Engineering case study: Ganga, a 4th-generation Mars rover. Team Captain and mechanical lead; 5-DOF manipulator, ABEx soil sampling, PU wheel integration. IRC 2026 Champion (1st of 33)." />
-<meta property="og:image" content="../assets/img/web/ganga-field-irc26.jpg" />
-<meta name="theme-color" content="#14161B" />
+<title>Ganga Mars Rover — IRC 2026 Champion · Anikait Kaushik</title>
+<meta name="description" content="Ganga: Team MARS's 4th-generation Mars rover and IRC 2026 Champion, 1st of 33 finalists. Anikait Kaushik was Team Captain and led its mechanical development." />
+<meta property="og:image" content="../assets/video/ganga-system.jpg" />
+<meta name="theme-color" content="#FFFFFF" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/site.css?v=5" />
+<link rel="preload" as="image" href="../assets/video/ganga-system.jpg" />
+<link rel="stylesheet" href="../assets/css/site.css?v=20" />
 </head>
 <body>
-<a class="skip" href="#overview">Skip to content</a>
+<a class="skip" href="#numbers">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
 <header class="nav"><div class="wrap">
   <a href="../index.html" class="brand">Anikait<span>.</span>Kaushik</a>
   <nav class="navlinks" id="navlinks" aria-label="Primary">
-    <a href="../index.html#projects">← All projects</a><a href="../index.html#research">Research</a><a href="../index.html#contact">Contact</a>
+    <a href="../index.html#work">← All projects</a><a href="../research.html">Research</a><a href="../index.html#contact">Contact</a>
     <a class="btn btn-solid" href="../assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
   </nav>
   <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
 </div></header>
 
 <main>
-<section class="cs-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="../index.html#projects">Projects</a> / Case study 01</div>
-    <h1>Ganga: one rover, multiple mission-critical jobs</h1>
-    <p class="sum">A 4th-generation Mars rover built by Team MARS for the International Rover Challenge 2026. It had to traverse rough terrain, manipulate hardware, deploy instruments, and collect and analyse soil, as one integrated field system.</p>
-    <div class="cs-meta">
-      <div><div class="k">My role</div><div class="v">Team Captain · led overall mechanical development</div></div>
-      <div><div class="k">Period</div><div class="v">2025–26 · IRC 2026</div></div>
-      <div><div class="k">Team</div><div class="v">Team MARS, TIET (multidisciplinary)</div></div>
-      <div><div class="k">Mentors</div><div class="v">Prof. Ashish Singla · Dr. Sachin Kansal</div></div>
-    </div>
+<!-- ============ OPENING: full-screen video ============ -->
+<section class="sx-hero">
+  <video class="sx-bg" data-inview autoplay muted loop playsinline preload="auto" poster="../assets/video/ganga-system.jpg" aria-hidden="true">
+    <source src="../assets/video/ganga-system.mp4" type="video/mp4">
+  </video>
+  <div class="sx-shade"></div>
+  <div class="wrap sx-hero-in">
+    <a class="sx-crumb" href="../index.html#work">← Projects / Case study 01</a>
+    <span class="sx-badge"><i aria-hidden="true">🏆</i>IRC 2026 Champion · 1st of 33 finalists</span>
+    <h1 class="sx-title"><span>Ganga.</span><span class="g">One rover.</span><span class="g">Every mission.</span></h1>
+    <p class="sx-lede">Team MARS's 4th-generation Mars rover: it drives rough terrain, works an equipment panel with its arm, and drills and analyses soil on board. I was <strong>Team Captain</strong> and led its mechanical development.</p>
+    <div class="sx-cta"><a class="btn btn-solid" href="#missions">See the missions</a><a class="btn sx-ghost" href="#action">Watch it run ▶</a></div>
   </div>
-  <div class="cs-cover">
-    <video controls muted playsinline preload="none" poster="../assets/video/ganga-system.jpg" aria-label="Ganga system working video, IRC 2026"><source src="../assets/video/ganga-system.mp4" type="video/mp4"></video>
+  <a class="sx-scroll" href="#numbers" aria-label="Scroll down"><span></span></a>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="sx-band" id="numbers">
+  <div class="wrap sx-stats">
+    <div class="sx-stat reveal"><b><span data-count="1">1</span><small>st</small></b><span>of 33 finalist teams</span></div>
+    <div class="sx-stat reveal d1"><b><span data-count="150">150</span><small>mm</small></b><span>soil penetration</span></div>
+    <div class="sx-stat reveal d2"><b><span data-count="12">12</span><small>g</small></b><span>sample recovered</span></div>
+    <div class="sx-stat reveal d3"><b><span data-count="5">5</span><small>-DOF</small></b><span>robotic arm</span></div>
   </div>
 </section>
 
-<div class="wrap cs-layout">
-  <nav class="toc" aria-label="On this page">
-    <b>On this page</b>
-    <a href="#overview">Results</a><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#contribution">My contribution</a><a href="#testing">Testing</a><a href="#evidence">Evidence</a>
-  </nav>
-  <article class="cs-body">
-    <section class="cs-sec" id="overview">
-      <h2><span class="n">01</span>Measured results</h2>
-      <div class="cs-kpis">
-        <div><b>1st / 33</b><span>IRC 2026 finalists</span><small>Champion, SPROS · MIT Manipal</small></div>
-        <div><b>150 mm</b><span>soil penetration</span><small>ABEx sampling subsystem</small></div>
-        <div><b>12 g</b><span>sample recovered</span><small>ABEx sampling subsystem</small></div>
-        <div><b>21 / 30</b><span>successful trials</span><small>at IRC 2026</small></div>
-        <div><b>5</b><span>DOF manipulator</span><small>integrated on the rover</small></div>
-      </div>
-    </section>
+<!-- ============ MISSIONS RAIL ============ -->
+<section class="sx-sec" id="missions">
+  <div class="wrap sx-head">
+    <div class="reveal">
+      <div class="label"><span class="n">01</span> The missions</div>
+      <h2>Built for every task.</h2>
+    </div>
+    <div class="sx-arrows"><button type="button" class="sx-arrow" data-rail="-1" aria-label="Previous">←</button><button type="button" class="sx-arrow" data-rail="1" aria-label="Next">→</button></div>
+  </div>
+  <div class="sx-rail" id="rail" tabindex="0" aria-label="Mission photos, scroll sideways">
+    <figure class="sx-card"><img class="zoom" src="../assets/img/web/ganga-abex-judges.jpg" alt="Ganga drilling soil during the ABEx task while judges watch" loading="lazy"><figcaption><span class="sx-tag">ABEx</span><b>Drill, collect, analyse</b><span>Subsurface soil sampled and tested on board, in front of the judges.</span></figcaption></figure>
+    <figure class="sx-card"><img class="zoom" src="../assets/img/web/ganga-idmo.jpg" alt="Ganga's arm working on an equipment panel" loading="lazy"><figcaption><span class="sx-tag">IDMO</span><b>Hands on the hardware</b><span>The 5-DOF arm operating switches on an equipment panel.</span></figcaption></figure>
+    <figure class="sx-card"><img class="zoom" src="../assets/img/web/ganga-rado.jpg" alt="Ganga climbing a steep slope" loading="lazy"><figcaption><span class="sx-tag">RADO</span><b>Up the hard way</b><span>Steep, loose Mars-analogue terrain.</span></figcaption></figure>
+    <figure class="sx-card"><img class="zoom" src="../assets/img/web/ganga-manipulator-panel.jpg" alt="Close-up of Ganga's manipulator at a switch panel" loading="lazy"><figcaption><span class="sx-tag">Manipulation</span><b>Precision in the field</b><span>Reaching, aligning and actuating, with no lab in sight.</span></figcaption></figure>
+    <figure class="sx-card"><img class="zoom" src="../assets/img/web/ganga-exhibition.jpg" alt="Team MARS presenting Ganga at the exhibition task" loading="lazy"><figcaption><span class="sx-tag">Exhibition</span><b>Defend the design</b><span>Presenting the rover to the jury.</span></figcaption></figure>
+  </div>
+</section>
 
-    <section class="cs-sec" id="problem">
-      <h2><span class="n">02</span>The engineering problem</h2>
-      <p>Ganga wasn't built just to drive. IRC mission tasks ask one platform to move through difficult terrain, interact with its environment, manipulate hardware, deploy instruments, collect and analyse samples, and execute tasks with increasing autonomy.</p>
-      <p>The hard part is the handoffs. A decision in one subsystem changes what the rest of the rover can do in the field. Mass and packaging affect mobility, the manipulator's reach decides which tasks are possible, and the sampling mechanism has to work alongside the electronics, software and operators.</p>
-      <!-- TODO(Anikait): add the key design requirements you worked to (mass budget, envelope, payload, terrain spec, task list). Only real numbers. -->
-    </section>
+<!-- ============ BUILT TO DO IT ALL ============ -->
+<section class="sx-sec">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label"><span class="n">02</span> Built to do it all</div>
+      <h2>Three systems that had to work as one.</h2>
+    </div>
+    <div class="sx-feats">
+      <article class="sx-feat reveal"><div class="sx-fimg"><img class="zoom" src="../assets/img/web/ganga-manipulator-panel.jpg" alt="Ganga's 5-DOF arm" loading="lazy"></div><span class="sx-tag">01</span><h3>A 5-DOF arm</h3><p>Reaches, grips and operates hardware at the end of a moving rover.</p></article>
+      <article class="sx-feat reveal d1"><div class="sx-fimg"><img class="zoom" src="../assets/img/web/ganga-abex-task.jpg" alt="Ganga sampling soil with its ABEx system at IRC 2026" loading="lazy"></div><span class="sx-tag">02</span><h3>A lab on wheels</h3><p>Drills into the ground and analyses the soil on board. <a class="link" href="abex.html">See ABEx →</a></p></article>
+      <article class="sx-feat reveal d2"><div class="sx-fimg"><img class="zoom" src="../assets/img/web/ganga-rover-soil.jpg" alt="Ganga on red terrain with its PU wheels" loading="lazy"></div><span class="sx-tag">03</span><h3>Wheels for Mars</h3><p>PU wheels from Wheeleez, Australia, for grip on loose, rocky ground.</p></article>
+    </div>
+  </div>
+</section>
 
-    <section class="cs-sec" id="architecture">
-      <h2><span class="n">03</span>System architecture</h2>
-      <p>The major subsystems and how they serve the mission. Highlighted blocks are the ones I led or oversaw.</p>
-      <figure class="arch">
-        <svg viewBox="0 0 760 330" role="img" aria-label="Ganga architecture: rover platform connecting mobility, 5-DOF manipulator, ABEx sampling, instrument deployment and autonomy to IRC mission tasks">
-          <defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#8A939F"/></marker></defs>
-          <g font-family="IBM Plex Sans, sans-serif" font-size="13">
-            <rect x="280" y="128" width="200" height="74" rx="3" fill="#14161B"/>
-            <text x="380" y="160" fill="#fff" text-anchor="middle" font-weight="600">Rover platform</text>
-            <text x="380" y="180" fill="#AEB7C2" text-anchor="middle" font-size="11.5">mechanical integration</text>
-            <g fill="#fff" stroke-width="1.5">
-              <rect x="20" y="20" width="200" height="60" rx="3" stroke="#B9472C"/>
-              <rect x="20" y="135" width="200" height="60" rx="3" stroke="#B9472C"/>
-              <rect x="20" y="250" width="200" height="60" rx="3" stroke="#B9472C"/>
-              <rect x="540" y="20" width="200" height="60" rx="3" stroke="#C9CFD7"/>
-              <rect x="540" y="135" width="200" height="60" rx="3" stroke="#C9CFD7"/>
-            </g>
-            <g fill="#14161B" font-weight="600">
-              <text x="36" y="46">Mobility</text><text x="36" y="161">5-DOF manipulator</text><text x="36" y="276">ABEx soil sampling</text>
-              <text x="556" y="46">Instrument deployment</text><text x="556" y="161">Autonomy &amp; operations</text>
-            </g>
-            <g fill="#626A75" font-size="11.5">
-              <text x="36" y="66">PU wheels (Wheeleez, Australia)</text><text x="36" y="181">reach · servicing tasks</text><text x="36" y="296">penetrate · extract · analyse</text>
-              <text x="556" y="66">sensors &amp; payloads</text><text x="556" y="181">autonomous task execution</text>
-            </g>
-            <g stroke="#8A939F" stroke-width="1.3" fill="none" marker-end="url(#ar)">
-              <path d="M220 50 C 250 50, 260 140, 280 150"/><path d="M220 165 L280 165"/><path d="M220 280 C 250 280, 260 190, 280 182"/>
-              <path d="M540 50 C 510 50, 500 140, 480 150"/><path d="M540 165 L480 165"/>
-            </g>
-            <rect x="540" y="250" width="200" height="60" rx="3" fill="#F6E5DF" stroke="#B9472C"/>
-            <text x="556" y="276" fill="#14161B" font-weight="600">IRC 2026 mission tasks</text>
-            <text x="556" y="296" fill="#626A75" font-size="11.5">1st of 33 finalist teams</text>
-            <path d="M480 195 C 510 230, 520 270, 540 278" stroke="#B9472C" stroke-width="1.5" fill="none" marker-end="url(#ar)"/>
-            <g font-family="IBM Plex Mono, monospace" font-size="10.5"><rect x="280" y="262" width="12" height="12" fill="#fff" stroke="#B9472C"/><text x="298" y="272" fill="#626A75">led / oversaw</text><rect x="280" y="284" width="12" height="12" fill="#fff" stroke="#C9CFD7"/><text x="298" y="294" fill="#626A75">team subsystem</text></g>
-          </g>
-        </svg>
-        <figcaption>Fig. 1 · Subsystem architecture (simplified). Highlighted: subsystems I led or oversaw.</figcaption>
-      </figure>
-    </section>
+<!-- ============ IN ACTION ============ -->
+<section class="sx-sec" id="action">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label"><span class="n">03</span> In action</div>
+      <h2>Watch it run.</h2>
+    </div>
+    <div class="sx-wall">
+      <figure class="sx-vid big reveal"><video data-inview muted loop playsinline preload="none" controls poster="../assets/video/ganga-field.jpg" aria-label="Ganga field run on competition terrain"><source src="../assets/video/ganga-field.mp4" type="video/mp4"></video><figcaption>Field run on the competition terrain</figcaption></figure>
+      <figure class="sx-vid reveal d1"><img class="zoom" src="../assets/img/web/ganga-field-irc26.jpg" alt="Ganga in the field at IRC 2026" loading="lazy"><figcaption>IRC 2026, Mars-analogue site</figcaption></figure>
+      <figure class="sx-vid reveal d2"><img class="zoom" src="../assets/img/web/ganga-field-2.jpg" alt="Team MARS operating Ganga on red terrain" loading="lazy"><figcaption>Operators and rover, in sync</figcaption></figure>
+    </div>
+  </div>
+</section>
 
-    <section class="cs-sec" id="contribution">
-      <h2><span class="n">04</span>My contribution vs. the team's</h2>
-      <div class="contrib">
-        <div>
-          <h3>What I owned</h3>
-          <ul>
-            <li>Overall mechanical development of the rover, as Team Captain</li>
-            <li>Oversight of the 5-DOF manipulator</li>
-            <li>Oversight of the ABEx soil-sampling subsystem, building on the subsystem I designed for Alaknanda</li>
-            <li>Integration of PU wheels sourced from Wheeleez, Australia</li>
-            <li>Field-testing at IRC 2026</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="team">Team-owned</h3>
-          <ul>
-            <li>Electronics and power</li>
-            <li>Software, control and autonomy stack</li>
-            <li>Mission operations as a full team</li>
-          </ul>
-          <!-- TODO(Anikait): confirm this split, and name any specific mechanism you personally designed on Ganga (e.g. a joint, end effector, mount). -->
+<!-- ============ THE MOMENT ============ -->
+<section class="sx-sec">
+  <div class="wrap">
+    <div class="sx-moment reveal">
+      <img class="zoom sx-moment-img" src="../assets/img/web/ganga-winning.jpg" alt="Team MARS on stage celebrating the IRC 2026 win" loading="lazy">
+      <div class="sx-moment-txt">
+        <span class="sx-tag gold">The result</span>
+        <h2>Champions.<br>1st of 33.</h2>
+        <p>International Rover Challenge 2026, SPROS · MIT Manipal.</p>
+        <div class="sx-proofs">
+          <img class="zoom" src="../assets/img/web/cert-irc26.jpg" alt="IRC 2026 Champion certificate" loading="lazy">
+          <img class="zoom" src="../assets/img/web/captain-medal.jpg" alt="Receiving the captain's medal" loading="lazy">
         </div>
       </div>
-      <div class="callout neutral">As captain I was responsible for how the subsystems came together: designing for the handoffs between mechanisms, sensors, electronics, software and operators, not just making one mechanism work on a bench.</div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section class="cs-sec" id="testing">
-      <h2><span class="n">05</span>Testing &amp; validation</h2>
-      <p>Ganga was evaluated in the field at IRC 2026. The ABEx subsystem reached <strong>150 mm</strong> of soil penetration and recovered <strong>12 g</strong> of sample. Across the competition the rover logged <strong>21 successful trials out of 30</strong>.</p>
-      <p>That leaves 9 of 30 trials unsuccessful. Those are as much a part of the engineering record as the result.</p>
-      <!-- TODO(Anikait): add 2–3 concrete failure modes from testing and what you changed (e.g. jamming, alignment, traction, wiring). Recruiters and professors value this more than the win. -->
-    </section>
-
-    <section class="cs-sec" id="evidence">
-      <h2><span class="n">06</span>Evidence</h2>
-      <h3 class="sub-h">Mission tasks at IRC 2026</h3>
-      <div class="fig-row">
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-abex-judges.jpg" alt="Ganga performing the ABEx task with judges" loading="lazy"><figcaption>ABEx: soil sampling with judges observing.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-idmo.jpg" alt="Ganga's manipulator at the IDMO task panel" loading="lazy"><figcaption>IDMO task: manipulator at the equipment panel.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-rado.jpg" alt="Ganga traversing a steep slope during the RADO task" loading="lazy"><figcaption>RADO task: traversing steep terrain.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-exhibition.jpg" alt="Team with Ganga at the exhibition task" loading="lazy"><figcaption>Exhibition task.</figcaption></figure>
-      </div>
-      <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/ganga-field.jpg" aria-label="Ganga field run on competition terrain"><source src="../assets/video/ganga-field.mp4" type="video/mp4"></video><figcaption>Field run on the competition terrain.</figcaption></figure>
-      <div class="callout neutral">The ABEx subsystem's mechanism, sensors, chemistry and Gen 3 → Gen 4 redesign are documented in the <a class="link" href="abex.html">ABEx case study →</a></div>
-      <h3 class="sub-h">More evidence</h3>
-      <div class="fig-row">
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-rover-soil.jpg" alt="Ganga with the soil subsystem on red terrain" loading="lazy"><figcaption>Ganga with the soil subsystem mounted.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-winning.jpg" alt="Team MARS celebrating the IRC 2026 win on stage" loading="lazy"><figcaption>IRC 2026: Team MARS wins.</figcaption></figure>
-      </div>
-      <div class="fig-row">
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-manipulator-panel.jpg" alt="Ganga's manipulator operating a switch panel" loading="lazy"><figcaption>Manipulator on an equipment-servicing panel.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/hero-ganga-abex.jpg" alt="Ganga with the ABEx soil-sampling subsystem deployed" loading="lazy"><figcaption>ABEx deployed during the astrobiology task.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-field-irc26.jpg" alt="Ganga during field deployment at IRC 2026" loading="lazy"><figcaption>Field deployment, IRC 2026.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/ganga-field-2.jpg" alt="Team MARS operating Ganga on red terrain" loading="lazy"><figcaption>Operations on the competition terrain.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/cert-irc26.jpg" alt="IRC 2026 Champion certificate" loading="lazy"><figcaption>IRC 2026: Champion certificate.</figcaption></figure>
-        <figure class="fig"><img class="zoom" src="../assets/img/web/mars-ganga-team.jpg" alt="Team MARS with Ganga" loading="lazy"><figcaption>Team MARS with Ganga.</figcaption></figure>
-      </div>
-      <h3 class="sub-h">Tools &amp; methods</h3>
-      <div><span class="chip">SolidWorks</span><span class="chip">FEA</span><span class="chip">3D printing</span><span class="chip">CNC machining</span><span class="chip">System integration</span><span class="chip">Field testing</span></div>
-      <h3 class="sub-h">Related</h3>
-      <div class="next">
-        <a href="abex.html"><span class="k">Subsystem deep-dive</span><b>ABEx soil collection &amp; testing →</b></a>
-        <a href="../index.html#r-soil"><span class="k">Research</span><b>In-situ soil sampling (IPRoMM, under review) →</b></a>
-      </div>
-    </section>
-  </article>
-</div>
+<!-- ============ ROLE + NEXT ============ -->
+<section class="sx-sec sx-last">
+  <div class="wrap sx-role reveal">
+    <img src="../assets/img/web/mars-ganga-team.jpg" alt="Team MARS with Ganga" loading="lazy">
+    <div>
+      <div class="label">My role</div>
+      <h2>Team Captain. I led the mechanical development of the whole rover.</h2>
+      <p>I oversaw the arm, the sampling system and the wheel integration, and brought them together into one rover that could take the field. Mentors: Prof. Ashish Singla and Dr. Sachin Kansal.</p>
+      <div class="sx-cta"><a class="btn btn-solid" href="abex.html">Next: ABEx, the lab on Ganga →</a><a class="btn" href="../index.html#work">All projects</a></div>
+    </div>
+  </div>
+</section>
 </main>
+
 <footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
-<script src="../assets/js/site.js?v=5"></script>
+<script src="../assets/js/site.js?v=11"></script>
 </body>
 </html>

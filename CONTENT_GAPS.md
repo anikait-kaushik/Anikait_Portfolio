@@ -7,8 +7,8 @@ so this list is the full checklist (there are no hidden TODO markers in the page
 **Rule:** add only real, measured or documented facts. If something wasn't measured,
 leave it out.
 
-## Turn on the contact form (5 minutes, once)
-The form posts to `api/contact.js`, a Vercel function that emails each message to your Gmail
+## Contact form: done (Nov 2026)
+Gmail delivery is set up and tested. For reference, the form posts to `api/contact.js`, a Vercel function that emails each message to your Gmail
 (the same setup as pd-dev.vercel.app). It needs a Google **App Password**:
 1. Turn on 2-Step Verification for **anikaitkaushiksep@gmail.com**: https://myaccount.google.com/security
 2. Create an App Password at https://myaccount.google.com/apppasswords (name it "Portfolio"), then copy the 16 characters.
@@ -23,21 +23,20 @@ Never put the app password in the code or in Git.
 
 ## Conferences & workshops section
 - [x] TRS–DSAI workshop photo added.
-- [ ] **IIT Ropar:** the site now says "Participant" everywhere. If you presented Alaknanda's mechanical subsystem there, tell me and I'll add it back.
+- [x] **IIT Ropar:** confirmed you delivered a lecture on field robotics and took part in the workshop. Site says "Speaker & participant".
 
 ## Found in your documents folder: please fix or confirm
-- [ ] **AIR 2025 was 2–5 July 2025** (per both certificates). Your résumé PDF says June 2025; the website now says July.
-- [ ] **Patent title:** the Ganga ABEx poster cites it as "On-Board Rover Solid Soil Analysis: Chemical Detection & Sensor Monitoring". The CV says "An Apparatus, System and Method for Robotic Soil Analysis and Collection". The site uses the CV title; check which is official on InPASS.
+- [ ] **AIR 2025 was 2–5 July 2025** (confirmed). The website says July, but `assets/docs/Anikait_Kaushik_Resume.pdf` still says "June 2025". Fix it in your résumé source and replace that PDF.
+- [x] **Patent title:** confirmed the CV title is official: "An Apparatus, System and Method for Robotic Soil Analysis and Collection". The patent covers Alaknanda's soil subsystem; the IPRoMM paper covers Ganga's.
 - [ ] **Tray comparison image:** the site assumes left = older (Alaknanda), right = new (Ganga).
 - [ ] **"Best Mechanical Award.jpg"** is a Certificate of Merit (Top 10 projects), so the site doesn't claim a "best mechanical" award. Add it only if a separate award exists.
 - [ ] **Exoskeleton:** which parts of Gen 2 / Gen 4 you designed, and who built the joint-tracking GUI.
 
 ## Please confirm (written on the site from the previous version, not from the new CV)
-- [ ] **IPRoMM 2026: first author?** (index.html, research.html)
-- [ ] **Team Lead, ELC Internship 2025: 10-student team** (index.html → Roles)
-- [ ] **IIT Ropar, Mar 2025: you presented Alaknanda's mechanical subsystem** (index.html → Conferences)
-- [ ] **Garud: your personal scope** vs. the drone sub-team (projects/garud.html)
-- [ ] **Ganga: does "21/30 successful trials" refer to the whole rover or to ABEx only?**
+- [x] **IPRoMM 2026:** first author (confirmed).
+- [x] **Team Lead, ELC Internship 2025:** 10-student team (confirmed).
+- [x] **Garud:** Head of Administrative Affairs (confirmed). Garud is no longer cited as evidence for structural analysis or manufacturing.
+- [x] **Ganga 21/30 successful trials:** ABEx only (confirmed; wording updated).
 - [ ] **Ganga: which subsystems teammates owned** (electronics, software, autonomy) (projects/ganga.html)
 
 ## Highest-value additions

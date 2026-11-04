@@ -269,7 +269,7 @@
      ------------------------------------------------------------ */
   var numRe = /^(\D*?)(\d[\d,]*(?:\.\d+)?)(.*)$/;
   var counters = [];
-  $$('.mars-stat .sv, .statgrid .sv, .profile-facts .fv strong, .scholar b').forEach(function (el) {
+  $$('.mars-stat .sv, .statgrid .sv, .profile-facts .fv strong, .scholar b, .metric b[data-count]').forEach(function (el) {
     var leaf = el.firstElementChild && el.children.length === 1 ? el.firstElementChild : el;
     if (leaf.children.length) return;
     var m = leaf.textContent.trim().match(numRe);
@@ -441,4 +441,344 @@
       $$('video').forEach(function (o) { if (o !== v && !o.hasAttribute('autoplay')) o.pause(); });
     });
   });
+
+  /* ============================================================
+     ROBOTICS / TECH LAYER (v2)
+     ============================================================ */
+
+  /* ------------------------------------------------------------
+     11. Hero telemetry HUD: count-up, mission clock, link jitter
+     ------------------------------------------------------------ */
+  var hudNums = $$('.hud [data-hud]');
+  if (hudNums.length && !reduceMotion) {
+    var hT0 = performance.now() + 1100;
+    hudNums.forEach(function (el) { el.textContent = '0'; });
+    (function hudFrame(now) {
+      var k = Math.max(0, Math.min(1, (now - hT0) / 1600));
+      var e = 1 - Math.pow(1 - k, 3);
+      hudNums.forEach(function (el) { el.textContent = Math.round(+el.getAttribute('data-hud') * e); });
+      if (k < 1) requestAnimationFrame(hudFrame);
+    })(performance.now());
+  }
+  var hudClock = $('#hudClock'), hudLink = $('#hudLink');
+  if (hudClock) {
+    var mStart = Date.now();
+    setInterval(function () {
+      var s = Math.floor((Date.now() - mStart) / 1000);
+      var pad = function (n) { return String(n).padStart(2, '0'); };
+      hudClock.textContent = 'T+' + pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60);
+      if (hudLink && !reduceMotion && s % 2 === 0) hudLink.textContent = 'LINK ' + (95 + Math.floor(Math.random() * 5)) + '%';
+    }, 1000);
+  }
+
+  /* ------------------------------------------------------------
+     12. Section labels decode like a terminal when they appear
+     ------------------------------------------------------------ */
+  var GLYPHS = '01<>/\\[]{}#*+=-_ABCDEFXYZ';
+  function scramble(node) {
+    var finalText = node.textContent, len = finalText.length, start = performance.now(), dur = 700;
+    (function f(now) {
+      var k = Math.min(1, (now - start) / dur), out = '';
+      for (var i = 0; i < len; i++) {
+        var ch = finalText[i];
+        if (ch === ' ' || i < k * len) out += ch;
+        else out += GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
+      }
+      node.textContent = out;
+      if (k < 1) requestAnimationFrame(f); else node.textContent = finalText;
+    })(start);
+  }
+  if (!reduceMotion) {
+    var scrObs = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        scrObs.unobserve(e.target);
+        var nodes = Array.prototype.slice.call(e.target.childNodes).filter(function (n) {
+          return n.nodeType === 3 && n.textContent.trim();
+        });
+        nodes.forEach(scramble);
+      });
+    }, { threshold: 0.9 });
+    $$('.section .eyebrow, .band .eyebrow').forEach(function (el) { scrObs.observe(el); });
+  }
+
+  /* ------------------------------------------------------------
+     13. Viewfinder brackets on media
+     ------------------------------------------------------------ */
+  if (finePointer) {
+    $$('.mars-gallery figure, .exp-media > div, .card figure, .ganga-image, .achievement-proof, .headshot-frame, .ganga-video, .lead-video')
+      .forEach(function (el) { el.classList.add('vf'); });
+  }
+
+  /* ------------------------------------------------------------
+     14. Live lab: planar 3-DOF arm with analytic inverse kinematics
+     ------------------------------------------------------------ */
+  var stage = $('#labStage'), armCv = $('#armCanvas');
+  if (stage && armCv && armCv.getContext) {
+    var ac = armCv.getContext('2d');
+    var adpr = Math.min(window.devicePixelRatio || 1, 2);
+    var AW = 0, AH = 0, U = 0, base = { x: 0, y: 0 }, L = [0, 0, 0];
+    var q = [Math.PI / 2, -0.9, -0.6];            // current joint angles (rad)
+    var qT = q.slice();                            // target joint angles
+    var tgt = { x: 0, y: 0 }, reachable = true;
+    var manual = false, lastPointer = 0, armRunning = false, armRaf = 0;
+    var trail = [], frames = 0, hzT = performance.now();
+    var pads = [], block = { pad: 0, held: false, x: 0, y: 0 };
+
+    var el = function (id) { return document.getElementById(id); };
+    var ui = {
+      j: [el('j1'), el('j2'), el('j3')], jb: [el('j1b'), el('j2b'), el('j3b')],
+      ee: el('eePos'), hz: el('armHz'), mode: el('armMode'), status: el('armStatus'),
+      target: el('armTarget'), reach: el('armReach')
+    };
+
+    var armResize = function () {
+      var r = stage.getBoundingClientRect();
+      AW = r.width; AH = r.height;
+      armCv.width = AW * adpr; armCv.height = AH * adpr;
+      ac.setTransform(adpr, 0, 0, adpr, 0, 0);
+      U = Math.min(AW * 0.52, AH * 0.95);
+      L = [0.42 * U, 0.34 * U, 0.14 * U];
+      base = { x: AW / 2, y: AH - 34 };
+      pads = [{ x: base.x - 0.62 * U, y: base.y }, { x: base.x + 0.62 * U, y: base.y }];
+      if (ui.reach) ui.reach.textContent = Math.round(L[0] + L[1] + L[2]);
+      if (!tgt.x) { tgt.x = base.x + 0.3 * U; tgt.y = base.y - 0.55 * U; }
+    };
+
+    var wrapAng = function (a) { while (a > Math.PI) a -= 2 * Math.PI; while (a < -Math.PI) a += 2 * Math.PI; return a; };
+
+    // Solve IK for a target in canvas coords; returns joint angles (y-up maths)
+    var solveIK = function (tx, ty) {
+      var x = tx - base.x, y = Math.max(4, base.y - ty);
+      // gripper points along base→target, turning to point down near the ground
+      var phi = Math.atan2(y, x);
+      var down = Math.max(0, Math.min(1, 1 - y / (0.45 * U)));
+      phi += wrapAng(-Math.PI / 2 - phi) * down;
+      var wx = x - L[2] * Math.cos(phi), wy = y - L[2] * Math.sin(phi);
+      var d = Math.hypot(wx, wy);
+      var dMax = L[0] + L[1] - 0.5, dMin = Math.abs(L[0] - L[1]) + 0.5;
+      reachable = d <= dMax && d >= dMin;
+      if (d > dMax) { wx *= dMax / d; wy *= dMax / d; d = dMax; }
+      if (d < dMin) { var s = dMin / Math.max(d, 1e-6); wx *= s; wy *= s; d = dMin; }
+      var c2 = (d * d - L[0] * L[0] - L[1] * L[1]) / (2 * L[0] * L[1]);
+      var t2 = -Math.acos(Math.max(-1, Math.min(1, c2)));          // elbow-up
+      var t1 = Math.atan2(wy, wx) - Math.atan2(L[1] * Math.sin(t2), L[0] + L[1] * Math.cos(t2));
+      var t3 = wrapAng(phi - t1 - t2);
+      return [t1, t2, t3];
+    };
+
+    var fk = function (qq) {
+      var pts = [{ x: base.x, y: base.y }], a = 0, x = 0, y = 0;
+      for (var i = 0; i < 3; i++) {
+        a += qq[i]; x += L[i] * Math.cos(a); y += L[i] * Math.sin(a);
+        pts.push({ x: base.x + x, y: base.y - y, a: a });
+      }
+      return pts;
+    };
+
+    // ---- autonomous pick-and-place loop ----
+    var seq = [], seqI = 0, seqT0 = 0;
+    var buildSeq = function () {
+      var from = pads[block.pad], to = pads[1 - block.pad], hover = 0.42 * U;
+      seq = [
+        { x: from.x, y: from.y - hover, t: 900 },
+        { x: from.x, y: from.y - 18, t: 700, grab: true },
+        { x: from.x, y: from.y - hover, t: 600 },
+        { x: base.x, y: base.y - 0.78 * U, t: 900 },
+        { x: to.x, y: to.y - hover, t: 900 },
+        { x: to.x, y: to.y - 18, t: 700, drop: true },
+        { x: to.x, y: to.y - hover, t: 600 }
+      ];
+      seqI = 0; seqT0 = performance.now();
+    };
+    var seqFrom = { x: 0, y: 0 };
+    var autoStep = function (now) {
+      if (!seq.length) { buildSeq(); seqFrom = { x: tgt.x, y: tgt.y }; }
+      var w = seq[seqI], k = Math.min(1, (now - seqT0) / w.t);
+      var e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      tgt.x = seqFrom.x + (w.x - seqFrom.x) * e;
+      tgt.y = seqFrom.y + (w.y - seqFrom.y) * e;
+      if (k >= 1) {
+        if (w.grab) block.held = true;
+        if (w.drop) { block.held = false; block.pad = 1 - block.pad; }
+        seqFrom = { x: w.x, y: w.y };
+        seqI++; seqT0 = now;
+        if (seqI >= seq.length) { seq = []; }
+      }
+    };
+
+    var drawArm = function (now) {
+      if (!manual && !reduceMotion) autoStep(now);
+      if (manual && now - lastPointer > 2500) {
+        manual = false; seq = []; block.held = false;
+        ui.mode.textContent = 'AUTO'; ui.mode.classList.remove('manual');
+      }
+      qT = solveIK(tgt.x, tgt.y);
+      for (var i = 0; i < 3; i++) q[i] += wrapAng(qT[i] - q[i]) * (manual ? 0.22 : 0.35);
+
+      var P = fk(q), ee = P[3];
+      trail.push({ x: ee.x, y: ee.y }); if (trail.length > 46) trail.shift();
+      if (block.held) { block.x = ee.x + Math.cos(ee.a) * 15; block.y = ee.y - Math.sin(ee.a) * 15 + 9; }
+
+      ac.clearRect(0, 0, AW, AH);
+      // workspace envelope
+      ac.save();
+      ac.setLineDash([4, 6]); ac.strokeStyle = 'rgba(127,227,196,.22)'; ac.lineWidth = 1;
+      ac.beginPath(); ac.arc(base.x, base.y, L[0] + L[1] + L[2], Math.PI, 2 * Math.PI); ac.stroke();
+      ac.beginPath(); ac.arc(base.x, base.y, Math.abs(L[0] - L[1]) + L[2], Math.PI, 2 * Math.PI); ac.stroke();
+      ac.restore();
+      // ground + pads
+      ac.strokeStyle = 'rgba(255,255,255,.18)'; ac.lineWidth = 1;
+      ac.beginPath(); ac.moveTo(0, base.y + 0.5); ac.lineTo(AW, base.y + 0.5); ac.stroke();
+      pads.forEach(function (p, i) {
+        ac.fillStyle = 'rgba(127,227,196,.12)'; ac.fillRect(p.x - 26, p.y - 3, 52, 6);
+        ac.fillStyle = 'rgba(160,175,188,.8)'; ac.font = '10px "IBM Plex Mono", monospace'; ac.textAlign = 'center';
+        ac.fillText(i ? 'PLACE' : 'PICK', p.x, p.y + 20);
+      });
+      // block
+      var bx = block.held ? block.x : pads[block.pad].x, by = block.held ? block.y : pads[block.pad].y - 3;
+      ac.fillStyle = '#D96A4C'; ac.fillRect(bx - 9, by - 18, 18, 18);
+      ac.strokeStyle = 'rgba(255,255,255,.35)'; ac.strokeRect(bx - 9 + 0.5, by - 18 + 0.5, 17, 17);
+      // trail
+      for (var t = 1; t < trail.length; t++) {
+        ac.strokeStyle = 'rgba(127,227,196,' + (t / trail.length * 0.5).toFixed(3) + ')';
+        ac.lineWidth = 2;
+        ac.beginPath(); ac.moveTo(trail[t - 1].x, trail[t - 1].y); ac.lineTo(trail[t].x, trail[t].y); ac.stroke();
+      }
+      // target crosshair
+      ac.strokeStyle = reachable ? 'rgba(127,227,196,.9)' : 'rgba(255,122,92,.9)';
+      ac.lineWidth = 1.2;
+      ac.beginPath(); ac.arc(tgt.x, tgt.y, 9, 0, Math.PI * 2);
+      ac.moveTo(tgt.x - 15, tgt.y); ac.lineTo(tgt.x - 5, tgt.y); ac.moveTo(tgt.x + 5, tgt.y); ac.lineTo(tgt.x + 15, tgt.y);
+      ac.moveTo(tgt.x, tgt.y - 15); ac.lineTo(tgt.x, tgt.y - 5); ac.moveTo(tgt.x, tgt.y + 5); ac.lineTo(tgt.x, tgt.y + 15);
+      ac.stroke();
+      // base plate
+      ac.fillStyle = '#2a313c'; ac.fillRect(base.x - 34, base.y - 6, 68, 12);
+      ac.fillStyle = '#3a4350'; ac.fillRect(base.x - 22, base.y - 14, 44, 10);
+      // links
+      var widths = [16, 12, 8];
+      for (var k2 = 0; k2 < 3; k2++) {
+        ac.lineCap = 'round';
+        ac.strokeStyle = k2 === 1 ? '#c9d3dc' : '#e8edf1'; ac.lineWidth = widths[k2];
+        ac.beginPath(); ac.moveTo(P[k2].x, P[k2].y); ac.lineTo(P[k2 + 1].x, P[k2 + 1].y); ac.stroke();
+        ac.strokeStyle = 'rgba(21,23,28,.35)'; ac.lineWidth = 2;
+        ac.beginPath(); ac.moveTo(P[k2].x, P[k2].y); ac.lineTo(P[k2 + 1].x, P[k2 + 1].y); ac.stroke();
+      }
+      // joints
+      [11, 9, 7].forEach(function (r, i) {
+        ac.fillStyle = '#15171C'; ac.beginPath(); ac.arc(P[i].x, P[i].y, r, 0, Math.PI * 2); ac.fill();
+        ac.strokeStyle = '#D96A4C'; ac.lineWidth = 2.5; ac.beginPath(); ac.arc(P[i].x, P[i].y, r, 0, Math.PI * 2); ac.stroke();
+      });
+      // gripper
+      var ga = ee.a, open = block.held ? 6 : 11;
+      var gx = Math.cos(-ga), gy = Math.sin(-ga), nx = -gy, ny = gx;
+      ac.strokeStyle = '#e8edf1'; ac.lineWidth = 3;
+      ac.beginPath();
+      ac.moveTo(ee.x + nx * open, ee.y + ny * open); ac.lineTo(ee.x - nx * open, ee.y - ny * open);
+      ac.moveTo(ee.x + nx * open, ee.y + ny * open); ac.lineTo(ee.x + nx * open + gx * 12, ee.y + ny * open + gy * 12);
+      ac.moveTo(ee.x - nx * open, ee.y - ny * open); ac.lineTo(ee.x - nx * open + gx * 12, ee.y - ny * open + gy * 12);
+      ac.stroke();
+
+      // readouts
+      frames++;
+      for (var j = 0; j < 3; j++) {
+        var deg = wrapAng(q[j]) * 180 / Math.PI;
+        ui.j[j].textContent = (deg >= 0 ? '+' : '') + deg.toFixed(1) + '°';
+        var pct = Math.abs(deg) / 180 * 50;
+        ui.jb[j].style.width = pct + '%';
+        ui.jb[j].style.left = deg >= 0 ? '50%' : (50 - pct) + '%';
+      }
+      var ex = (ee.x - base.x) / U, ey = (base.y - ee.y) / U;
+      ui.ee.textContent = '(' + ex.toFixed(2) + ', ' + ey.toFixed(2) + ')';
+      ui.target.textContent = 'x ' + String(Math.round(tgt.x - base.x)).padStart(4, ' ') + ' · y ' + String(Math.round(base.y - tgt.y)).padStart(3, '0');
+      ui.status.textContent = reachable ? 'REACHABLE' : 'OUT OF REACH · CLAMPED';
+      ui.status.classList.toggle('out', !reachable);
+      if (now - hzT > 500) { ui.hz.textContent = Math.round(frames * 1000 / (now - hzT)) + ' Hz'; frames = 0; hzT = now; }
+
+      armRaf = requestAnimationFrame(drawArm);
+    };
+
+    var pointerAt = function (e) {
+      var r = stage.getBoundingClientRect();
+      tgt.x = e.clientX - r.left; tgt.y = e.clientY - r.top;
+      lastPointer = performance.now();
+      if (!manual) {
+        manual = true; block.held = false;
+        ui.mode.textContent = 'MANUAL'; ui.mode.classList.add('manual');
+      }
+    };
+    stage.addEventListener('pointermove', pointerAt);
+    stage.addEventListener('pointerdown', pointerAt);
+
+    armResize();
+    var art;
+    window.addEventListener('resize', function () { clearTimeout(art); art = setTimeout(function () { armResize(); seq = []; }, 150); });
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { if (!armRunning) { armRunning = true; hzT = performance.now(); frames = 0; armRaf = requestAnimationFrame(drawArm); } }
+      else { armRunning = false; cancelAnimationFrame(armRaf); }
+    }).observe(stage);
+  }
+
+  /* ------------------------------------------------------------
+     15. Sim2Real pipeline: a "packet" lights each stage in turn
+     ------------------------------------------------------------ */
+  var pipeNodes = $$('.pipe-node');
+  if (pipeNodes.length && !reduceMotion) {
+    var pi = 0;
+    setInterval(function () {
+      pipeNodes.forEach(function (n, i) { n.classList.toggle('hot', i === pi); });
+      pi = (pi + 1) % pipeNodes.length;
+    }, 1100);
+  }
+
+  /* ------------------------------------------------------------
+     16. Publication filter
+     ------------------------------------------------------------ */
+  var pfBtns = $$('.pf-btn');
+  pfBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      pfBtns.forEach(function (o) { o.classList.toggle('active', o === b); o.setAttribute('aria-pressed', o === b); });
+      $$('.pub-item').forEach(function (it) {
+        var show = f === 'all' || it.getAttribute('data-kind') === f;
+        it.classList.toggle('hide', !show);
+        it.classList.remove('flash');
+        if (show && !reduceMotion) { void it.offsetWidth; it.classList.add('flash'); }
+      });
+    });
+  });
+
+  /* ------------------------------------------------------------
+     17. Fixed system HUD: current section, cursor coords, progress
+     ------------------------------------------------------------ */
+  if (finePointer) {
+    var sh = document.createElement('div');
+    sh.className = 'sys-hud';
+    sh.setAttribute('aria-hidden', 'true');
+    sh.innerHTML = '<span class="dot"></span><span>SYS <b>ONLINE</b></span><span class="sep"></span>' +
+      '<span id="shSec">SEC 00 · TOP</span><span class="sep"></span><span id="shXY">X 0000 Y 0000</span>' +
+      '<span class="sep"></span><span id="shPct">000%</span>';
+    document.body.appendChild(sh);
+    var shSec = $('#shSec', sh), shXY = $('#shXY', sh), shPct = $('#shPct', sh);
+    var pad4 = function (n) { return String(Math.max(0, Math.round(n))).padStart(4, '0'); };
+    window.addEventListener('pointermove', function (e) {
+      shXY.textContent = 'X ' + pad4(e.clientX) + ' Y ' + pad4(e.clientY + window.scrollY);
+    }, { passive: true });
+    var secLabel = new Map();
+    $$('section[id]').forEach(function (s) {
+      var eb = $(':scope > .wrap > .eyebrow', s) || $('.eyebrow', s), idx = eb && $('.idx', eb);
+      var num = idx && /^\d+$/.test(idx.textContent.trim()) ? idx.textContent.trim() : '--';
+      var name = s.id === 'top' ? 'TOP' : eb ? eb.textContent.replace(idx ? idx.textContent : '', '').split('·')[0].trim().toUpperCase() : s.id.toUpperCase();
+      secLabel.set(s, 'SEC ' + (s.id === 'top' ? '00' : num) + ' · ' + name);
+    });
+    var secObs2 = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) shSec.textContent = secLabel.get(e.target); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    secLabel.forEach(function (_, s) { secObs2.observe(s); });
+    window.addEventListener('scroll', function () {
+      var max = doc.scrollHeight - window.innerHeight;
+      shPct.textContent = String(Math.round(max > 0 ? window.scrollY / max * 100 : 0)).padStart(3, '0') + '%';
+      sh.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+    }, { passive: true });
+  }
 })();

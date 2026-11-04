@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="preload" as="image" href="assets/img/web/hero-ganga-abex.jpg" />
-<link rel="stylesheet" href="assets/css/site.css?v=3" />
+<link rel="stylesheet" href="assets/css/site.css?v=5" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Anikait Kaushik","jobTitle":"Robotics & Mechatronics Engineer","alumniOf":{"@type":"CollegeOrUniversity","name":"Thapar Institute of Engineering and Technology"},"sameAs":["https://www.linkedin.com/in/anikait-kaushik-9435b1289","https://github.com/anikait-kaushik"]}
 </script>
@@ -160,7 +160,7 @@
         </div>
         <div class="rp-media">
           <figure>
-            <img class="zoom" src="assets/img/web/gait-lab-pipeline.jpg" alt="Gait laboratory pipeline: motion capture with IR markers, AMTI force plates, data synchronisation in Qualisys Track Manager, 3D reconstruction, MATLAB filtering and analysis" loading="lazy" width="1200" height="675">
+            <img class="zoom" src="assets/img/web/mocap-pipeline.jpg" alt="Gait pipeline: motion capture cameras and IR markers, AMTI force capture, data synchronisation, interpretation, MATLAB filtering and joint-angle outputs" loading="lazy" width="1800" height="1013">
             <figcaption>Experimental pipeline: capture → synchronise → reconstruct → analyse.</figcaption>
           </figure>
         </div>
@@ -205,11 +205,12 @@
           <p class="q">A robot can move perfectly and still move a human badly. R3 develops a custom wearable lower-limb exoskeleton and evaluates it through the biomechanics of the person wearing it.</p>
           <p>The work spans robotics, human–robot collaboration and biomechanics. I contribute to the mechanical side of exoskeleton development and run the experimental side: synchronised kinematics, GRF, COP and EMG during exoskeleton-assisted gait experiments.</p>
           <p class="meta" style="margin-top:14px">Mentors: Prof. Ashish Singla, Dr. Sachin Kansal (TIET) · Dr. Alejandro Melendez-Calderon (UQ)</p>
+          <p style="margin-top:12px"><a class="link" href="projects/exoskeleton.html">Research case study: pipeline, simulation, hardware, interface →</a></p>
         </div>
         <div class="rp-media">
           <figure>
-            <img class="zoom" src="assets/img/web/exoskeleton-rig.jpg" alt="Wearable lower-limb exoskeleton mounted on a support frame in the gait laboratory" loading="lazy" width="668" height="968">
-            <figcaption>Lower-limb exoskeleton in the gait laboratory.</figcaption>
+            <img class="zoom" src="assets/img/web/exo-gen4-real.jpg" alt="Gen 4 wearable lower-limb exoskeleton hardware" loading="lazy" width="694" height="1105">
+            <figcaption>Gen 4 exoskeleton hardware.</figcaption>
           </figure>
         </div>
       </article>
@@ -345,8 +346,8 @@
     <h3 class="sub-h">Conferences, workshops &amp; academic service</h3>
     <div class="talks reveal">
       <div class="talk">
-        <img class="zoom" src="assets/img/web/air2025-conference.jpg" alt="Participants at Advances in Robotics (AIR) 2025, the 7th International Conference of The Robotics Society, IIT Jodhpur" loading="lazy" width="1040" height="780">
-        <div><span class="kicker">Jun 2025 · IIT Jodhpur</span><h4>Advances in Robotics (AIR 2025)</h4><p>Completed "Dynamics of Robotic Systems" at the conference of The Robotics Society (TRS).</p></div>
+        <img class="zoom" src="assets/img/web/air2025-iitj.jpg" alt="Team at Advances in Robotics (AIR) 2025, the 7th International Conference of The Robotics Society, IIT Jodhpur" loading="lazy" width="1800" height="1350">
+        <div><span class="kicker">2–5 Jul 2025 · IIT Jodhpur</span><h4>Advances in Robotics (AIR 2025)</h4><p>Participated in the 7th International Conference of The Robotics Society, including the workshop "Dynamics of Robotic Systems" (2 Jul).</p></div>
       </div>
       <div class="talk">
         <img class="zoom" src="assets/img/web/alaknanda-field.jpg" alt="Mars rover Alaknanda during field testing" loading="lazy" width="1800" height="1200">
@@ -400,7 +401,7 @@
         </div>
       </a>
       <a class="pcard reveal" href="projects/climbcart.html">
-        <div class="pimg contain"><img src="assets/img/web/climbcart-render.jpg" alt="ClimbCart tracked stair-climbing load carrier CAD render on a staircase" loading="lazy" width="745" height="630"></div>
+        <div class="pimg contain"><img src="assets/img/web/climbcart-render-hd.jpg" alt="ClimbCart tracked stair-climbing load carrier rendered on a staircase" loading="lazy" width="1800" height="1419"></div>
         <div class="pb">
           <span class="kicker">Capstone · mobility</span>
           <h3>ClimbCart: stair-climbing load carrier</h3>
@@ -408,11 +409,11 @@
           <p>Designed around survey data from narrow, variable Indian staircases. TPU-belt track drive, iterated to a 27° track incline.</p>
           <div class="result"><strong>Design decision:</strong> aluminium sprocket rejected; FEA showed a factor of safety of ~78 at 778 g.</div>
           <div class="disc"><span>Mechanical</span><span>FEA</span><span>Actuation</span><span>Prototyping</span></div>
-          <div class="foot"><span class="badge b-ongoing">In progress</span><span class="link">Case study →</span></div>
+          <div class="foot"><span class="badge b-ongoing">Prototype tested</span><span class="link">Case study →</span></div>
         </div>
       </a>
       <a class="pcard reveal" href="projects/locobot.html">
-        <div class="pimg" style="background:#0D1117;display:flex;align-items:center;justify-content:center"><span class="mono" style="color:#4FB38A;font-size:13px;letter-spacing:.1em">MATLAB → SIMSCAPE → ROS → LOCOBOT</span></div>
+        <div class="pimg contain" style="background:#fff"><img src="assets/video/locobot-sim.jpg" alt="LoCoBot arm in MATLAB simulation" loading="lazy"></div>
         <div class="pb">
           <span class="kicker">Sim2Real · with MathWorks</span>
           <h3>MATLAB–ROS × LoCoBot digital twin</h3>
@@ -436,7 +437,7 @@
         </div>
       </a>
       <a class="pcard reveal" href="projects/garud.html">
-        <div class="pimg"><img src="assets/img/web/stage-isdc26.jpg" alt="Team at the International Space Drone Challenge 2026" loading="lazy" width="1800" height="1200"></div>
+        <div class="pimg"><img src="assets/img/web/garud-drone.jpg" alt="Garud quadcopter at the competition site" loading="lazy" width="1280" height="853"></div>
         <div class="pb">
           <span class="kicker">Aerial robotics · ISDC 2026</span>
           <h3>Garud: competition drone platform</h3>
@@ -536,7 +537,7 @@
       <div class="mrow" role="row">
         <div role="cell"><h3>Experimental validation</h3><div class="lvl">Applied in research</div></div>
         <div class="tools" role="cell">Qualisys Track Manager, AMTI force plates, Noraxon EMG, Visual3D; field trials</div>
-        <div class="evid" role="cell"><a href="#r-gait">Gait-lab workflow &amp; Visual3D validation</a> · <a href="projects/ganga.html">Ganga field trials (21/30 successful)</a></div>
+        <div class="evid" role="cell"><a href="#r-gait">Gait-lab workflow &amp; Visual3D validation</a> · <a href="projects/exoskeleton.html">R3 exoskeleton experiments</a> ·<a href="projects/ganga.html">Ganga field trials (21/30 successful)</a></div>
       </div>
       <div class="mrow" role="row">
         <div role="cell"><h3>Manufacturing</h3><div class="lvl">Hands-on</div></div>
@@ -560,7 +561,7 @@
       <div>
         <h3 class="sub-h" style="margin-top:40px">Certifications &amp; training</h3>
         <ul class="clist">
-          <li><b>Dynamics of Robotic Systems</b> · AIR 2025, TRS, IIT Jodhpur <span>Jun 2025</span></li>
+          <li><b>Dynamics of Robotic Systems</b> · workshop at AIR 2025, TRS, IIT Jodhpur <span>Jul 2025</span></li>
           <li><b>Practicing Robotics: Reconfigurable Robotics (ROS)</b> · TRS, IIT Ropar <span>Mar 2025</span></li>
           <li><b>Robotics &amp; AI Training Program</b> · Orangewood Labs &amp; TIET <span>2026 · 2 wks</span></li>
           <li><b>An Easy Introduction to FEA with Applications using CAE</b> · Udemy <span>2026 · 16 h</span></li>
@@ -590,7 +591,7 @@
           </ul>
           <div class="mentors">Mentors: Prof. Ashish Singla, Dr. Sachin Kansal, Dr. Alejandro Melendez-Calderon (UQ)</div>
           <div class="tl-media">
-            <video controls muted playsinline preload="none" poster="assets/img/web/gait-lab-pipeline.jpg" style="height:160px;width:auto;background:#0E1014;border-radius:2px" aria-label="Qualisys gait measurement experiment"><source src="assets/img/uq-qualysis.mp4" type="video/mp4"></video>
+            <video controls muted playsinline preload="none" poster="assets/video/qualisys-sim.jpg" style="height:160px;width:auto;background:#0E1014;border-radius:2px" aria-label="Walking trial reconstructed in Qualisys Track Manager"><source src="assets/video/qualisys-sim.mp4" type="video/mp4"></video>
           </div>
         </div>
       </div>
@@ -683,10 +684,10 @@
 
     <div class="gallery reveal">
       <figure><img class="zoom" src="assets/img/web/mars-ganga-team.jpg" alt="Team MARS with the Ganga rover" loading="lazy"><figcaption>Team MARS with Ganga</figcaption></figure>
-      <figure><img class="zoom" src="assets/img/web/mars-presenting.jpg" alt="Presenting with Team MARS" loading="lazy"><figcaption>Presenting with Team MARS</figcaption></figure>
-      <figure><img class="zoom" src="assets/img/web/mars-outreach.jpg" alt="MARS outreach event" loading="lazy"><figcaption>Outreach</figcaption></figure>
+      <figure><img class="zoom" src="assets/img/web/captain-medal.jpg" alt="Receiving the captain medal at SPROS, MIT Manipal" loading="lazy"><figcaption>Captain medal · SPROS, MIT Manipal</figcaption></figure>
+      <figure><img class="zoom" src="assets/img/web/mars-workshop.jpg" alt="Anikait leading a MARS workshop in an auditorium" loading="lazy"><figcaption>Leading a MARS workshop</figcaption></figure>
       <figure><img class="zoom" src="assets/img/web/mars-team-irc.jpg" alt="Team MARS group photograph at a competition" loading="lazy"><figcaption>Team MARS</figcaption></figure>
-      <figure><img class="zoom" src="assets/img/web/mars-event.jpg" alt="Team MARS at a robotics event" loading="lazy"><figcaption>Community</figcaption></figure>
+      <figure><img class="zoom" src="assets/img/web/dd-robocon.jpg" alt="At DD Robocon 2025" loading="lazy"><figcaption>DD Robocon 2025</figcaption></figure>
     </div>
 
     <div class="mag">
@@ -735,19 +736,58 @@
 <!-- ======================= CONTACT ======================= -->
 <section class="section dark" id="contact">
   <div class="wrap">
-    <div class="contact-grid">
-      <div class="sec-head">
-        <div class="label"><span class="n">08</span> Contact</div>
-        <h2>Open to graduate research, robotics R&amp;D roles and collaborations.</h2>
-        <p class="lede">If you supervise robotics research or are hiring for robotics or mechatronics R&amp;D, I'd be glad to talk through any of this work in detail.</p>
-        <p style="margin-top:22px"><a class="btn btn-solid" href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">Download CV (PDF) ↓</a></p>
-      </div>
-      <div class="contact-list">
-        <div class="row"><span class="k">Email</span><span class="v"><a href="mailto:akaushik_be23@thapar.edu">akaushik_be23@thapar.edu</a><br><a href="mailto:anikaitkaushiksep@gmail.com">anikaitkaushiksep@gmail.com</a></span></div>
-        <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">/in/anikait-kaushik ↗</span></a>
-        <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener"><span class="k">GitHub</span><span class="v">/anikait-kaushik ↗</span></a>
-        <a href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener"><span class="k">CV</span><span class="v">PDF ↓</span></a>
-      </div>
+    <div class="sec-head">
+      <div class="label"><span class="n">08</span> Contact</div>
+      <h2>Open to graduate research, robotics R&amp;D roles and collaborations.</h2>
+      <p class="lede">If you supervise robotics research or are hiring for robotics or mechatronics R&amp;D, I'd be glad to talk through any of this work in detail.</p>
+    </div>
+
+    <div class="contact-wrap">
+      <!-- Messages are delivered to Anikait's inbox by Formspree.
+           SETUP: create a free form at https://formspree.io (sign in with your Gmail),
+           then paste its endpoint into data-endpoint below, e.g. https://formspree.io/f/abcdwxyz
+           Until then the form falls back to opening the visitor's email app. -->
+      <form class="cform" id="contactForm" data-endpoint="" data-fallback="anikaitkaushiksep@gmail.com" novalidate>
+        <h3>Write to me</h3>
+        <div class="cf-row">
+          <div class="cf-field"><label for="cfName">Name</label><input id="cfName" name="name" type="text" autocomplete="name" placeholder="Your name" required maxlength="120"></div>
+          <div class="cf-field"><label for="cfEmail">Email</label><input id="cfEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="200"></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label for="cfRole">I'm reaching out as</label>
+            <select id="cfRole" name="reaching_out_as">
+              <option>Research supervisor / academic</option>
+              <option>Recruiter / hiring engineer</option>
+              <option>Collaborator</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="cf-field"><label for="cfSubject">Subject</label><input id="cfSubject" name="subject" type="text" placeholder="What is this about?" maxlength="160"></div>
+        </div>
+        <div class="cf-field"><label for="cfMsg">Message</label><textarea id="cfMsg" name="message" rows="6" placeholder="A short note is enough…" required maxlength="5000"></textarea></div>
+        <!-- spam trap: real visitors never see or fill this -->
+        <div class="cf-hp" aria-hidden="true"><label for="cfHp">Leave this empty</label><input id="cfHp" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+        <p class="cf-note">Your name, email and message are sent to me through <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> so I can reply. They're used only for that.</p>
+        <div class="cf-foot">
+          <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
+          <button class="btn btn-solid" type="submit" id="cfSend">Send message</button>
+        </div>
+      </form>
+
+      <aside class="creach">
+        <h3>Other ways to reach me</h3>
+        <p>Email works best. LinkedIn is welcome too.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Patiala, Punjab, India</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><a href="mailto:anikaitkaushiksep@gmail.com">anikaitkaushiksep@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2"/></svg><a href="mailto:akaushik_be23@thapar.edu">akaushik_be23@thapar.edu</a></li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/anikait-kaushik-9435b1289" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.2 21 14.5V21h-4v-5.8c0-1.4-.03-3.2-1.95-3.2-1.95 0-2.25 1.52-2.25 3.1V21H9z"/></svg></a>
+          <a href="https://github.com/anikait-kaushik" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+          <a href="assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener" aria-label="Download CV (PDF)" class="cv">CV ↓</a>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -760,7 +800,7 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js?v=3"></script>
+<script src="assets/js/site.js?v=5"></script>
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>

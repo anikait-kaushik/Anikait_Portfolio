@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>R3 Exoskeleton Research — Case Study · Anikait Kaushik</title>
+<meta name="description" content="Research case study: R3 (Realize, Revive & Recover) at the TIET–UQ Centre of Excellence. Instrumented gait pipeline (Qualisys, AMTI, Noraxon), MATLAB gait simulation, exoskeleton generations and joint-tracking interface." />
+<meta property="og:image" content="../assets/img/web/exo-gen4-real.jpg" />
+<meta name="theme-color" content="#14161B" />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/css/site.css?v=5" />
+</head>
+<body>
+<a class="skip" href="#programme">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
+<header class="nav"><div class="wrap">
+  <a href="../index.html" class="brand">Anikait<span>.</span>Kaushik</a>
+  <nav class="navlinks" id="navlinks" aria-label="Primary">
+    <a href="../index.html#research">← Research</a><a href="../index.html#projects">Projects</a><a href="../index.html#contact">Contact</a>
+    <a class="btn btn-solid" href="../assets/docs/Anikait_Kaushik_Resume.pdf" target="_blank" rel="noopener">CV ↓</a>
+  </nav>
+  <button class="navtoggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">≡</button>
+</div></header>
+
+<main>
+<section class="cs-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html#research">Research</a> / R2 · Exoskeleton-enabled rehabilitation</div>
+    <h1>R3: measuring human gait to build and evaluate a wearable exoskeleton</h1>
+    <p class="sum">R3 (Realize, Revive &amp; Recover) is an AI-enabled, data-driven programme for exoskeleton-enabled rehabilitation at the TIET–UQ Centre of Excellence. It develops a custom wearable lower-limb exoskeleton and judges it by the biomechanics of the person wearing it, because a robot can move perfectly and still move a human badly.</p>
+    <div class="cs-meta">
+      <div><div class="k">Status</div><div class="v"><span class="badge b-ongoing">Ongoing · since Jun 2025</span></div></div>
+      <div><div class="k">My role</div><div class="v">Research Intern: experimental workflow &amp; mechanical development</div></div>
+      <div><div class="k">Outputs</div><div class="v">IEEE T-RO (under review) · J. Biomech. (final preparation)</div></div>
+      <div><div class="k">Mentors</div><div class="v">Prof. A. Singla, Dr. S. Kansal (TIET) · Dr. A. Melendez-Calderon (UQ)</div></div>
+    </div>
+  </div>
+  <div class="cs-cover"><video controls muted playsinline preload="none" poster="../assets/video/exo-gen4.jpg" aria-label="Wearable exoskeleton trial in the laboratory"><source src="../assets/video/exo-gen4.mp4" type="video/mp4"></video></div>
+</section>
+
+<div class="wrap cs-layout">
+  <nav class="toc" aria-label="On this page">
+    <b>On this page</b>
+    <a href="#programme">Programme</a><a href="#pipeline">Gait pipeline</a><a href="#modelling">Modelling</a><a href="#hardware">Exoskeleton</a><a href="#interface">Interface</a><a href="#contribution">My contribution</a>
+  </nav>
+  <article class="cs-body">
+    <section class="cs-sec" id="programme">
+      <h2><span class="n">01</span>Programme</h2>
+      <p>The work sits where robotics, human–robot collaboration and biomechanics meet. Instrumented gait experiments give a quantitative reference for how people walk. Models connect that data to joint kinetics. The exoskeleton is then developed and evaluated against both.</p>
+      <div class="method" aria-label="Research loop">
+        <div><b>1 · Measure</b><span>Synchronised kinematics, GRF, COP, EMG</span></div>
+        <div><b>2 · Model</b><span>Euler–Lagrange leg model; MATLAB simulation</span></div>
+        <div><b>3 · Build</b><span>Exoskeleton hardware across generations</span></div>
+        <div><b>4 · Evaluate</b><span>Exoskeleton-assisted gait experiments</span></div>
+      </div>
+    </section>
+
+    <section class="cs-sec" id="pipeline">
+      <h2><span class="n">02</span>Instrumented gait pipeline</h2>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/mocap-pipeline.jpg" alt="Motion capture pipeline: motion capture cameras and IR markers, force capture with AMTI plates, data synchronisation module, data interpretation, MATLAB data filtering, and resulting joint-angle plots" loading="lazy"><figcaption>Fig. 1 · Capture (Qualisys + IR markers, AMTI force plates) → synchronisation → interpretation → MATLAB filtering → joint-level outputs.</figcaption></figure>
+      <div class="fig-row">
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/mocap-markers.jpg" aria-label="Subject with IR markers standing on force plates"><source src="../assets/video/mocap-markers.mp4" type="video/mp4"></video><figcaption>Marker-based capture on instrumented force plates.</figcaption></figure>
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/qualisys-sim.jpg" aria-label="Gait capture of walking reconstructed in Qualisys Track Manager"><source src="../assets/video/qualisys-sim.mp4" type="video/mp4"></video><figcaption>Walking trial reconstructed in Qualisys Track Manager.</figcaption></figure>
+      </div>
+      <p>I developed this workflow in the Gait Laboratory. It synchronises Qualisys motion capture, AMTI force plates and Noraxon EMG so that lower-limb kinematics, gait cycles, ground-reaction force, centre of pressure and muscle activity can be analysed together.</p>
+    </section>
+
+    <section class="cs-sec" id="modelling">
+      <h2><span class="n">03</span>Modelling &amp; simulation</h2>
+      <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/exo-matlab-sim.jpg" aria-label="MATLAB simulation of lower-limb gait with joint-angle traces"><source src="../assets/video/exo-matlab-sim.mp4" type="video/mp4"></video><figcaption>MATLAB simulation of lower-limb gait with joint-angle traces.</figcaption></figure>
+      <p>The modelling side is a unified Euler–Lagrange framework built on a three-link (thigh–shank–foot) leg model and validated against Visual3D across five subjects. That manuscript is under review at IEEE Transactions on Robotics, so its results aren't reproduced here. Subject-specific segment parameters are prepared with a body-segment parameter calculator.</p>
+      <p><a class="link" href="../index.html#leg-model">Interactive three-link leg model →</a></p>
+    </section>
+
+    <section class="cs-sec" id="hardware">
+      <h2><span class="n">04</span>Exoskeleton hardware</h2>
+      <div class="fig-row">
+        <figure class="fig"><img class="zoom" src="../assets/img/web/exo-gen2.jpg" alt="Exoskeleton Gen 2 CAD: frame structure with foot plates" loading="lazy"><figcaption>Gen 2 (CAD).</figcaption></figure>
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/exo-gen2-test.jpg" aria-label="Exoskeleton Gen 2 testing"><source src="../assets/video/exo-gen2-test.mp4" type="video/mp4"></video><figcaption>Gen 2 testing.</figcaption></figure>
+      </div>
+      <div class="fig-row">
+        <figure class="fig"><img class="zoom" src="../assets/img/web/exo-gen4-cad.jpg" alt="Exoskeleton Gen 4 CAD, side view" loading="lazy"><figcaption>Gen 4 (CAD).</figcaption></figure>
+        <figure class="fig"><img class="zoom" src="../assets/img/web/exo-gen4-real.jpg" alt="Exoskeleton Gen 4 built hardware standing upright" loading="lazy"><figcaption>Gen 4 as built.</figcaption></figure>
+      </div>
+      <!-- TODO(Anikait): state exactly which parts of Gen 2 / Gen 4 you designed (joints, cuffs, frame, actuator mounts), what changed between generations and why. Only real facts. -->
+    </section>
+
+    <section class="cs-sec" id="interface">
+      <h2><span class="n">05</span>Joint-tracking interface</h2>
+      <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/exo-gui.jpg" aria-label="Exoskeleton interface plotting hip and knee joint angles and tracking error"><source src="../assets/video/exo-gui.mp4" type="video/mp4"></video><figcaption>The interface plots hip and knee joint angles in the joint frame, together with hip and knee tracking error.</figcaption></figure>
+      <!-- TODO(Anikait): say who built the GUI / controller and your part in it; add tracking-error numbers only if measured. -->
+    </section>
+
+    <section class="cs-sec" id="contribution">
+      <h2><span class="n">06</span>My contribution</h2>
+      <ul>
+        <li>Developed the gait-laboratory experimental workflow: Qualisys motion capture, AMTI force plates and Noraxon EMG, synchronised for exoskeleton-assisted gait experiments.</li>
+        <li>Worked on the mechanical side of the exoskeleton (CAD and mechanical development).</li>
+        <li>Turned measured gait data into model inputs and engineering evidence, which feed the IEEE T-RO manuscript (under review) and the Journal of Biomechanics manuscript (final preparation).</li>
+      </ul>
+      <h3 class="sub-h">Tools</h3>
+      <div><span class="chip">Qualisys Track Manager</span><span class="chip">AMTI force plates</span><span class="chip">Noraxon EMG</span><span class="chip">Visual3D</span><span class="chip">MATLAB</span><span class="chip">SolidWorks</span></div>
+      <h3 class="sub-h">Related</h3>
+      <div class="next">
+        <a href="../index.html#r-gait"><span class="k">Research</span><b>R1 · Euler–Lagrange gait framework →</b></a>
+        <a href="../index.html#publications"><span class="k">Outputs</span><b>Publications &amp; status →</b></a>
+      </div>
+    </section>
+  </article>
+</div>
+</main>
+<footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
+<script src="../assets/js/site.js?v=5"></script>
+</body>
+</html>

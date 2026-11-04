@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#14161B" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+<link rel="stylesheet" href="../assets/css/site.css?v=5" />
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -41,7 +41,7 @@
 <div class="wrap cs-layout">
   <nav class="toc" aria-label="On this page">
     <b>On this page</b>
-    <a href="#overview">Problem</a><a href="#architecture">Architecture</a><a href="#contribution">My contribution</a><a href="#outcome">Outcome</a>
+    <a href="#overview">Problem</a><a href="#architecture">Architecture</a><a href="#design">Design</a><a href="#contribution">My contribution</a><a href="#outcome">Outcome</a>
   </nav>
   <article class="cs-body">
     <section class="cs-sec" id="overview">
@@ -65,17 +65,33 @@
         <figcaption>Fig. 1 · System blocks. Highlighted: my mechanical scope.</figcaption>
       </figure>
     </section>
+    <section class="cs-sec" id="design">
+      <h2><span class="n">03</span>Design</h2>
+      <div class="fig-row">
+        <figure class="fig"><img class="zoom" src="../assets/img/web/marvin-cad.jpg" alt="MARVIN CAD: circular two-level chassis with vacuum housing" loading="lazy"><figcaption>Fig. 2 · CAD: circular, two-level chassis.</figcaption></figure>
+        <figure class="fig"><img class="zoom" src="../assets/img/web/marvin-robot.jpg" alt="MARVIN prototype with two ultrasonic sensors mounted at different heights" loading="lazy"><figcaption>Fig. 3 · Prototype with ultrasonic sensors at two heights.</figcaption></figure>
+      </div>
+      <ul>
+        <li><strong>Chassis:</strong> circular, two-level, with a steel base and wall and a transparent acrylic top sheet.</li>
+        <li><strong>Vacuum chamber:</strong> high-RPM BLDC motor driven through a speed controller, in a sealed chamber with a removable upper lid.</li>
+        <li><strong>Obstacle detection:</strong> two ultrasonic sensors at two different levels, with a servo for direction feedback; detection distance of 10 cm.</li>
+        <li><strong>Drive electronics:</strong> L298N and BTS motor drivers; 10,000 mAh rechargeable Li-ion battery; LCD for error display.</li>
+        <li><strong>Control:</strong> C++ on Arduino. The vacuum starts at power-on; the robot moves forward while polling the ultrasonics, and on detecting an obstacle it turns 180° or steers left or right, with a check for impact.</li>
+      </ul>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/marvin-poster.jpg" alt="MARVIN project poster: overview, chassis, vacuum chamber, obstacle detection, electronic components, automation flowchart, deliverables and team" loading="lazy"><figcaption>Fig. 4 · Project poster (team of nine, ELC 2024).</figcaption></figure>
+    </section>
+
     <section class="cs-sec" id="contribution">
-      <h2><span class="n">03</span>My contribution</h2>
+      <h2><span class="n">04</span>My contribution</h2>
       <ul>
         <li>Designed and developed the mechanical system: chassis, component mounting and the vacuum-cleaning mechanism prototype.</li>
         <li>Integrated obstacle-avoidance hardware and Arduino control.</li>
         <li>Carried out SolidWorks CAD, 3D printing, sheet-metal fabrication, assembly and testing.</li>
       </ul>
-      <!-- TODO(Anikait): add a CAD render, a photo of the internals, the sensor type used, and one problem you hit during testing and how you fixed it. -->
+      <!-- TODO(Anikait): add one problem you hit during testing and how you fixed it. -->
     </section>
     <section class="cs-sec" id="outcome">
-      <h2><span class="n">04</span>Outcome &amp; follow-on</h2>
+      <h2><span class="n">05</span>Outcome &amp; follow-on</h2>
       <p>MARVIN was recognised among the <strong>Top 10 ELC Summer Internship Projects</strong>. In 2025–26, as Team Captain at MARS, I led <strong>MARVIN Gen 2</strong>.</p>
       <figure class="fig"><img class="zoom" src="../assets/img/web/marvin-certificate.jpg" alt="ELC Certificate of Merit for the MARVIN project" loading="lazy"><figcaption>Certificate of Merit, ELC Summer Internship 2024.</figcaption></figure>
       <h3 class="sub-h">Tools</h3>
@@ -90,6 +106,6 @@
 </div>
 </main>
 <footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
-<script src="../assets/js/site.js?v=3"></script>
+<script src="../assets/js/site.js?v=5"></script>
 </body>
 </html>

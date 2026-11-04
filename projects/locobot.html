@@ -8,7 +8,8 @@
 <meta name="theme-color" content="#14161B" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+<link rel="stylesheet" href="../assets/css/site.css?v=5" />
+<meta property="og:image" content="../assets/video/locobot-sim.jpg" />
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -66,8 +67,12 @@
     </section>
     <section class="cs-sec" id="status">
       <h2><span class="n">03</span>Status</h2>
-      <div class="callout neutral">This project is in progress. No performance results are reported until they've been measured on hardware. This page will be updated with simulation-versus-hardware comparisons, figures and code.</div>
-      <!-- TODO(Anikait): add screenshots of the Simscape model, a short screen recording, and a GitHub link when ready. -->
+      <div class="fig-row">
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/locobot-sim.jpg" aria-label="LoCoBot arm motion in MATLAB simulation"><source src="../assets/video/locobot-sim.mp4" type="video/mp4"></video><figcaption>Arm motion in the MATLAB simulation.</figcaption></figure>
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/locobot-sim2real.jpg" aria-label="Sim2Real test recording"><source src="../assets/video/locobot-sim2real.mp4" type="video/mp4"></video><figcaption>Sim2Real test recording.</figcaption></figure>
+      </div>
+      <div class="callout neutral">This project is in progress. Quantitative simulation-versus-hardware comparisons will be added once they've been measured.</div>
+      <!-- TODO(Anikait): describe exactly what the Sim2Real video shows (which motion, how it was commanded), and add a GitHub link when ready. -->
       <h3 class="sub-h">Tools</h3>
       <div><span class="chip">MATLAB</span><span class="chip">MATLAB Copilot</span><span class="chip">Simscape</span><span class="chip">Simulink</span><span class="chip">ROS</span></div>
       <h3 class="sub-h">Related</h3>
@@ -80,6 +85,6 @@
 </div>
 </main>
 <footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
-<script src="../assets/js/site.js?v=3"></script>
+<script src="../assets/js/site.js?v=5"></script>
 </body>
 </html>

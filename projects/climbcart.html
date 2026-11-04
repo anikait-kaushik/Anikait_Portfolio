@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#14161B" />
 <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/site.css?v=3" />
+<link rel="stylesheet" href="../assets/css/site.css?v=5" />
 </head>
 <body>
 <a class="skip" href="#overview">Skip to content</a>
@@ -36,13 +36,13 @@
       <div><div class="k">Mentors</div><div class="v">Prof. Ashish Singla · Prof. Dheeraj Gupta</div></div>
     </div>
   </div>
-  <div class="cs-cover" style="background:#fff"><img src="../assets/img/web/climbcart-render.jpg" alt="ClimbCart CAD render climbing a staircase" width="745" height="630" style="background:#fff;max-height:520px"></div>
+  <div class="cs-cover" style="background:#fff"><img src="../assets/img/web/climbcart-render-hd.jpg" alt="ClimbCart rendered on a staircase" width="1800" height="1419" style="background:#fff;max-height:560px"></div>
 </section>
 
 <div class="wrap cs-layout">
   <nav class="toc" aria-label="On this page">
     <b>On this page</b>
-    <a href="#overview">Summary</a><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a><a href="#iteration">Iteration</a><a href="#contribution">My contribution</a>
+    <a href="#overview">Summary</a><a href="#problem">Problem</a><a href="#architecture">Architecture</a><a href="#decisions">Design decisions</a><a href="#iteration">Iteration</a><a href="#testing">Testing</a><a href="#contribution">My contribution</a>
   </nav>
   <article class="cs-body">
     <section class="cs-sec" id="overview">
@@ -99,8 +99,19 @@
       <figure class="fig"><img class="zoom" src="../assets/img/web/climbcart-track.jpg" alt="Belt track design iteration 3: angled track, CAD dimensions, sprocket groove design" loading="lazy"><figcaption>Fig. 3 · Belt-track design, iteration 3.</figcaption></figure>
     </section>
 
+    <section class="cs-sec" id="testing">
+      <h2><span class="n">05</span>Prototype &amp; testing</h2>
+      <p>A physical tracked prototype was built and tested in two stages: drive trials on a level surface, then an inclined trial run onto a step.</p>
+      <div class="fig-row">
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/climbcart-level.jpg" aria-label="ClimbCart level-surface trial"><source src="../assets/video/climbcart-level.mp4" type="video/mp4"></video><figcaption>Level-surface drive trials.</figcaption></figure>
+        <figure class="fig"><video controls muted playsinline preload="none" poster="../assets/video/climbcart-incline.jpg" aria-label="ClimbCart inclined trial run onto a step"><source src="../assets/video/climbcart-incline.mp4" type="video/mp4"></video><figcaption>Inclined trial run onto a step.</figcaption></figure>
+      </div>
+      <figure class="fig"><img class="zoom" src="../assets/img/web/climbcart-robot-cad.jpg" alt="ClimbCart robot CAD with tracked chassis, frame and platform" loading="lazy"><figcaption>Fig. 4 · Robot CAD.</figcaption></figure>
+      <!-- TODO(Anikait): add what the trials showed (did it climb? slip? payload? what was changed after). Only measured/observed facts. -->
+    </section>
+
     <section class="cs-sec" id="contribution">
-      <h2><span class="n">05</span>My contribution &amp; status</h2>
+      <h2><span class="n">06</span>My contribution &amp; status</h2>
       <p>I translated the surveyed constraints into the mechanical design, carrying it through mechanism development, CAD, FEA, material selection, prototyping and experimental validation.</p>
       <!-- TODO(Anikait): list team members' roles, prototype test results (payload carried, stairs climbed, speed), and photos of the physical prototype. Do not add numbers you haven't measured. -->
       <h3 class="sub-h">Tools</h3>
@@ -115,6 +126,6 @@
 </div>
 </main>
 <footer><div class="wrap"><span>© <span data-year></span> Anikait Kaushik</span><a href="../index.html">← Back to portfolio</a></div></footer>
-<script src="../assets/js/site.js?v=3"></script>
+<script src="../assets/js/site.js?v=5"></script>
 </body>
 </html>

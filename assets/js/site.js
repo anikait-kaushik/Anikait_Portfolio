@@ -76,6 +76,46 @@
     });
   });
 
+  /* ---------- contact form (Formspree, with mailto fallback) ---------- */
+  var form = $('#contactForm');
+  if (form) {
+    var status = $('#cfStatus'), send = $('#cfSend');
+    var say = function (msg, cls) { status.textContent = msg; status.className = 'cf-status' + (cls ? ' ' + cls : ''); };
+    var emailOk = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); };
+    var fName = $('#cfName'), fEmail = $('#cfEmail'), fMsg = $('#cfMsg'), fSubj = $('#cfSubject'), fRole = $('#cfRole'), fHp = $('#cfHp');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = fName.value.trim(), email = fEmail.value.trim(), msg = fMsg.value.trim();
+      [fName, fEmail, fMsg].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      var bad = !name ? fName : !emailOk(email) ? fEmail : !msg ? fMsg : null;
+      if (bad) { bad.setAttribute('aria-invalid', 'true'); bad.focus(); say(bad === fEmail ? 'Please enter a valid email address.' : 'Please fill in your name, email and message.', 'err'); return; }
+      if (fHp.value) return; // bot
+
+      var endpoint = form.getAttribute('data-endpoint');
+      var subject = fSubj.value.trim() || ('Portfolio enquiry from ' + name);
+      if (!endpoint) {
+        // Not configured yet: hand over to the visitor's email client
+        var body = msg + '\n\n— ' + name + ' (' + email + ')\nReaching out as: ' + fRole.value;
+        window.location.href = 'mailto:' + form.getAttribute('data-fallback') + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        say('Opening your email app…');
+        return;
+      }
+      var data = new FormData(form);
+      data.set('subject', subject);
+      data.append('_replyto', email);
+      data.append('_subject', 'Portfolio: ' + subject);
+      send.disabled = true; say('Sending…');
+      fetch(endpoint, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (res.ok) { form.reset(); say('Thanks — your message has been sent. I\'ll reply by email.', 'ok'); }
+          else { say((res.j.errors && res.j.errors[0] && res.j.errors[0].message) || 'Something went wrong. Please email me directly.', 'err'); }
+        })
+        .catch(function () { say('Network error. Please email me directly at ' + form.getAttribute('data-fallback') + '.', 'err'); })
+        .then(function () { send.disabled = false; });
+    });
+  }
+
   /* ---------- only one video plays at a time ---------- */
   $$('video').forEach(function (v) {
     v.addEventListener('play', function () { $$('video').forEach(function (o) { if (o !== v) o.pause(); }); });

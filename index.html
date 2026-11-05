@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="preload" as="image" href="assets/video/hero-speedrun.jpg" />
-<link rel="stylesheet" href="assets/css/site.css?v=24" />
+<link rel="stylesheet" href="assets/css/site.css?v=25" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Anikait Kaushik","url":"https://anikaitkaushik.vercel.app/","image":"https://anikaitkaushik.vercel.app/assets/img/web/headshot-2026.jpg","jobTitle":"Robotics & Mechatronics Engineer","alumniOf":{"@type":"CollegeOrUniversity","name":"Thapar Institute of Engineering and Technology"},"sameAs":["https://www.linkedin.com/in/anikait-kaushik-9435b1289","https://github.com/anikait-kaushik"]}
 </script>
@@ -227,31 +227,42 @@
     <div class="sec-head reveal">
       <div class="label"><span class="n">03</span> Playground</div>
       <h2>Don't take my word for it. Try the maths.</h2>
-      <p class="lede">Two live models, computed in your browser: a manipulator solving inverse kinematics, and a walking lower body built from the three-link leg structure at the core of my gait research.</p>
+      <p class="lede">Two live models, computed in your browser: a 3D robot arm you can hand work to, and a walking lower body built from the three-link leg structure at the core of my gait research.</p>
     </div>
     <div class="tabs" role="tablist" aria-label="Interactive models">
-      <button type="button" role="tab" id="tab-ik" aria-controls="panel-ik" aria-selected="true">Manipulator IK</button>
+      <button type="button" role="tab" id="tab-ik" aria-controls="panel-ik" aria-selected="true">3D robot arm</button>
       <button type="button" role="tab" id="tab-leg" aria-controls="panel-leg" aria-selected="false">3D walking model</button>
     </div>
     <div class="tabpanel" role="tabpanel" id="panel-ik" aria-labelledby="tab-ik">
-      <div class="lab-grid lab">
-      <div class="lab-stage" id="labStage">
-        <canvas id="armCanvas" role="img" aria-label="Robot arm following the cursor using inverse kinematics"></canvas>
-        <div class="lab-corner tl">3-DOF PLANAR ARM</div>
-        <div class="lab-corner tr"><span class="lab-mode" id="armMode">AUTO</span></div>
-        <div class="lab-corner tl2" id="armTarget">x 0 · y 0</div>
-        <div class="lab-corner tr2" id="armStatus">REACHABLE</div>
+      <div class="model arm-model" id="arm-model">
+        <div class="model-stage arm-stage" id="armStage">
+          <span class="tag3d">INTERACTIVE · 5-AXIS PICK-AND-PLACE</span>
+          <span class="lab-mode arm-mode" id="armMode">AUTO</span>
+          <span class="arm-msg" id="armMsg" aria-live="polite">Click the table to drop a block</span>
+          <div class="model-fallback" id="armFallback" hidden>3D view needs WebGL. The inverse-kinematics equations are in the panel.</div>
+          <div class="arm-strip">
+            <div class="arm-steps" id="armSteps" aria-hidden="true"><span data-step="Approach">Approach</span><span data-step="Descend">Descend</span><span data-step="Grip">Grip</span><span data-step="Lift">Lift</span><span data-step="Transfer">Transfer</span><span data-step="Lower">Lower</span><span data-step="Release">Release</span><span data-step="Retract">Retract</span></div>
+            <div class="arm-task mono"><span id="armTask">Starting</span><span class="arm-orbit">Drag to orbit</span></div>
+          </div>
+        </div>
+        <div class="model-panel">
+          <h4>Inverse kinematics</h4>
+          <div class="eq arm-eq">ψ = atan2(z, x) &nbsp;·&nbsp; w = p + L<sub>t</sub>·ŷ<br>c = (d² − L₁² − L₂²) / 2L₁L₂<br>θ₃ = acos(c) <span style="color:#8A939F">(elbow up)</span><br>θ₂ = atan2(w<sub>y</sub>, r) + atan2(L₂ sin θ₃, L₁ + L₂ cos θ₃)<br>θ₄ = −90° − θ₂ + θ₃ &nbsp;·&nbsp; θ₅ = −ψ</div>
+          <div class="ctl"><label for="qJ1">J1 base yaw <b id="vJ1">0°</b></label><input type="range" id="qJ1" min="-180" max="180" step="1" value="0"></div>
+          <div class="ctl"><label for="qJ2">J2 shoulder <b id="vJ2">0°</b></label><input type="range" id="qJ2" min="-10" max="165" step="1" value="0"></div>
+          <div class="ctl"><label for="qJ3">J3 elbow <b id="vJ3">0°</b></label><input type="range" id="qJ3" min="0" max="165" step="1" value="0"></div>
+          <div class="ctl"><label for="qJ4">J4 wrist pitch <b id="vJ4">0°</b></label><input type="range" id="qJ4" min="-250" max="90" step="1" value="0"></div>
+          <div class="ctl"><label for="qJ5">J5 wrist roll <b id="vJ5">0°</b></label><input type="range" id="qJ5" min="-180" max="180" step="1" value="0"></div>
+          <div class="joint"><span>Tool position (x, y, z)</span><b id="armTcp">0, 0, 0</b></div>
+          <div class="joint"><span>Reach from base</span><b id="armReach">0 m</b></div>
+          <div class="model-btns">
+            <button type="button" id="armPause" aria-pressed="false">Pause</button>
+            <button type="button" id="armSpeed">Speed 1×</button>
+            <button type="button" id="armReset">Reset</button>
+          </div>
+          <p class="model-note">An illustrative arm, not a model of a specific commercial robot. Inverse kinematics is solved in closed form every frame, with minimum-jerk timing and straight-line vertical moves. Drag a slider to jog a joint yourself. Collisions are only checked against the table.</p>
+        </div>
       </div>
-      <div class="lab-panel">
-        <h4>Joint state</h4>
-        <div class="joint"><span>θ₁ shoulder</span><b id="j1">0.0°</b></div><div class="jbar"><i id="j1b"></i></div>
-        <div class="joint"><span>θ₂ elbow</span><b id="j2">0.0°</b></div><div class="jbar"><i id="j2b"></i></div>
-        <div class="joint"><span>θ₃ wrist</span><b id="j3">0.0°</b></div><div class="jbar"><i id="j3b"></i></div>
-        <div class="joint"><span>End effector (x, y)</span><b id="eePos">(0, 0)</b></div>
-        <div class="eq">c₂ = (d² − L₁² − L₂²) / 2L₁L₂<br>θ₂ = ∓acos(c₂) &nbsp;<span style="color:#8A939F">(sign keeps the elbow up)</span><br>θ₁ = atan2(w_y, w_x) − atan2(L₂ sin θ₂, L₁ + L₂ cos θ₂)<br>θ₃ = φ − θ₁ − θ₂</div>
-        <p class="lab-note">Move the cursor or tap inside the grid. The wrist point is found from the desired tool angle φ, then solved in closed form; targets outside the workspace are clamped. Left alone, it runs a pick-and-place loop.</p>
-      </div>
-    </div>
     </div>
     <div class="tabpanel" role="tabpanel" id="panel-leg" aria-labelledby="tab-leg" hidden>
       <div class="model" id="leg-model">
@@ -543,11 +554,12 @@
 </footer>
 
 <script>window.HERO_CHAPTERS = {"duration": 22.2, "chapters": [{"t": 0, "title": "Ganga", "sub": "Mars rover · IRC 2026 Champion", "href": "projects/ganga.html"}, {"t": 2.95, "title": "Garud", "sub": "Competition drone · ISDC 2026", "href": "projects/garud.html"}, {"t": 5.45, "title": "ClimbCart", "sub": "Stair-climbing prototype", "href": "projects/climbcart.html"}, {"t": 7.95, "title": "R3 Exoskeleton", "sub": "Rehabilitation research · TIET–UQ", "href": "projects/exoskeleton.html"}, {"t": 10.45, "title": "Gait capture", "sub": "Qualisys motion capture", "href": "projects/exoskeleton.html"}, {"t": 12.55, "title": "LoCoBot", "sub": "Sim2Real with MathWorks", "href": "projects/locobot.html"}, {"t": 14.65, "title": "Ganga", "sub": "Field run on Mars-analogue terrain", "href": "projects/ganga.html"}, {"t": 17.15, "title": "Gait dynamics", "sub": "Lower-limb simulation in MATLAB", "href": "projects/exoskeleton.html"}, {"t": 19.25, "title": "Ganga", "sub": "Integrated rover system", "href": "projects/ganga.html"}]};</script>
-<script src="assets/js/site.js?v=12"></script>
+<script src="assets/js/site.js?v=13"></script>
 <script src="assets/js/hero-fx.js?v=2"></script>
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
+<script type="module" src="assets/js/arm3d.js?v=2"></script>
 <script type="module" src="assets/js/leg3d.js?v=11"></script>
 </body>
 </html>

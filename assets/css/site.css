@@ -804,3 +804,23 @@ img.zoom{cursor:zoom-in}
 @media(max-width:900px){.model-stage{min-height:480px}.gt-phase{white-space:normal}}
 @media(max-width:620px){.model-stage .hint{display:none}.gait-key{left:16px;right:auto;top:30px}.gait-key i:first-child{margin-left:0}}
 .model-stage:not(.ready)::after{content:"Loading 3D model…";position:absolute;left:0;right:0;top:40%;text-align:center;font-family:var(--font-mono);font-size:12px;color:#8E98A6;pointer-events:none}
+
+/* 3D pick-and-place arm */
+.arm-stage{cursor:crosshair;min-height:600px}
+.arm-mode{position:absolute;right:14px;top:11px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;pointer-events:none}
+.arm-msg{position:absolute;left:16px;top:32px;font-family:var(--font-mono);font-size:11px;color:#CBD5E1;pointer-events:none}
+.arm-msg.bad{color:#FCA5A5}
+.arm-strip{position:absolute;left:14px;right:14px;bottom:12px;padding:9px 11px;background:rgba(9,13,20,.92);border:1px solid rgba(255,255,255,.1);border-radius:10px;pointer-events:none}
+.arm-steps{display:flex;flex-wrap:wrap;gap:4px}
+.arm-steps span{flex:1 1 auto;text-align:center;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.04em;color:#7B8798;padding:4px 5px;border-radius:5px;background:rgba(255,255,255,.05);transition:background .2s,color .2s}
+.arm-steps span.on{background:#2563EB;color:#fff}
+.arm-task{display:flex;justify-content:space-between;gap:10px;margin-top:7px;font-size:10.5px;color:#CBD5E1}
+.arm-orbit{color:#7B8798}
+.arm-model .model-panel .ctl{margin-top:9px}
+.arm-model .joint{font-size:12.5px;margin-top:10px}
+.arm-model .joint b{font-size:12px}
+.arm-eq{font-size:11px!important;line-height:1.65;white-space:normal!important}
+.arm-eq sub{font-size:.75em}
+@media(max-width:900px){.arm-stage{min-height:480px}}
+@media(max-width:620px){.arm-msg{font-size:10.5px}.arm-orbit{display:none}}
+@media(max-width:620px){.arm-stage .tag3d{font-size:9.5px;max-width:calc(100% - 90px)}}

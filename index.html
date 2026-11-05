@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="preload" as="image" href="assets/video/hero-speedrun.jpg" />
-<link rel="stylesheet" href="assets/css/site.css?v=22" />
+<link rel="stylesheet" href="assets/css/site.css?v=24" />
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Anikait Kaushik","url":"https://anikaitkaushik.vercel.app/","image":"https://anikaitkaushik.vercel.app/assets/img/web/headshot-2026.jpg","jobTitle":"Robotics & Mechatronics Engineer","alumniOf":{"@type":"CollegeOrUniversity","name":"Thapar Institute of Engineering and Technology"},"sameAs":["https://www.linkedin.com/in/anikait-kaushik-9435b1289","https://github.com/anikait-kaushik"]}
 </script>
@@ -227,11 +227,11 @@
     <div class="sec-head reveal">
       <div class="label"><span class="n">03</span> Playground</div>
       <h2>Don't take my word for it. Try the maths.</h2>
-      <p class="lede">Two live models, computed in your browser: a manipulator solving inverse kinematics, and the three-link leg structure at the core of my gait research.</p>
+      <p class="lede">Two live models, computed in your browser: a manipulator solving inverse kinematics, and a walking lower body built from the three-link leg structure at the core of my gait research.</p>
     </div>
     <div class="tabs" role="tablist" aria-label="Interactive models">
       <button type="button" role="tab" id="tab-ik" aria-controls="panel-ik" aria-selected="true">Manipulator IK</button>
-      <button type="button" role="tab" id="tab-leg" aria-controls="panel-leg" aria-selected="false">3D leg dynamics</button>
+      <button type="button" role="tab" id="tab-leg" aria-controls="panel-leg" aria-selected="false">3D walking model</button>
     </div>
     <div class="tabpanel" role="tabpanel" id="panel-ik" aria-labelledby="tab-ik">
       <div class="lab-grid lab">
@@ -256,13 +256,24 @@
     <div class="tabpanel" role="tabpanel" id="panel-leg" aria-labelledby="tab-leg" hidden>
       <div class="model" id="leg-model">
         <div class="model-stage" id="legStage">
-          <span class="tag3d">INTERACTIVE · THREE-LINK LEG MODEL</span>
+          <span class="tag3d">INTERACTIVE · LOWER-BODY GAIT MODEL</span>
+          <span class="gait-key" aria-hidden="true"><i class="r"></i>Right<i class="l"></i>Left</span>
           <div class="model-fallback" id="legFallback" hidden>3D view needs WebGL. The model and equations are described in the panel.</div>
           <span class="hint">Drag to orbit · scroll to zoom</span>
+          <div class="gait-tl">
+            <div class="gt-rows" aria-hidden="true">
+              <div class="gt-row"><span>R</span><div class="gt-bar gt-r"><em style="left:30%">STANCE</em><em style="left:80%">SWING</em></div></div>
+              <div class="gt-row"><span>L</span><div class="gt-bar gt-l"><em style="left:80%">STANCE</em><em style="left:30%">SWING</em></div></div>
+              <i class="gt-head" id="gaitHead"></i>
+            </div>
+            <input type="range" id="gaitScrub" class="gt-scrub" min="0" max="100" step="0.5" value="0" aria-label="Position in the gait cycle, percent">
+            <div class="gt-phase mono" id="gaitPhase" aria-live="off">Standing</div>
+          </div>
         </div>
         <div class="model-panel">
           <h4>Equation of motion</h4>
           <div class="eq">M(q)·q̈ + C(q,q̇)·q̇ + G(q) = τ</div>
+          <div class="leg-pick" role="group" aria-label="Choose which leg the sliders control"><button type="button" id="legPickR" aria-pressed="true">Right leg</button><button type="button" id="legPickL" aria-pressed="false">Left leg</button></div>
           <div class="ctl"><label for="qHip">Hip flexion <b id="qHipV">20°</b></label><input type="range" id="qHip" min="-20" max="100" value="20" step="1"></div>
           <div class="ctl"><label for="qKnee">Knee flexion <b id="qKneeV">30°</b></label><input type="range" id="qKnee" min="0" max="130" value="30" step="1"></div>
           <div class="ctl"><label for="qAnkle">Ankle dorsiflexion <b id="qAnkleV">0°</b></label><input type="range" id="qAnkle" min="-30" max="30" value="0" step="1"></div>
@@ -270,17 +281,21 @@
             <div class="ctl"><label for="bodyMass">Body mass (kg)</label><input type="number" id="bodyMass" value="70" min="20" max="200"></div>
             <div class="ctl"><label for="bodyHeight">Height (m)</label><input type="number" id="bodyHeight" value="1.75" min="1.2" max="2.2" step="0.01"></div>
           </div>
-          <div class="tq" aria-live="polite">
-            <div><span>G(q) term at hip</span><b id="tHip">—</b></div>
-            <div><span>G(q) term at knee</span><b id="tKnee">—</b></div>
-            <div><span>G(q) term at ankle</span><b id="tAnkle">—</b></div>
-          </div>
+          <table class="tq2">
+            <caption>G(q) term (N·m)</caption>
+            <thead><tr><th scope="col"></th><th scope="col">Right</th><th scope="col">Left</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Hip</th><td id="tHipR">—</td><td id="tHipL">—</td></tr>
+              <tr><th scope="row">Knee</th><td id="tKneeR">—</td><td id="tKneeL">—</td></tr>
+              <tr><th scope="row">Ankle</th><td id="tAnkleR">—</td><td id="tAnkleL">—</td></tr>
+            </tbody>
+          </table>
           <div class="model-btns">
-            <button type="button" id="legPlay" aria-pressed="false">Play gait cycle</button>
+            <button type="button" id="legPlay" aria-pressed="false">Play walking</button>
+            <button type="button" id="legSpeed">Speed 1×</button>
             <button type="button" id="legReset">Reset</button>
           </div>
-          <div class="mono" style="font-size:11px;color:#8A939F;margin-top:10px" id="gaitPhase">Static pose · drag the sliders</div>
-          <p class="model-note">This is a teaching model of the structure I study, not study data. Segment masses, lengths and centre-of-mass positions follow Winter's (2009) anthropometric tables; the foot is simplified to a rigid ankle-to-toe segment. Values show the static gravity torque a swing leg must hold with the hip fixed. Gait playback uses approximate, illustrative textbook joint-angle curves.</p>
+          <p class="model-note">A teaching model of the structure I study, not study data. Each leg is a three-link chain with masses, lengths and centres of mass from Winter's (2009) tables. Walking uses approximate, illustrative textbook joint-angle curves with a 10° forward pelvic tilt, the left leg half a cycle behind the right. G(q) values treat each leg as hip-fixed; ground reaction forces are not modelled.</p>
         </div>
       </div>
 
@@ -411,7 +426,7 @@
       <div class="mrow" role="row">
         <div role="cell"><h3>Kinematics &amp; dynamics</h3><div class="lvl">Applied in research</div></div>
         <div class="tools" role="cell">Forward/inverse kinematics, Euler–Lagrange dynamics; Dynamics of Robotic Systems (AIR 2025)</div>
-        <div class="evid" role="cell"><a href="research.html#r-gait">Three-link leg model (T-RO)</a> · <a href="projects/locobot.html">LoCoBot</a> · <a href="#playground">live IK demo</a> · <a href="#playground">leg model</a></div>
+        <div class="evid" role="cell"><a href="research.html#r-gait">Three-link leg model (T-RO)</a> · <a href="projects/locobot.html">LoCoBot</a> · <a href="#playground">live IK demo</a> · <a href="#playground">3D walking model</a></div>
       </div>
       <div class="mrow" role="row">
         <div role="cell"><h3>Manipulators</h3><div class="lvl">Integration &amp; operation</div></div>
@@ -533,6 +548,6 @@
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
-<script type="module" src="assets/js/leg3d.js?v=8"></script>
+<script type="module" src="assets/js/leg3d.js?v=11"></script>
 </body>
 </html>

@@ -1,5 +1,20 @@
-.DS_Store
+# Local-only material: raw photo/video originals and working notes
+_private/
+
+# Editor and assistant config
+.claude/
+.vscode/
+.idea/
+
+# Dependencies and build output
 node_modules/
 .vercel
-*.log
+
+# Environment variables (secrets live in Vercel, never in Git)
+.env
+.env.*
+
+# OS and logs
+.DS_Store
 Thumbs.db
+*.log

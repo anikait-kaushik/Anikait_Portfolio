@@ -3,7 +3,9 @@
   "cleanUrls": true,
   "redirects": [
     { "source": "/projects/abex", "destination": "/projects/alaknanda", "permanent": true },
-    { "source": "/projects/abex.html", "destination": "/projects/alaknanda", "permanent": true }
+    { "source": "/projects/abex.html", "destination": "/projects/alaknanda", "permanent": true },
+    { "source": "/assets/img/MARS%20Annual%20Magazine%2026-27.pdf", "destination": "/assets/docs/mars-annual-magazine.pdf", "permanent": true },
+    { "source": "/assets/img/MARS Annual Magazine 26-27.pdf", "destination": "/assets/docs/mars-annual-magazine.pdf", "permanent": true }
   ],
   "headers": [
     {

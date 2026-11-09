@@ -26,7 +26,7 @@ Personal portfolio covering field robotics, human gait research and a lower-limb
 - **Case studies** for each major project: Mars rovers Ganga and Alaknanda, the R3 exoskeleton, ClimbCart, Garud, LoCoBot Sim2Real and MARVIN.
 - **Research page** with publications, a patent application and conference work.
 - **Contact form** that emails messages through a Vercel function, with input validation and rate limiting.
-- **Fast and private:** no trackers, lazy-loaded 3D, optimised WebP and JPEG images, long-lived asset caching.
+- **Fast and private:** cookieless Vercel Web Analytics only, lazy-loaded 3D, optimised WebP and JPEG images, long-lived asset caching.
 - **Accessible and responsive:** works on mobile and degrades gracefully without JavaScript.
 
 ## Pages
